@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # MEC
 Meeting Efficiency Calculator (MEC)
 
