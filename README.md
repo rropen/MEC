@@ -1,5 +1,5 @@
-# MeCC
-Meeting efficency Calculator (MeCC)
+# MEC
+Meeting Efficency Calculator (MEC)
 
 ## About
 This code calculates the cost of meetings, and has user inputs to see if powerpoint was used.
