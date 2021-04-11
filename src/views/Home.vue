@@ -31,17 +31,21 @@
     />
   </div>
   <!-- Outputs the cost calculation -->
-  <div class="flex-auto pt-8 box-border pb-6">
+  <div :cost="'Hi from parent'" class="flex-auto pt-8 box-border">
     Cost $ {{ costCalc.toFixed(2) }}
   </div>
 
-  <!-- This is the Table -->
+  <!-- This is the Table rendered in the home page -->
   <Table />
+
+  <!-- This is the charts that are rendered in the home page -->
+  <!-- <Charts :cost-calc="this.costCalc.toFixed(2)" /> -->
 </template>
 
 <script>
 import CostCounter from './CostCounter.vue';
 import Table from './Table';
+import Charts from './Charts';
 
 export default {
   name: 'Home',
@@ -49,6 +53,7 @@ export default {
   components: {
     Table,
     CostCounter,
+    Charts,
   },
   name: 'App',
   data() {

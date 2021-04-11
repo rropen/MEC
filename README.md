@@ -16,6 +16,14 @@ The valulation of each employee is at \$200 per hour.
 yarn install
 ```
 
+### Changelog Update
+
+This is the standard we use for commits: [Commit Standard](https://www.conventionalcommits.org/en/v1.0.0/)
+
+```
+yarn release
+```
+
 ### Compiles and hot-reloads for development
 
 ```

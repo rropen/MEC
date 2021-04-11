@@ -14,7 +14,7 @@
     </button>
     <button
       class="shadow-lg ml-8 mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
-      @click="x++"
+      @click="addRow()"
     >
       Add Row
     </button>
@@ -34,25 +34,6 @@
 <script>
 // Loads in the table libraryss
 import VGrid, { VGridVueTemplate } from '@revolist/vue3-datagrid';
-
-// mock data
-function generateFakeDataRows(rowsNumber) {
-  const result = [];
-  const all = rowsNumber;
-  for (let j = 0; j < all; j++) {
-    let row = j;
-    if (!result[row]) {
-      result[row] = {
-        id: row,
-      };
-    }
-    // This fills in data to the rows
-    result[row]['meeting'] = `${row}`;
-    result[row]['date'] = `date`;
-  }
-  return result;
-}
-let x = 100;
 export default {
   name: 'Table',
   props: ['employeeNumber', 'meetingId', 'date', 'costHr', 'costCalc'],
@@ -60,7 +41,6 @@ export default {
   name: 'App',
   data() {
     return {
-      x,
       columns: [
         {
           prop: 'meeting',
@@ -101,7 +81,7 @@ export default {
           size: 200,
         },
       ],
-      rows: generateFakeDataRows(x),
+      rows: [],
     };
   },
   // Not sure what this does but its make the componet work in the table
@@ -129,6 +109,11 @@ export default {
         '/' +
         today.getDate();
       document.write(date);
+    },
+    addRow() {
+      this.rows.push({});
+      this.rows = [...this.rows];
+      console.log(this.rows);
     },
   },
   components: {
