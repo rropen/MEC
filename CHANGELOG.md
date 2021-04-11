@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/ITM007/MEC/compare/v0.1.1...v0.1.2) (2021-04-11)
+
+
+### Features
+
+* added conventional commits ([fc2ef37](https://github.com/ITM007/MEC/commit/fc2ef37c1ee8b4c614e88b37ddd0bd9c4eb6f5df))
+
 ### 0.1.1 (2021-04-09)
 
 
