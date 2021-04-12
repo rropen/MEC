@@ -29,6 +29,7 @@
     "vite": "^2.1.5",
     "@vue/cli-plugin-babel": "^5.0.0-alpha.8",
     "@vue/cli-plugin-router": "^5.0.0-alpha.8",
+    "standard-version": "^9.2.0",
     "@vue/cli-plugin-vuex": "^5.0.0-alpha.8",
     "@vue/cli-service": "^5.0.0-alpha.8",
     "@vue/compiler-sfc": "^3.0.11",
