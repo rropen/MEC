@@ -2,30 +2,7 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.1.4](https://github.com/ITM007/MEC/compare/v0.1.5...v0.1.4) (2021-04-12)
-
-
-### Features
-
-* Added tailwindJIT & Vite ([a59bd85](https://github.com/ITM007/MEC/commit/a59bd85b948d171d07f95e67d4d564035d4cb11a))
-* Added tailwindJIT & Vite ([cff7d95](https://github.com/ITM007/MEC/commit/cff7d9513099117339521b10ee5061a6ef3590b5))
-* test standard release feature ([08d36bd](https://github.com/ITM007/MEC/commit/08d36bdcfca133f5e35a1ea9a6780887ece54226))
-
-### [0.1.4](https://github.com/ITM007/MEC/compare/v0.1.5...v0.1.4) (2021-04-12)
-
-
-### Features
-
-* Added tailwindJIT & Vite ([cff7d95](https://github.com/ITM007/MEC/commit/cff7d9513099117339521b10ee5061a6ef3590b5))
-* test standard release feature ([08d36bd](https://github.com/ITM007/MEC/commit/08d36bdcfca133f5e35a1ea9a6780887ece54226))
-
-### [0.1.4](https://github.com/ITM007/MEC/compare/v0.1.5...v0.1.4) (2021-04-12)
-
-
-### Features
-
-* Added tailwindJIT & Vite ([cff7d95](https://github.com/ITM007/MEC/commit/cff7d9513099117339521b10ee5061a6ef3590b5))
-* test standard release feature ([08d36bd](https://github.com/ITM007/MEC/commit/08d36bdcfca133f5e35a1ea9a6780887ece54226))
+<<<<<<< HEAD
 
 ### [0.1.3](https://github.com/ITM007/MEC/compare/v0.1.2...v0.1.3) (2021-04-12)
 
