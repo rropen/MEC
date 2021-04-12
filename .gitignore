@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -9,6 +8,9 @@ lerna-debug.log*
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# VSCode
+*.code-workspace
 
 # Runtime data
 pids
@@ -103,7 +105,6 @@ dist
 
 # TernJS port file
 .tern-port
-=======
 .DS_Store
 node_modules
 /dist
@@ -127,4 +128,3 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
->>>>>>> a229f33602776889dc68bdd4017688ef877d7c7d
