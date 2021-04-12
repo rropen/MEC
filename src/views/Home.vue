@@ -16,7 +16,7 @@
       Stop
     </button>
     <button
-      class=" shadow-lg ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 pl-6 rounded"
+      class="shadow-lg ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 pl-6 rounded"
       @click="reset()"
     >
       Clear
@@ -44,7 +44,7 @@
 
 <script>
 import CostCounter from "./CostCounter.vue";
-import Table from "./Table";
+import Table from "./Table.vue";
 // import Charts from './Charts';
 
 export default {
