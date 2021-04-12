@@ -33,35 +33,48 @@
 
 <script>
 // Loads in the table libraryss
-import VGrid, { VGridVueTemplate } from '@revolist/vue3-datagrid';
+let rows = [];
+import VGrid from '@revolist/vue3-datagrid';
+
 export default {
   name: 'Table',
   props: ['employeeNumber', 'meetingId', 'date', 'costHr', 'costCalc'],
-
   name: 'App',
   data() {
+    // Delete the row selcted
+    const doDelete = (rowIndex) => {
+      console.log(this.rows);
+      // delete item from main data source
+      this.rows.splice(rowIndex, 1);
+      // trigger grid update
+      this.rows = [...this.rows];
+    };
     return {
       columns: [
         {
           prop: 'meeting',
           name: 'Meeting #',
           size: 200,
+          sortable: true,
         },
         {
           prop: 'date',
           name: 'Date',
           columnType: 'date',
           size: 200,
+          sortable: true,
         },
         {
           prop: 'employeeNumber',
           name: 'Employee Number',
           size: 200,
+          sortable: true,
         },
         {
           prop: 'time',
           name: 'Time (min)',
           size: 200,
+          sortable: true,
         },
         {
           // This is what calls the other componet
@@ -69,6 +82,7 @@ export default {
           prop: 'cost',
           name: 'Cost (USD)',
           size: 200,
+          sortable: true,
         },
         {
           prop: 'powerpoint',
@@ -79,6 +93,25 @@ export default {
           prop: 'powerpointSlides',
           name: 'Powerpoint Slides',
           size: 200,
+          sortable: true,
+        },
+        // Delete row from Table
+        {
+          size: 200,
+          name: 'Delete',
+          color: 'red',
+          cellTemplate: (h, props) => {
+            return h(
+              'button',
+              {
+                onClick: () => doDelete(props.rowIndex),
+                style: {
+                  color: 'red',
+                },
+              },
+              'Delete'
+            );
+          },
         },
       ],
       rows: [],
@@ -98,7 +131,7 @@ export default {
       console.log(this.rows[0]['cost']);
       console.log(this.rows[0]['powerpoint']);
       console.log(this.rows[0]['powerpointSlides']);
-      console.log(this.x);
+      console.log('Data was Submitted');
     },
     todaysDate() {
       var today = new Date();
