@@ -43,27 +43,27 @@
 </template>
 
 <script>
-import CostCounter from './CostCounter.vue';
-import Table from './Table';
-import Charts from './Charts';
+import CostCounter from "./CostCounter.vue";
+import Table from "./Table";
+// import Charts from './Charts';
 
 export default {
-  name: 'Home',
+  name: "Home",
 
   components: {
     Table,
     CostCounter,
-    Charts,
+    // Charts,
   },
-  name: 'App',
+  name: "App",
   data() {
     return {
       timerEnabled: false,
       costCalc: 0,
-      meetingId: '',
-      date: '',
-      employeeNumber: '',
-      costHr: '',
+      meetingId: "",
+      date: "",
+      employeeNumber: "",
+      costHr: "",
     };
   },
 
