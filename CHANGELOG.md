@@ -2,7 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-<<<<<<< HEAD
+
+### [0.1.5](///compare/v0.1.4...v0.1.5) (2021-04-13)
+
+### Features
+
+* **commits:** added commitizen, husky, commit linting, updated ReadMe 0c0127c, closes #25
+* test standard release feature 08d36bd
 
 ### [0.1.4](https://github.com/ITM007/MEC/compare/v0.1.3...v0.1.4) (2021-04-12)
 
