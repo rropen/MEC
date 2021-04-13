@@ -44,13 +44,9 @@ yarn release  # after commiting
 
 ### Compiles and hot-reloads for development
 
-
 ``` bash
 yarn serve //standard development mode
 yarn vite //crazy fast development mode
-=======
-```
-yarn vite
 ```
 
 ### Compiles and minifies for production
