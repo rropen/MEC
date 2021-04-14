@@ -12,6 +12,9 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # VSCode
 *.code-workspace
 
+# Storybook
+storybook-static/
+
 # Runtime data
 pids
 *.pid
