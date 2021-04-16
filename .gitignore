@@ -113,7 +113,9 @@ node_modules
 # local env files
 .env.local
 .env.*.local
-
+env/
+*.pyc
+package-lock.json
 # Log files
 npm-debug.log*
 yarn-debug.log*
@@ -122,6 +124,7 @@ pnpm-debug.log*
 
 # Editor directories and files
 .idea
+.db
 .vscode
 *.suo
 *.ntvs*
