@@ -4,8 +4,11 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### [0.2.2](https://github.com/rollsroycedev/MEC/compare/v0.3.0...v0.2.2) (2021-05-13)
 
-### [0.2.1](///compare/v0.0.1...v0.2.1) (2021-04-17)
+### Features
+* Added Azure database Connection
+* Added date and avgCost to table
 
+### [0.2.1](///compare/v0.0.1...v0.2.1) (2021-04-17)
 
 ### Features
 
