@@ -2,15 +2,16 @@
 # UI http://127.0.0.1:8000/docs http://127.0.0.1:8000/openapi.json
 import models
 from fastapi import FastAPI, Request, Depends
-from fastapi.templating import Jinja2Templates
+
 from database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
 from models import Meetings
+
 app = FastAPI()
 
 models.Base.metadata.create_all(bind=engine)
-views = Jinja2Templates(directory="views")
+
 
 class TableRequest(BaseModel):
     id: int
