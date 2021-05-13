@@ -1,6 +1,6 @@
 {
   "name": "meeting_efficiency_calculator",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "scripts": {
     "release": "standard-version",
     "commit": "cz"
@@ -13,5 +13,8 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "dependencies": {
+    "yarn": "^1.22.10"
   }
 }
