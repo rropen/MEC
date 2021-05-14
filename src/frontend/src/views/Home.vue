@@ -73,7 +73,7 @@ export default {
       if (value) {
         // The value is calculated by 1000 = 1 sec. And the .056 is the cost per signle employe at $200 per hr
         setTimeout(() => {
-          this.costCalc = this.costCalc + 0.056;
+          this.costCalc = this.costCalc + 0.039;
         }, 1000 / this.employeeNumber);
       }
     },
@@ -82,7 +82,7 @@ export default {
       handler(value) {
         if (value > 0.0 && this.timerEnabled) {
           setTimeout(() => {
-            this.costCalc = this.costCalc + 0.056;
+            this.costCalc = this.costCalc + 0.039;
           }, 1000 / this.employeeNumber);
         }
       },
