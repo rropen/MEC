@@ -1,6 +1,9 @@
-uvicorn==0.13.4
-fastapi==0.63.0
-SQLAlchemy==1.4.11
-pydantic==1.8.1
-pip==21.1
+# uvicorn==0.13.4
+# fastapi==0.63.0
+SQLAlchemy==1.4.15
+pydantic==1.8.2
+pip==21.1.1
 msal==1.11.0
+pyodbc==4.0.30
+alembic==1.6.2
+python-dotenv==0.17.1

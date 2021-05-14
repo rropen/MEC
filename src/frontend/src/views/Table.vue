@@ -5,53 +5,55 @@
   <input v-model="date" placeholder="Date" />
   <input v-model.number="employeeNumber" placeholder="Employee Number" />
   <input v-model.number="costHr" placeholder="Cost/hr" /> -->
-  <div class="mt-8">
-    <input v-model="id" placeholder="Meeting ID" />
-    <input v-model="employeeNumber" placeholder="Employee Number" />
-    <input v-model="time" placeholder="Time" />
-    <input v-model="cost" placeholder="Cost" />
-    <input v-model="powerpoint" placeholder="Powerpoint true/false" />
-    <input v-model="powerpointSlides" placeholder="Powerpoint Slides" />
-  </div>
   <div>
-    <button
-      class="shadow-lg mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
-      @click="submit()"
-    >
-      Submit
-    </button>
-    <button
-      class="shadow-lg ml-8 mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
-      @click="retrieveTable()"
-    >
-      Retrieve Table
-    </button>
-    <button
-      class="shadow-lg ml-8 mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
-      @click="addRow()"
-    >
-      Add Row
-    </button>
-    <p class="mb-4">Read the about page on how to use</p>
+    <div class="mt-8">
+      <input v-model="id" placeholder="Meeting ID" />
+      <input v-model="employeeNumber" placeholder="Employee Number" />
+      <input v-model="time" placeholder="Time" />
+      <input v-model="cost" placeholder="Cost" />
+      <input v-model="powerpoint" placeholder="Powerpoint true/false" />
+      <input v-model="powerpointSlides" placeholder="Powerpoint Slides" />
+    </div>
+    <div>
+      <button
+        class="shadow-lg mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
+        @click="submit()"
+      >
+        Submit
+      </button>
+      <button
+        class="shadow-lg ml-8 mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
+        @click="retrieveTable()"
+      >
+        Retrieve Table
+      </button>
+      <button
+        class="shadow-lg ml-8 mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
+        @click="addRow()"
+      >
+        Add Row
+      </button>
+      <p class="mb-4">Read the about page on how to use</p>
+    </div>
+    <v-grid
+      theme="material"
+      :source="rows"
+      class="shadow-lg"
+      :columns="columns"
+      @beforeCellFocus="beforeFocus"
+    />
   </div>
-  <v-grid
-    theme="material"
-    :source="rows"
-    class="shadow-lg"
-    :columns="columns"
-    @beforeCellFocus="beforeFocus"
-  />
 </template>
 
 <script>
-import VGrid from '@revolist/vue3-datagrid';
-import $ from 'jquery';
-import axios from 'axios';
+import VGrid from "@revolist/vue3-datagrid";
+import $ from "jquery";
+import axios from "axios";
 // Loads in the table libraryss
 export default {
-  name: 'Table',
-  props: ['employeeNumber', 'meetingId', 'date', 'costHr', 'costCalc'],
-  name: 'App',
+  name: "Table",
+  props: ["employeeNumber", "meetingId", "date", "costHr", "costCalc"],
+  name: "App",
 
   data() {
     // Delete the row selcted
@@ -66,19 +68,19 @@ export default {
     return {
       table: [],
       errors: [],
-      id: '',
-      employeeNumber: '',
-      time: '',
-      cost: '',
-      powerpoint: '',
-      powerpointSlides: '',
+      id: "",
+      employeeNumber: "",
+      time: "",
+      cost: "",
+      powerpoint: "",
+      powerpointSlides: "",
       columns: [
         {
-          prop: 'meeting',
-          name: 'Meeting #',
+          prop: "meeting",
+          name: "Meeting #",
           size: 200,
           sortable: true,
-          columnType: 'numeric',
+          columnType: "numeric",
         },
         /* {
           prop: 'date',
@@ -88,52 +90,52 @@ export default {
           sortable: true,
         }, */
         {
-          prop: 'employeeNumber',
-          name: 'Employee Number',
+          prop: "employeeNumber",
+          name: "Employee Number",
           size: 200,
           sortable: true,
         },
         {
-          prop: 'time',
-          name: 'Time (min)',
+          prop: "time",
+          name: "Time (min)",
           size: 200,
           sortable: true,
         },
         {
           // This is what calls the other componet
           // cellTemplate: VGridVueTemplate(Test),
-          prop: 'cost',
-          name: 'Cost (USD)',
+          prop: "cost",
+          name: "Cost (USD)",
           size: 200,
           sortable: true,
         },
         {
-          prop: 'powerpoint',
-          name: 'Powerpoint (Yes/No)',
+          prop: "powerpoint",
+          name: "Powerpoint (Yes/No)",
           size: 200,
         },
         {
-          prop: 'powerpointSlides',
-          name: 'Powerpoint Slides',
+          prop: "powerpointSlides",
+          name: "Powerpoint Slides",
           size: 200,
           sortable: true,
         },
         // Delete row from Table
         {
           size: 200,
-          name: 'Delete',
-          color: 'red',
+          name: "Delete",
+          color: "red",
           readonly: true,
           cellTemplate: (h, props) => {
             return h(
-              'button',
+              "button",
               {
                 onClick: () => doDelete(props.rowIndex),
                 style: {
-                  color: 'red',
+                  color: "red",
                 },
               },
-              'Delete'
+              "Delete"
             );
           },
         },
@@ -144,7 +146,7 @@ export default {
 
   // This is the fetch request for the table
   mounted() {
-    fetch('http://localhost:8000/table')
+    fetch("http://localhost:8181/table")
       .then((res) => res.json())
       .then((data) => (this.table = data))
       .catch((err) => console.log(err.message));
@@ -160,9 +162,9 @@ export default {
     submit() {
       // This is the data being sent to the database we have to use the parseInt function to turn our inputs into integers
       $.ajax({
-        url: 'http://localhost:8000/table',
-        type: 'POST',
-        contentType: 'application/json',
+        url: "http://localhost:8181/table",
+        type: "POST",
+        contentType: "application/json",
         data: JSON.stringify({
           id: parseInt(this.id),
           employeeNumber: parseInt(this.employeeNumber),
@@ -171,7 +173,7 @@ export default {
           powerpoint: this.powerpoint,
           powerpointSlides: parseInt(this.powerpointSlides),
         }),
-        dataType: 'json',
+        dataType: "json",
       });
       /* console.log(
         parseInt(this.id),
@@ -185,23 +187,23 @@ export default {
     addRow() {
       this.rows.push({});
       this.rows = [...this.rows];
-      console.log(this.table[4]['id']);
+      console.log(this.table[4]["id"]);
     },
     retrieveTable() {
       // Retrieve number of rows form sql database
       const tableLength = this.table.length;
       let table = 0;
       while (table < tableLength) {
-        this.rows[table]['meeting'] = this.table[table]['id'];
-        this.rows[table]['date'] = this.table[table]['date'];
-        this.rows[table]['employeeNumber'] = this.table[table][
-          'employeeNumber'
+        this.rows[table]["meeting"] = this.table[table]["id"];
+        this.rows[table]["date"] = this.table[table]["date"];
+        this.rows[table]["employeeNumber"] = this.table[table][
+          "employeeNumber"
         ];
-        this.rows[table]['time'] = this.table[table]['time'];
-        this.rows[table]['cost'] = this.table[table]['cost'];
-        this.rows[table]['powerpoint'] = this.table[table]['powerpoint'];
-        this.rows[table]['powerpointSlides'] = this.table[table][
-          'powerpointSlides'
+        this.rows[table]["time"] = this.table[table]["time"];
+        this.rows[table]["cost"] = this.table[table]["cost"];
+        this.rows[table]["powerpoint"] = this.table[table]["powerpoint"];
+        this.rows[table]["powerpointSlides"] = this.table[table][
+          "powerpointSlides"
         ];
         this.rows.push({});
         this.rows = [...this.rows];

@@ -1,6 +1,7 @@
 from sqlalchemy import Boolean, Column, Integer, String, Numeric,DateTime
-from database import Base
+from api.database import Base
 import datetime
+
 class Meetings(Base):
     __tablename__ = "meetings"
 

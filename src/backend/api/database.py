@@ -18,13 +18,20 @@ import os
 # SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE + '?driver=ODBC+Driver+17+for+SQL+Server' 
 # SQLALCHEMY_TRACK_MODIFICATIONS = False 
 
-# This is the database connection for SQL Lite
-SQLALCHEMY_DATABASE_URL = "sqlite:///./meetings.db"
+# DATABASE_URL = "sqlite:///./meetings.db"
+DATABASE_URL = os.getenv("DATABASE_URL")
+assert DATABASE_URL != ""
+
+# check_same_thread = false only works in sqlite, not postgres or others
+if "sqlite" in DATABASE_URL:
+    print('Using a sqlite database')
+    engine = create_engine(
+        DATABASE_URL, connect_args={"check_same_thread": False}
+    )
+else:
+    engine = create_engine(DATABASE_URL)
 
 
-engine = create_engine(
-    SQLALCHEMY_DATABASE_URL, connect_args={"check_same_thread": False}
-)
 # Intermidary to database
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 

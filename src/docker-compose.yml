@@ -2,21 +2,16 @@ version: '3.7'
 
 services:
     backend:
-        build: ./postgres
+        build: ./backend
         restart: always
-        command: uvicorn backend.main:app --workers 4 --host 0.0.0.0 --port 8181 --reload
-        ports:
-            - 8181:8181
         env_file:
             - ./backend/.env
     
-    frontend:
-        build:
-            context: ./frontend
-            target: 'deploy-stage'
-        restart: always
-        depends_on: backend
-        env_file:
-            - ./frontend/.env
-        ports:
-            - 81:80
+    # frontend:
+    #     build:
+    #         context: ./frontend
+    #     restart: always
+    #     depends_on: 
+    #         - backend
+    #     env_file:
+    #         - ./frontend/.env
