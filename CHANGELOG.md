@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.4](https://github.com/rollsroycedev/MEC/compare/v0.2.3...v0.2.4) (2021-05-14)
+
+
+### Features
+
+* **local docker:** now can run backend using docker and frontend with vite and they can communicate ([d7be6bc](https://github.com/rollsroycedev/MEC/commit/d7be6bc14846fb9b94596d5ddbfd05bedd0facef)), closes [#6](https://github.com/rollsroycedev/MEC/issues/6)
+
 ### [0.2.3](https://github.com/rollsroycedev/MEC/compare/v0.2.2...v0.2.3) (2021-05-13)
 
 ### [0.2.2](https://github.com/rollsroycedev/MEC/compare/v0.3.0...v0.2.2) (2021-05-13)
