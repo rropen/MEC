@@ -49,7 +49,7 @@
 import VGrid from "@revolist/vue3-datagrid";
 import $ from "jquery";
 import axios from "axios";
-// Loads in the table libraryss
+// Loads in the table librarys
 export default {
   name: "Table",
   props: ["employeeNumber", "meetingId", "date", "costHr", "costCalc"],
@@ -140,7 +140,7 @@ export default {
           },
         },
       ],
-      rows: [{ meeting: this.test }],
+      rows: [],
     };
   },
 
@@ -187,7 +187,7 @@ export default {
     addRow() {
       this.rows.push({});
       this.rows = [...this.rows];
-      console.log(this.table[4]["id"]);
+      console.log(this.rows)
     },
     retrieveTable() {
       // Retrieve number of rows form sql database
