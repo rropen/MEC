@@ -1,4 +1,5 @@
 <template>
+<div>
   <div class="flex flex-col items-center"></div>
 
   <!-- This creates our start and stop button for the counter -->
@@ -37,6 +38,7 @@
 
   <!-- This is the Table rendered in the home page -->
   <Table />
+  </div>
 
   <!-- This is the charts that are rendered in the home page -->
   <!-- <Charts :cost-calc="this.costCalc.toFixed(2)" /> -->

@@ -5,10 +5,10 @@
   <input v-model="date" placeholder="Date" />
   <input v-model.number="employeeNumber" placeholder="Employee Number" />
   <input v-model.number="costHr" placeholder="Cost/hr" /> -->
-  <div>
+  <div id="app">
     <div class="mt-8">
       <input v-model="id" placeholder="Meeting ID" />
-      <input v-model="employeeNumber" placeholder="Employee Number" />
+      <!-- <input v-model="employeeNumber" placeholder="Employee Number" /> -->
       <input v-model="time" placeholder="Time" />
       <input v-model="cost" placeholder="Cost" />
       <input v-model="powerpoint" placeholder="Powerpoint true/false" />
@@ -50,20 +50,12 @@ import VGrid from "@revolist/vue3-datagrid";
 import $ from "jquery";
 import axios from "axios";
 // Loads in the table librarys
+let rows = [];
 export default {
   name: "Table",
   props: ["employeeNumber", "meetingId", "date", "costHr", "costCalc"],
-  name: "App",
 
   data() {
-    // Delete the row selcted
-    const doDelete = (rowIndex) => {
-      console.log(this.rows);
-      // delete item from main data source
-      this.rows.splice(rowIndex, 1);
-      // trigger grid update
-      this.rows = [...this.rows];
-    };
 
     return {
       table: [],
@@ -120,27 +112,27 @@ export default {
           size: 200,
           sortable: true,
         },
-        // Delete row from Table
-        {
-          size: 200,
-          name: "Delete",
-          color: "red",
-          readonly: true,
-          cellTemplate: (h, props) => {
-            return h(
-              "button",
-              {
-                onClick: () => doDelete(props.rowIndex),
-                style: {
-                  color: "red",
-                },
-              },
-              "Delete"
-            );
-          },
-        },
+        // // Delete row from Table
+        // {
+        //   size: 200,
+        //   name: "Delete",
+        //   color: "red",
+        //   readonly: true,
+        //   cellTemplate: (h, props) => {
+        //     return h(
+        //       "button",
+        //       {
+        //         onClick: () => doDelete(props.rowIndex),
+        //         style: {
+        //           color: "red",
+        //         },
+        //       },
+        //       "Delete"
+        //     );
+        //   },
+        // },
       ],
-      rows: [],
+      rows: [{cost:20}],
     };
   },
 
