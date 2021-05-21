@@ -7,10 +7,12 @@
   <input v-model.number="costHr" placeholder="Cost/hr" /> -->
   <div id="app">
     <div class="mt-8">
-      <input v-model="id" placeholder="Meeting ID" />
-      <!-- <input v-model="employeeNumber" placeholder="Employee Number" /> -->
+      <input v-model="meetingId" placeholder="Meeting ID" />
+      <input v-model="employeeNumber" placeholder="Employee Number" />
       <input v-model="time" placeholder="Time" />
-      <input v-model="cost" placeholder="Cost" />
+      <input v-model="date" placeholder="Date" />
+      <input v-model="avgCost" placeholder="Average Cost" />
+      <input v-model="totalCost" placeholder="Total Cost" />
       <input v-model="powerpoint" placeholder="Powerpoint true/false" />
       <input v-model="powerpointSlides" placeholder="Powerpoint Slides" />
     </div>
@@ -53,23 +55,25 @@ import axios from "axios";
 let rows = [];
 export default {
   name: "Table",
-  props: ["employeeNumber", "meetingId", "date", "costHr", "costCalc"],
 
   data() {
 
     return {
       table: [],
       errors: [],
-      id: "",
-      employeeNumber: "",
-      time: "",
-      cost: "",
-      powerpoint: "",
-      powerpointSlides: "",
+      meetingId: '',
+      time: '',
+      date: '',
+      avgCost: '',
+      totalCost: '',
+      powerpoint: '',
+      powerpointSlides: '',
+      employeeNumber: '',
+
       columns: [
         {
-          prop: "meeting",
-          name: "Meeting #",
+          prop: "meetingId",
+          name: "Meeting ID",
           size: 200,
           sortable: true,
           columnType: "numeric",
@@ -96,8 +100,8 @@ export default {
         {
           // This is what calls the other componet
           // cellTemplate: VGridVueTemplate(Test),
-          prop: "cost",
-          name: "Cost (USD)",
+          prop: "avgCost",
+          name: "Average Cost (USD)",
           size: 200,
           sortable: true,
         },
@@ -109,6 +113,13 @@ export default {
         {
           prop: "powerpointSlides",
           name: "Powerpoint Slides",
+          size: 200,
+          sortable: true,
+        },
+        {
+          
+          prop: "totalCost",
+          name: "Total Cost (USD)",
           size: 200,
           sortable: true,
         },
@@ -142,6 +153,7 @@ export default {
       .then((res) => res.json())
       .then((data) => (this.table = data))
       .catch((err) => console.log(err.message));
+    
     // Declares all of the table values form the database
   },
   // Not sure what this does but its make the componet work in the table
@@ -158,23 +170,27 @@ export default {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({
-          id: parseInt(this.id),
+          meetingId: parseInt(this.meetingId),
           employeeNumber: parseInt(this.employeeNumber),
           time: parseInt(this.time),
-          cost: parseInt(this.cost),
+          date: parseInt(this.date),
+          totalCost: parseInt(this.totalCost),
+          avgCost: parseInt(this.avgCost),
           powerpoint: this.powerpoint,
           powerpointSlides: parseInt(this.powerpointSlides),
         }),
         dataType: "json",
       });
-      /* console.log(
-        parseInt(this.id),
+      console.log(
+        parseInt(this.meetingId),
         parseInt(this.employeeNumber),
         parseInt(this.time),
-        parseInt(this.cost),
+        parseInt(this.date),
+        parseInt(this.avgCost),
+        parseInt(this.totalCost),
         this.powerpoint,
         parseInt(this.powerpointSlides)
-      ); */
+      );
     },
     addRow() {
       this.rows.push({});
@@ -186,13 +202,12 @@ export default {
       const tableLength = this.table.length;
       let table = 0;
       while (table < tableLength) {
-        this.rows[table]["meeting"] = this.table[table]["id"];
+        this.rows[table]["meetingId"] = this.table[table]["meetingId"];
         this.rows[table]["date"] = this.table[table]["date"];
-        this.rows[table]["employeeNumber"] = this.table[table][
-          "employeeNumber"
-        ];
+        this.rows[table]["employeeNumber"] = this.table[table]["employeeNumber"];
         this.rows[table]["time"] = this.table[table]["time"];
-        this.rows[table]["cost"] = this.table[table]["cost"];
+        this.rows[table]["avgCost"] = this.table[table]["avgCost"];
+        this.rows[table]["totalCost"] = this.table[table]["totalCost"];
         this.rows[table]["powerpoint"] = this.table[table]["powerpoint"];
         this.rows[table]["powerpointSlides"] = this.table[table][
           "powerpointSlides"
