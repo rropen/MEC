@@ -6,14 +6,46 @@
   <input v-model.number="employeeNumber" placeholder="Employee Number" />
   <input v-model.number="costHr" placeholder="Cost/hr" /> -->
   <div>
-    <div class="mt-8">
-      <input v-model="id" placeholder="Meeting ID" />
-      <input v-model="employeeNumber" placeholder="Employee Number" />
-      <input v-model="time" placeholder="Time" />
-      <input v-model="cost" placeholder="Cost" />
-      <input v-model="powerpoint" placeholder="Powerpoint true/false" />
-      <input v-model="powerpointSlides" placeholder="Powerpoint Slides" />
-    </div>
+    <table class="">
+      <tbody>
+        <tr class="">
+          <td class="">
+            <p class="">Total Minutes:</p>
+          </td>
+          <td class="py-2">
+            <input
+              class="rounded-md"
+              type="text"
+              v-model="minutes"
+              placeholder="Minutes"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td class="pr-4"><p>Was PowerPoint Used?</p></td>
+          <td class="py-2">
+            <input
+              class="rounded-md"
+              type="text"
+              v-model="powerpoint"
+              placeholder="Powerpoint true/false"
+            />
+          </td>
+        </tr>
+        <tr>
+          <td><p>Number of Slides:</p></td>
+          <td class="py-2">
+            <input
+              class="rounded-md"
+              type="text"
+              v-model="powerpointSlides"
+              placeholder="Powerpoint Slides"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
     <div>
       <button
         class="shadow-lg mt-8 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 mb-5 rounded"
@@ -47,13 +79,13 @@
 
 <script>
 import VGrid from "@revolist/vue3-datagrid";
-import $ from "jquery";
-import axios from "axios";
+import { nanoid } from "nanoid";
+// import $ from "jquery";
+// import axios from "axios";
 // Loads in the table libraryss
 export default {
   name: "Table",
-  props: ["employeeNumber", "meetingId", "date", "costHr", "costCalc"],
-  name: "App",
+  props: ["cost"],
 
   data() {
     // Delete the row selcted
@@ -68,9 +100,8 @@ export default {
     return {
       table: [],
       errors: [],
-      id: "",
       employeeNumber: "",
-      time: "",
+      minutes: "",
       cost: "",
       powerpoint: "",
       powerpointSlides: "",
@@ -96,8 +127,8 @@ export default {
           sortable: true,
         },
         {
-          prop: "time",
-          name: "Time (min)",
+          prop: "minutes",
+          name: "Minutes (min)",
           size: 200,
           sortable: true,
         },
@@ -166,10 +197,10 @@ export default {
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({
-          id: parseInt(this.id),
+          id: nanoid(),
           employeeNumber: parseInt(this.employeeNumber),
-          time: parseInt(this.time),
-          cost: parseInt(this.cost),
+          minutes: parseInt(this.minutes),
+          cost: parseFloat(this.cost),
           powerpoint: this.powerpoint,
           powerpointSlides: parseInt(this.powerpointSlides),
         }),
@@ -178,7 +209,7 @@ export default {
       /* console.log(
         parseInt(this.id),
         parseInt(this.employeeNumber),
-        parseInt(this.time),
+        parseInt(this.minutes),
         parseInt(this.cost),
         this.powerpoint,
         parseInt(this.powerpointSlides)
@@ -199,7 +230,7 @@ export default {
         this.rows[table]["employeeNumber"] = this.table[table][
           "employeeNumber"
         ];
-        this.rows[table]["time"] = this.table[table]["time"];
+        this.rows[table]["minutes"] = this.table[table]["minutes"];
         this.rows[table]["cost"] = this.table[table]["cost"];
         this.rows[table]["powerpoint"] = this.table[table]["powerpoint"];
         this.rows[table]["powerpointSlides"] = this.table[table][
@@ -218,7 +249,7 @@ export default {
 </script>
 
 <style>
-#app {
+/* #app {
   height: 500px;
   margin: auto;
   width: 75%;
@@ -230,5 +261,5 @@ export default {
 }
 revo-grid {
   height: 100%;
-}
+} */
 </style>

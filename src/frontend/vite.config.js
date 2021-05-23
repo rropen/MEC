@@ -1,5 +1,9 @@
-import vue from '@vitejs/plugin-vue'
+import vue from "@vitejs/plugin-vue";
+import { defineConfig } from "vite";
 
 export default {
-    plugins: [vue()]
-}
+  plugins: [vue()],
+  define: {
+    "process.env": {},
+  },
+};

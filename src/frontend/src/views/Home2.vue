@@ -1,43 +1,50 @@
 <template>
   <div>
     <div>
-      <p>Employees</p>
-      <input
-        v-model="employeeNumber"
-        placeholder="edit me"
-        class="border-4 border-light-blue-500 border-opacity-25 shadow mb-8"
-      />
+      <p class="text-lg">
+        Employees: &nbsp;<input
+          type="text"
+          v-model="employeeNumber"
+          placeholder="edit me"
+          class="rounded-md mb-4 w-12"
+        />
+      </p>
     </div>
-    <div v-if="employeeNumber != 0" class="flex flex-col items-center"></div>
-
     <!-- This creates our start and stop button for the counter -->
     <div class="flex-auto">
       <button
-        class="shadow-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 pl-6 rounded"
+        v-if="employeeNumber != 0"
+        class="mr-8 delay-100 duration-200 bg-rrblue-400 hover:bg-rrblue-200 text-white font-semibold py-2 px-8 rounded-md text-lg focus:outline-none"
         @click="play()"
       >
         Start
       </button>
       <button
-        class="shadow-lg ml-10 mb-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-6 px-6 rounded"
+        v-if="employeeNumber != 0"
+        class="mr-8 delay-100 duration-200 bg-rrblue-400 hover:bg-rrblue-200 text-white font-semibold py-2 px-8 rounded-md text-lg focus:outline-none"
         @click="pause()"
       >
         Stop
       </button>
       <button
-        class="shadow-lg ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 pl-6 rounded"
+        class="delay-100 duration-200 bg-rrblue-400 hover:bg-rrblue-200 text-white font-semibold py-2 px-8 rounded-md text-lg focus:outline-none"
         @click="reset()"
       >
         Clear
       </button>
     </div>
     <!-- Outputs the cost calculation -->
-    <div :cost="'Hi from parent'" class="flex-auto pt-8 box-border">
-      Cost $ {{ costCalc.toFixed(2) }}
+    <div class="mt-8 text-lg mb-8">
+      <p>
+        Cost $
+        <span class="text-rrpink-600 font-semibold">{{
+          costCalc.toFixed(2)
+        }}</span>
+      </p>
     </div>
 
     <!-- This is the Table rendered in the home page -->
-    <Table />
+    <Table :cost="costCalc" />
   </div>
 
   <!-- This is the charts that are rendered in the home page -->
@@ -62,7 +69,7 @@ export default {
     return {
       timerEnabled: false,
       costCalc: 0,
-      meetingId: "",
+      // meetingId: "",
       date: "",
       employeeNumber: 0,
       costHr: "",

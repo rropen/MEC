@@ -5,7 +5,10 @@ module.exports = {
   },
   darkMode: false,
   mode: "jit",
-  purge: [".public/**/*.html", "./src/**/*.vue"],
+  purge: {
+    enabled: process.env.NODE_ENV === "production",
+    content: [".public/**/*.html", "./src/**/*.vue"],
+  },
   // target: "relaxed",
   prefix: "",
   important: false,
