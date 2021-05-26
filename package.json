@@ -1,6 +1,6 @@
 {
   "name": "meeting_efficiency_calculator",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "scripts": {
     "release": "standard-version",
     "commit": "cz"
@@ -15,7 +15,6 @@
     }
   },
   "dependencies": {
-    "@vue/eslint-config-prettier": "^6.0.0",
     "yarn": "^1.22.10"
   }
 }

@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.6](https://github.com/rollsroycedev/MEC/compare/v0.2.5...v0.2.6) (2021-05-21)
+
+
+### Bug Fixes
+
+* the frontend can now get and post data to the database ([165653b](https://github.com/rollsroycedev/MEC/commit/165653bd794af0d03a1ad7f93d240eeada677d85))
+
 ### [0.2.5](https://github.com/rollsroycedev/MEC/compare/v0.2.4...v0.2.5) (2021-05-14)
 
 ### [0.2.4](https://github.com/rollsroycedev/MEC/compare/v0.2.3...v0.2.4) (2021-05-14)

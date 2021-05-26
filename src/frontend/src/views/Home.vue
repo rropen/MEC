@@ -1,4 +1,31 @@
 <template>
+<<<<<<< HEAD
+=======
+<div>
+  <div class="flex flex-col items-center"></div>
+
+  <!-- This creates our start and stop button for the counter -->
+  <div class="flex-auto">
+    <button
+      class="shadow-lg bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 pl-6 rounded"
+      @click="play()"
+    >
+      Start
+    </button>
+    <button
+      class="shadow-lg ml-10 mb-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 pl-6 px-6 rounded"
+      @click="pause()"
+    >
+      Stop
+    </button>
+    <button
+      class="shadow-lg ml-10 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-6 pl-6 rounded"
+      @click="reset()"
+    >
+      Clear
+    </button>
+  </div>
+>>>>>>> aade127d20bdebc4c760a523c5a962e8424b0292
   <div>
     <div>
       <p>Employees</p>
@@ -10,6 +37,7 @@
     </div>
     <div v-if="employeeNumber != 0" class="flex flex-col items-center"></div>
 
+<<<<<<< HEAD
     <!-- This creates our start and stop button for the counter -->
     <div class="flex-auto">
       <button
@@ -38,6 +66,10 @@
 
     <!-- This is the Table rendered in the home page -->
     <Table />
+=======
+  <!-- This is the Table rendered in the home page -->
+  <Table />
+>>>>>>> aade127d20bdebc4c760a523c5a962e8424b0292
   </div>
 
   <!-- This is the charts that are rendered in the home page -->

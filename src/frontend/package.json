@@ -10,9 +10,11 @@
     "commit": "cz"
   },
   "dependencies": {
-    "@revolist/revogrid": "^3.0.51",
+    "@headlessui/vue": "^1.2.0",
+    "@heroicons/vue": "^1.0.1",
+    "@revolist/revogrid": "^3.0.9",
     "@revolist/revogrid-column-numeral": "^1.0.2",
-    "@revolist/vue3-datagrid": "^3.0.5",
+    "@revolist/vue3-datagrid": "^3.0.52",
     "apexcharts": "^3.26.0",
     "axios": "^0.21.1",
     "jquery": "^3.6.0",
@@ -36,11 +38,9 @@
     "autoprefixer": "^10.2.5",
     "commitizen": "^4.2.3",
     "cz-conventional-changelog": "3.3.0",
-    "eslint": "^7.25.0",
-    "eslint-plugin-vue": "^7.9.0",
     "husky": "^6.0.0",
     "postcss": "^8.2.10",
-    "prettier": "^2.2.1",
+    "prettier": "^2.3.0",
     "standard-version": "^9.2.0",
     "tailwindcss": "^2.1.1",
     "vite": "^2.1.5",
@@ -52,7 +52,6 @@
       "node": true
     },
     "extends": [
-      "eslint:recommended",
       "plugin:vue/vue3-recommended",
       "plugin:vue/strongly-recommended",
       "@vue/prettier"

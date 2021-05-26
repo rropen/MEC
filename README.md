@@ -26,7 +26,6 @@ Note: Make sure you have the following settings in your VSCode Settings.json fil
 ``` json
 "editor.codeActionsOnSave": {
         "source.fixAll": true,
-        "source.fixAll.eslint": true
     }
 ```
 

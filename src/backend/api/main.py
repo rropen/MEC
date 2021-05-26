@@ -34,8 +34,10 @@ app.add_middleware(
 
 
 class TableRequest(BaseModel):
-    id: int
-    cost: float
+    meetingId: int
+    date:str
+    avgCost: float
+    totalCost: float
     time: int
     employeeNumber:int
     powerpoint: bool
@@ -65,9 +67,11 @@ def get_table(db: Session = Depends(get_db)):
 def create_table(table_request: TableRequest, db: Session = Depends(get_db)):
     # Creates the row and stores it in the table
     meetings = Meetings()
-    meetings.id = table_request.id
-    meetings.cost = table_request.cost
+    meetings.meetingId = table_request.meetingId
+    meetings.avgCost = table_request.avgCost
+    meetings.totalCost = table_request.totalCost
     meetings.time = table_request.time
+    meetings.date = table_request.date
     meetings.employeeNumber = table_request.employeeNumber
     meetings.powerpoint = table_request.powerpoint
     meetings.powerpointSlides = table_request.powerpointSlides

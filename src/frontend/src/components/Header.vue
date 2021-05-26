@@ -9,9 +9,9 @@
         /></a>
       </div>
       <div class="h-16">
-        <router-link :to="{ name: 'Home2' }"
+        <router-link class="" :to="{ name: 'Home2' }"
           ><div
-            class="text-xl no-underline text-white hover:text-white mr-6 font-sans"
+            class="text-xl leading-16 no-underline text-white hover:text-white mr-6 font-sans"
           >
             <span class="text-rrpink-400" v-if="env == 'development'">dev</span
             >Meeting Efficiency Calculator
