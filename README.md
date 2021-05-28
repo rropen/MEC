@@ -95,6 +95,11 @@ docker ps
 
 # Attach to the log output from the container (ctrl+c to escape)
 docker compose logs -f
+
+# Create & migrate local database
+docker exec -it src_backend_1 bash
+alembic upgrade head
+exit
 ```
 
 Your backend container should be running at `http://localhost:8181/docs` on your local machine.

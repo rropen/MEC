@@ -220,32 +220,6 @@
     "@nodelib/fs.scandir" "2.1.4"
     fastq "^1.6.0"
 
-"@revolist/revogrid-column-numeral@^1.0.2":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@revolist/revogrid-column-numeral/-/revogrid-column-numeral-1.0.2.tgz"
-  integrity sha512-f5Z1QfxlsdXf6l+Aocd5RewFOpnaPj5Sl+HHJEjeRPjQGZv6Bx/ibAdyA3gtRoiSAaQuTt3BwWyfRTQNJHwWwQ==
-  dependencies:
-    "@types/numeral" "0.0.28"
-    numeral "^2.0.6"
-
-"@revolist/revogrid@^3.0.52", "@revolist/revogrid@^3.0.9":
-  version "3.0.61"
-  resolved "https://registry.npmjs.org/@revolist/revogrid/-/revogrid-3.0.61.tgz"
-  integrity sha512-0Pez0gllai70J2dgHcv5pyM6QdI6w/EUfbzwAKAxlwJvFruBgZPazx5Xw97U4/I30FfePQXZxS1y0pHsS41DnA==
-
-"@revolist/vue3-datagrid@^3.0.52":
-  version "3.0.52"
-  resolved "https://registry.yarnpkg.com/@revolist/vue3-datagrid/-/vue3-datagrid-3.0.52.tgz#f1730d387c79ec4a3b92f41293dadc60f4201301"
-  integrity sha512-xBfRrv6wsBuYk6M7Qz+Mxb9qEmjrZqTisSoFLdwnf2FalECB1Sv+wc2cu1kycBwEPFwdiOrqTUFPPWenFth42g==
-  dependencies:
-    "@revolist/revogrid" "^3.0.52"
-    "@stencil/core" "^2.4.0"
-
-"@stencil/core@^2.4.0":
-  version "2.5.2"
-  resolved "https://registry.yarnpkg.com/@stencil/core/-/core-2.5.2.tgz#ad00d495ee37bbed4044524d59c7f22de15ab4a7"
-  integrity sha512-bgjPXkSzzg1WnTgVUm6m5ZzpKt602WmA/QljODAW1xVN40OHJdbGblzF/F6MFzqv2c5Cy30CB41arc8qADIdcQ==
-
 "@tailwindcss/aspect-ratio@^0.2.0":
   version "0.2.0"
   resolved "https://registry.npmjs.org/@tailwindcss/aspect-ratio/-/aspect-ratio-0.2.0.tgz"
@@ -282,11 +256,6 @@
   version "2.4.0"
   resolved "https://registry.npmjs.org/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz"
   integrity sha512-f5j5b/Gf71L+dbqxIpQ4Z2WlmI/mPJ0fOkGGmFgtb6sAu97EPczzbS3/tJKxmcYDj55OX6ssqwDAWOHIYDRDGA==
-
-"@types/numeral@0.0.28":
-  version "0.0.28"
-  resolved "https://registry.npmjs.org/@types/numeral/-/numeral-0.0.28.tgz"
-  integrity sha512-Sjsy10w6XFHDktJJdXzBJmoondAKW+LcGpRFH+9+zXEDj0cOH8BxJuZA9vUDSMAzU1YRJlsPKmZEEiTYDlICLw==
 
 "@types/parse-json@^4.0.0":
   version "4.0.0"
@@ -2418,6 +2387,11 @@ modify-values@^1.0.0:
   resolved "https://registry.npmjs.org/modify-values/-/modify-values-1.0.1.tgz"
   integrity sha512-xV2bxeN6F7oYjZWTe/YPAy6MN2M+sL4u/Rlm2AHCIVGfo2p1yGmBHQ6vHehl4bRTZBdHu3TSkWdYgkwpYzAGSw==
 
+moment@^2.29.1:
+  version "2.29.1"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.29.1.tgz#b2be769fa31940be9eeea6469c075e35006fa3d3"
+  integrity sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==
+
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/ms/-/ms-2.0.0.tgz"
@@ -2506,11 +2480,6 @@ null-check@^1.0.0:
   version "1.0.0"
   resolved "https://registry.npmjs.org/null-check/-/null-check-1.0.0.tgz"
   integrity sha1-l33/1xdgErnsMNKjnbXPcqBDnt0=
-
-numeral@^2.0.6:
-  version "2.0.6"
-  resolved "https://registry.npmjs.org/numeral/-/numeral-2.0.6.tgz"
-  integrity sha1-StCAk21EPCVhrtnyGX7//iX05QY=
 
 object-assign@^4.0.1, object-assign@^4.1.1:
   version "4.1.1"

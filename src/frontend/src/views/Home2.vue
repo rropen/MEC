@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="">
     <div>
       <p class="text-lg">
         Employees: &nbsp;<input
@@ -15,27 +15,65 @@
     <div class="flex-auto">
       <button
         v-if="employeeNumber != 0"
-        class="mr-8 delay-100 duration-200 bg-rrblue-400 hover:bg-rrblue-200 text-white font-semibold py-2 px-8 rounded-md text-lg focus:outline-none"
+        class="
+          mr-8
+          delay-100
+          duration-200
+          bg-rrblue-400
+          hover:bg-rrblue-200
+          text-white
+          font-semibold
+          py-2
+          px-4
+          rounded-md
+          text-lg
+          focus:outline-none
+        "
         @click="play()"
       >
         Start
       </button>
       <button
         v-if="employeeNumber != 0"
-        class="mr-8 delay-100 duration-200 bg-rrblue-400 hover:bg-rrblue-200 text-white font-semibold py-2 px-8 rounded-md text-lg focus:outline-none"
+        class="
+          mr-8
+          delay-100
+          duration-200
+          bg-rrblue-400
+          hover:bg-rrblue-200
+          text-white
+          font-semibold
+          py-2
+          px-4
+          rounded-md
+          text-lg
+          focus:outline-none
+        "
         @click="pause()"
       >
         Stop
       </button>
       <button
-        class="delay-100 duration-200 bg-rrblue-400 hover:bg-rrblue-200 text-white font-semibold py-2 px-8 rounded-md text-lg focus:outline-none"
+        class="
+          delay-100
+          duration-200
+          bg-rrblue-400
+          hover:bg-rrblue-200
+          text-white
+          font-semibold
+          py-2
+          px-4
+          rounded-md
+          text-lg
+          focus:outline-none
+        "
         @click="reset()"
       >
         Clear
       </button>
     </div>
     <!-- Outputs the cost calculation -->
-    <div class="mb-24 mt-4 text-lg">
+    <div class="mt-4 text-lg">
       <p class="">
         <span class=""
           >Cost $
@@ -57,9 +95,10 @@
     </div>
 
     <!-- This is the Table rendered in the home page -->
-    <Table
+    <Lower
+      class="mt-4"
       :cost="costCalc"
-      :empmloyeeNumber="employeeNumber"
+      :employeeNumber="parseInt(employeeNumber)"
       :minutes="minutes"
     />
   </div>
@@ -71,14 +110,14 @@
 <script>
 // import CostCounter from "./CostCounter.vue";
 // import Charts from './Charts';
-import Table from "../components/Table.vue";
+import Lower from "../components/Lower.vue";
 
 export default {
   name: "Home",
 
   components: {
     // CostCounter,
-    Table,
+    Lower,
     // Charts,
   },
   name: "App",

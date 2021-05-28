@@ -6,7 +6,7 @@ from starlette.middleware.cors import CORSMiddleware
 from api.database import SessionLocal, engine
 from sqlalchemy.orm import Session
 from pydantic import BaseModel
-from api.models import Meetings
+from api.models import Meeting
 import os
 
 app = FastAPI(title="MEC API", description="Meeting Efficiency Organizer", version="0.0.1")
@@ -24,6 +24,7 @@ if os.environ.get("UI_URL"):
 # throw an error if URL is unset.
 assert ui_url != ""
 origins = [ui_url]
+print("origins: {}".format(origins))
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
@@ -33,15 +34,16 @@ app.add_middleware(
 )
 
 
-class TableRequest(BaseModel):
-    meetingId: int
+class MeetingRequest(BaseModel):
+    meetingId: str
     date:str
-    avgCost: float
     totalCost: float
     time: int
     employeeNumber:int
     powerpoint: bool
     powerpointSlides: int
+    comment: str
+    title: str
 
 # Makes sure we are connected to database
 def get_db():
@@ -52,31 +54,32 @@ def get_db():
         db.close()
         
 # This pulls information from the datbase to the table
-@app.get('/table')
-def get_table(db: Session = Depends(get_db)):
+@app.get('/meetings')
+def get_meetings(db: Session = Depends(get_db)):
     """
-    ## Route Notes
+    ## Get Meetings
 
-    You can write markdown here in the function docstrings and it will be parsed on the API documentation.  Amazing right?
+    Get a list of all the meetings stored in the database
     """
-    meetings = db.query(Meetings).all()
+    meetings = db.query(Meeting).all()
     return meetings
     
 # IF we send information to the database this tells us the information was correctly sent
-@app.post('/table')
-def create_table(table_request: TableRequest, db: Session = Depends(get_db)):
+@app.post('/meeting')
+def create_table(meeting_request: MeetingRequest, db: Session = Depends(get_db)):
     # Creates the row and stores it in the table
-    meetings = Meetings()
-    meetings.meetingId = table_request.meetingId
-    meetings.avgCost = table_request.avgCost
-    meetings.totalCost = table_request.totalCost
-    meetings.time = table_request.time
-    meetings.date = table_request.date
-    meetings.employeeNumber = table_request.employeeNumber
-    meetings.powerpoint = table_request.powerpoint
-    meetings.powerpointSlides = table_request.powerpointSlides
+    meeting = Meeting()
+    meeting.meetingId = meeting_request.meetingId
+    meeting.totalCost = meeting_request.totalCost
+    meeting.time = meeting_request.time
+    meeting.date = meeting_request.date
+    meeting.employeeNumber = meeting_request.employeeNumber
+    meeting.powerpoint = meeting_request.powerpoint
+    meeting.powerpointSlides = meeting_request.powerpointSlides
+    meeting.comment = meeting_request.comment
+    meeting.title = meeting_request.title
 
-    db.add(meetings)
+    db.add(meeting)
     db.commit()
 
     return {
