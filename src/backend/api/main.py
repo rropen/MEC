@@ -34,9 +34,16 @@ app.add_middleware(
 )
 
 
+<<<<<<< HEAD
 class MeetingRequest(BaseModel):
     meetingId: str
     date:str
+=======
+class TableRequest(BaseModel):
+    meetingId: int
+    date:str
+    avgCost: float
+>>>>>>> main
     totalCost: float
     time: int
     employeeNumber:int
@@ -68,6 +75,7 @@ def get_meetings(db: Session = Depends(get_db)):
 @app.post('/meeting')
 def create_table(meeting_request: MeetingRequest, db: Session = Depends(get_db)):
     # Creates the row and stores it in the table
+<<<<<<< HEAD
     meeting = Meeting()
     meeting.meetingId = meeting_request.meetingId
     meeting.totalCost = meeting_request.totalCost
@@ -78,6 +86,17 @@ def create_table(meeting_request: MeetingRequest, db: Session = Depends(get_db))
     meeting.powerpointSlides = meeting_request.powerpointSlides
     meeting.comment = meeting_request.comment
     meeting.title = meeting_request.title
+=======
+    meetings = Meetings()
+    meetings.meetingId = table_request.meetingId
+    meetings.avgCost = table_request.avgCost
+    meetings.totalCost = table_request.totalCost
+    meetings.time = table_request.time
+    meetings.date = table_request.date
+    meetings.employeeNumber = table_request.employeeNumber
+    meetings.powerpoint = table_request.powerpoint
+    meetings.powerpointSlides = table_request.powerpointSlides
+>>>>>>> main
 
     db.add(meeting)
     db.commit()
