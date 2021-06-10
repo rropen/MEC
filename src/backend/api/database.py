@@ -4,10 +4,10 @@ from sqlalchemy.orm import sessionmaker
 import os 
 
 # This is the Database Connection for Azure
-# server = 'mec.database.usgovcloudapi.net'
-# database = 'MEC'
-# username = 'SFMECAdmin'
-# password = 'onruGX!boF^geW683euYHL3M%@ko*RaUF5XPPug6uwPWc3r7Xs'   
+# server = ''
+# database = ''
+# username = ''
+# password = ''   
 # driver= '{ODBC Driver 17 for SQL Server}'
 
 # SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
