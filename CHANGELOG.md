@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<<<<<<< HEAD
+## [0.3.0](https://github.com/rollsroycedev/MEC/compare/v0.2.5...v0.3.0) (2021-05-28)
+
+
+### ⚠ BREAKING CHANGES
+
+* **frontend and backend:** db schema is different so previous sqlite local databases won't work correctly
+
+### Features
+
+* **frontend and backend:** restyled ui, modified api & db, changed some functionality ([5046469](https://github.com/rollsroycedev/MEC/commit/5046469b2079e6719d9c96407f9091490d278f18))
+
+=======
+>>>>>>> main
 ### [0.2.6](https://github.com/rollsroycedev/MEC/compare/v0.2.5...v0.2.6) (2021-05-21)
 
 

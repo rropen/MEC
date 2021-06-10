@@ -1,4 +1,6 @@
 <template>
+<<<<<<< HEAD
+=======
 <div>
   <div class="flex flex-col items-center"></div>
 
@@ -23,21 +25,84 @@
       Clear
     </button>
   </div>
+>>>>>>> main
   <div>
-    <p>Employees</p>
-    <input
-      v-model="employeeNumber"
-      placeholder="edit me"
-      class="border-4 border-light-blue-500 border-opacity-25 shadow"
-    />
-  </div>
-  <!-- Outputs the cost calculation -->
-  <div :cost="'Hi from parent'" class="flex-auto pt-8 box-border">
-    Cost $ {{ costCalc.toFixed(2) }}
-  </div>
+    <div>
+      <p>Employees</p>
+      <input
+        v-model="employeeNumber"
+        placeholder="edit me"
+        class="border-4 border-light-blue-500 border-opacity-25 shadow mb-8"
+      />
+    </div>
+    <div v-if="employeeNumber != 0" class="flex flex-col items-center"></div>
 
+<<<<<<< HEAD
+    <!-- This creates our start and stop button for the counter -->
+    <div class="flex-auto">
+      <button
+        class="
+          shadow-lg
+          bg-blue-500
+          hover:bg-blue-700
+          text-white
+          font-bold
+          py-2
+          px-6
+          pl-6
+          rounded
+        "
+        @click="play()"
+      >
+        Start
+      </button>
+      <button
+        class="
+          shadow-lg
+          ml-10
+          mb-10
+          bg-blue-500
+          hover:bg-blue-700
+          text-white
+          font-bold
+          py-2
+          pl-6
+          px-6
+          rounded
+        "
+        @click="pause()"
+      >
+        Stop
+      </button>
+      <button
+        class="
+          shadow-lg
+          ml-10
+          bg-blue-500
+          hover:bg-blue-700
+          text-white
+          font-bold
+          py-2
+          px-6
+          pl-6
+          rounded
+        "
+        @click="reset()"
+      >
+        Clear
+      </button>
+    </div>
+    <!-- Outputs the cost calculation -->
+    <div :cost="'Hi from parent'" class="flex-auto pt-8 box-border">
+      Cost $ {{ costCalc.toFixed(2) }}
+    </div>
+
+    <!-- This is the Table rendered in the home page -->
+    <Table />
+=======
   <!-- This is the Table rendered in the home page -->
   <Table />
+>>>>>>> main
   </div>
 
   <!-- This is the charts that are rendered in the home page -->
@@ -46,7 +111,7 @@
 
 <script>
 import CostCounter from "./CostCounter.vue";
-import Table from "./Table.vue";
+import Table from "../components/Lower.vue";
 // import Charts from './Charts';
 
 export default {
@@ -64,7 +129,7 @@ export default {
       costCalc: 0,
       meetingId: "",
       date: "",
-      employeeNumber: "",
+      employeeNumber: 0,
       costHr: "",
     };
   },
@@ -98,7 +163,6 @@ export default {
     play() {
       this.timerEnabled = true;
     },
-
     pause() {
       this.timerEnabled = false;
     },

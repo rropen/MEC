@@ -1,5 +1,17 @@
 
 <template>
+<<<<<<< HEAD
+  <div id="app"></div>
+</template>
+
+<script>
+export default {
+  name: "App",
+  data() {
+    return {};
+  },
+  components: {},
+=======
   <div id="app">
     <v-grid
       theme="compact"
@@ -25,5 +37,6 @@ export default {
   components: {
     VGrid,
   },
+>>>>>>> main
 };
 </script>

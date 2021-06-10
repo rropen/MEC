@@ -1,30 +1,31 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="bg-rrblue-800 min-h-full overflow-auto">
+    <div id="app" class="h-full font-sans bg-rrgrey-200" style="top: 50%">
+      <Header />
+      <div class="page my-8 bg-white rounded-md h-full p-4 w-1/2 mx-auto">
+        <router-view />
+      </div>
+      <Footer />
+    </div>
   </div>
-  <router-view />
 </template>
+<script lang="ts">
+import Header from "./components/Header.vue";
+import Footer from "./components/Footer.vue";
+import { defineComponent, computed } from "vue";
+import { useRoute } from "vue-router";
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
-</style>
+export default defineComponent({
+  name: "App",
+  components: {
+    Header,
+    Footer,
+  },
+  setup() {
+    const route = useRoute();
+    const pathName = computed(() => route.name);
+    return { pathName };
+  },
+});
+</script>
+<style></style>

@@ -54,8 +54,8 @@ For local development, the frontend just runs on your machine.  Install the pack
 
 ``` bash
 # from the root/src/frontend folder
-yarn serve //standard development mode
-yarn vite //crazy fast development mode
+yarn serve # standard development mode - app available at http://localhost:8080
+yarn vite # crazy fast development mode - app available at http://localhost:3000
 ```
 
 ### Compiles and minifies for production
@@ -85,18 +85,34 @@ The example .env file should already be sufficient for local development with on
 cd src
 
 # Build the container
+<<<<<<< HEAD
+docker compose -f docker-compose.yml -f local-docker-compose build
+
+# Run the container in detached mode to return your command prompt
+docker compose up -d
+=======
 docker-compose -f docker-compose.yml -f local-docker-compose.yml build
 
 # Run the container in detached mode to return your command prompt
 docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d
+>>>>>>> main
 
-# Check the status of your container
+# Check the status of your container.
 docker ps
 
 # Attach to the log output from the container (ctrl+c to escape)
-docker-compose logs -f
+docker compose logs -f
+
+# Create & migrate local database
+docker exec -it src_backend_1 bash
+alembic upgrade head
+exit
 ```
 
+<<<<<<< HEAD
+Your backend container should be running at `http://localhost:8181/docs` on your local machine.
+=======
 ### View Backend
 
 <http://127.0.0.1:8000/docs> or <http://127.0.0.1:8000/openapi.json>
+>>>>>>> main
