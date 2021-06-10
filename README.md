@@ -85,17 +85,10 @@ The example .env file should already be sufficient for local development with on
 cd src
 
 # Build the container
-<<<<<<< HEAD
-docker compose -f docker-compose.yml -f local-docker-compose build
-
-# Run the container in detached mode to return your command prompt
-docker compose up -d
-=======
 docker-compose -f docker-compose.yml -f local-docker-compose.yml build
 
 # Run the container in detached mode to return your command prompt
 docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d
->>>>>>> main
 
 # Check the status of your container.
 docker ps
@@ -109,10 +102,8 @@ alembic upgrade head
 exit
 ```
 
-<<<<<<< HEAD
 Your backend container should be running at `http://localhost:8181/docs` on your local machine.
-=======
+
 ### View Backend
 
 <http://127.0.0.1:8000/docs> or <http://127.0.0.1:8000/openapi.json>
->>>>>>> main

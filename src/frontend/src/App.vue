@@ -10,7 +10,7 @@
   </div>
 </template>
 <script lang="ts">
-import Header from "./components/Header.vue";
+// import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import { defineComponent, computed } from "vue";
 import { useRoute } from "vue-router";
@@ -18,7 +18,7 @@ import { useRoute } from "vue-router";
 export default defineComponent({
   name: "App",
   components: {
-    Header,
+    // Header,
     Footer,
   },
   setup() {
