@@ -85,10 +85,10 @@ The example .env file should already be sufficient for local development with on
 cd src
 
 # Build the container
-docker-compose -f docker-compose -f local-docker-compose build
+docker-compose -f docker-compose.yml -f local-docker-compose.yml build
 
 # Run the container in detached mode to return your command prompt
-docker-compose up -d
+docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d
 
 # Check the status of your container
 docker ps
@@ -96,3 +96,7 @@ docker ps
 # Attach to the log output from the container (ctrl+c to escape)
 docker-compose logs -f
 ```
+
+### View Backend
+
+<http://127.0.0.1:8000/docs> or <http://127.0.0.1:8000/openapi.json>
