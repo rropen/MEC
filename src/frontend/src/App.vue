@@ -2,7 +2,7 @@
   <div class="bg-rrblue-800 min-h-full overflow-auto">
     <div id="app" class="h-full font-sans bg-rrgrey-200" style="top: 50%">
       <Header />
-      <div class="page my-8 bg-white rounded-md h-full p-4 w-1/2 mx-auto">
+      <div class="page my-8 bg-white rounded-md h-full p-4 w-3/4 mx-auto">
         <router-view />
       </div>
       <Footer />

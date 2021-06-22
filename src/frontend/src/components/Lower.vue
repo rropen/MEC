@@ -12,7 +12,7 @@
           <td><p>Number of Slides:</p></td>
           <td class="py-2">
             <input
-              class="rounded-md px-2 ring focus:outline-none mb-2"
+              class="rounded-md px-2 mb-2"
               type="text"
               v-model="numSlides"
               placeholder="Powerpoint Slides"
@@ -23,7 +23,7 @@
           <td class="pr-4"><p>Meeting Title:</p></td>
           <td class="py-2">
             <input
-              class="rounded-md px-2 ring focus:outline-none mb-2"
+              class="rounded-md px-2 mb-2"
               type="text"
               v-model="title"
               placeholder="Discuss Things..."
@@ -34,7 +34,7 @@
           <td class="pr-4"><p>Comment:</p></td>
           <td class="py-2">
             <textarea
-              class="rounded-md px-2 ring focus:outline-none w-60"
+              class="rounded-md px-2 w-60"
               v-model="comment"
               rows="3"
               placeholder="Lorem Ipsum..."

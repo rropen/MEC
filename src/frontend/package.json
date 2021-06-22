@@ -19,18 +19,20 @@
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nanoid": "^3.1.23",
+    "vee-validate": "^4.4.4",
     "vue": "^3.0.11",
     "vue-apexcharts": "^1.6.0",
     "vue-axios": "^3.2.4",
     "vue-router": "^4.0.6",
     "vue3-apexcharts": "^1.2.1",
-    "yarn": "^1.22.10"
+    "yarn": "^1.22.10",
+    "yup": "^0.32.9"
   },
   "devDependencies": {
     "@commitlint/cli": "^12.1.1",
     "@commitlint/config-conventional": "^12.1.1",
     "@tailwindcss/aspect-ratio": "^0.2.0",
-    "@tailwindcss/forms": "^0.3.2",
+    "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/line-clamp": "^0.2.0",
     "@tailwindcss/typography": "^0.4.0",
     "@vitejs/plugin-vue": "^1.2.1",
