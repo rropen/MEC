@@ -24,7 +24,7 @@ ARG ENV
 # production stage
 ENV ENV $ENV
 ENV NODE_ENV $NODE_ENV
-FROM nginx:1.19.10-alpine as deploy
+FROM nginx:1.20.1-alpine as deploy
 RUN rm /etc/nginx/conf.d/default.conf && rm /etc/nginx/nginx.conf
 COPY nginx/nginx.conf /etc/nginx/nginx.conf
 COPY nginx/default.conf /etc/nginx/conf.d/default.conf
