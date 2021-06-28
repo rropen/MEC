@@ -11,7 +11,7 @@
             text-white
             font-semibold
             py-2
-            w-28
+            w-32
             rounded-md
             text-md
             focus:outline-none
@@ -28,8 +28,8 @@
             rounded-md
             text-md
             focus:outline-none
-            w-28" 
-            v-on:click="monthlyClicked = true; totalClicked = false;">Monthly</button>
+            w-32" 
+            v-on:click="monthlyClicked = true; totalClicked = false;">Last 30 Days</button>
           </div>
     <dl class="mt-5 grid grid-cols-5 rounded-lg bg-white overflow-hidden shadow divide-y divide-gray-200 md:grid-cols-5 md:divide-y-0 md:divide-x">
       <!-- These are the 5 stat cards -->
