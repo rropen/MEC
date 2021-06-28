@@ -192,7 +192,7 @@
         <div
           class="float-right flex flex-col pt-4 text-rrpink-600 font-semibold"
         >
-          <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p>
+          <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
           <p v-show="macbookpros != 0">
             Opportunity Cost - MacBook Pros: {{ macbookpros }}
           </p>

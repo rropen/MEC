@@ -1,29 +1,60 @@
 <template>
   <div>
+    <Statistics/>
     <div
       @keyup.esc="PastMeetingModal = false"
-      class="flex flex-row justify-between"
+      class="flex"
     >
-      <div>
-        <div>
-          <p class="text-lg">
-            Employees: &nbsp;<input
+      <div class="ml-8 w-screen">
+        <div class="flex justify-end mr-8">
+        <button
+          class="
+            mr-8
+            delay-50
+            duration-100
+            bg-rrblue-400
+            hover:bg-rrblue-200
+            text-white
+            font-semibold
+            py-2
+            px-4
+            rounded-md
+            text-md
+            focus:outline-none
+          "
+          @click="PastMeetingModal = !PastMeetingModal"
+        >
+          <teleport to="#modals">
+            <PastMeetingForm
+              v-if="PastMeetingModal"
+              @close="hideModal()"
+              @updateTable="updateTable()"
+            >
+            </PastMeetingForm>
+          </teleport>
+          Enter Past Meeting
+        </button>
+      </div>
+          <label for="employeeNumber" class="block text-md font-medium text-gray-700">
+            Employees: &nbsp;
+            <input
               type="text"
+              name= "employeeNumber"
               v-model="employeeNumber"
               placeholder="0"
-              class="rounded-md mb-4 w-12 ring px-2 focus:outline-none"
-              :class="{ 'ring-rrpink-400': employeeNumber == 0 }"
+              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-30 sm:text-sm border-gray-300 rounded-md"
+              :class="{ '': employeeNumber == 0 }"
             />
-          </p>
-        </div>
+          </label>
+        
         <!-- This creates our start and stop button for the counter -->
         <div class="flex-auto">
           <button
             v-if="employeeNumber != 0"
             class="
               mr-8
-              delay-100
-              duration-200
+              delay-50
+              duration-100
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -31,7 +62,7 @@
               py-2
               px-4
               rounded-md
-              text-lg
+              text-md
               focus:outline-none
             "
             @click="play()"
@@ -42,8 +73,8 @@
             v-if="employeeNumber != 0"
             class="
               mr-8
-              delay-100
-              duration-200
+              delay-50
+              duration-100
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -51,7 +82,7 @@
               py-2
               px-4
               rounded-md
-              text-lg
+              text-md
               focus:outline-none
             "
             @click="pause()"
@@ -60,8 +91,8 @@
           </button>
           <button
             class="
-              delay-100
-              duration-200
+              delay-50
+              duration-100
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -69,7 +100,7 @@
               py-2
               px-4
               rounded-md
-              text-lg
+              text-md
               focus:outline-none
             "
             @click="reset()"
@@ -78,10 +109,10 @@
           </button>
         </div>
         <!-- Outputs the cost calculation -->
-        <div class="mt-4 text-lg">
-          <p class="">
-            <span class=""
-              >Cost $
+        <div class="mt-4 text-md">
+          <p>
+            <span>
+              Cost $
               <span class="text-rrpink-600 font-semibold">{{
                 costCalc.toFixed(2)
               }}</span></span
@@ -100,35 +131,8 @@
             >
           </p>
         </div>
-      </div>
-      <div>
-        <button
-          class="
-            mr-8
-            delay-100
-            duration-200
-            bg-rrblue-400
-            hover:bg-rrblue-200
-            text-white
-            font-semibold
-            py-2
-            px-4
-            rounded-md
-            text-lg
-            focus:outline-none
-          "
-          @click="PastMeetingModal = !PastMeetingModal"
-        >
-          <teleport to="#modals">
-            <PastMeetingForm
-              v-if="PastMeetingModal"
-              @close="hideModal()"
-              @updateTable="updateTable()"
-            >
-            </PastMeetingForm>
-          </teleport>
-          Enter Past Meeting
-        </button>
+      
+      
       </div>
     </div>
 
@@ -151,7 +155,7 @@
 // import Charts from './Charts';
 import Lower from "../components/Lower.vue";
 import PastMeetingForm from "../components/PastMeetingForm.vue";
-
+import Statistics from "../components/Statistics.vue";
 export default {
   name: "Home",
 
@@ -159,6 +163,7 @@ export default {
     // CostCounter,
     Lower,
     PastMeetingForm,
+    Statistics,
     // Charts,
   },
   name: "App",

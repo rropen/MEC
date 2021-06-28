@@ -6,6 +6,7 @@ services:
         restart: always
         env_file:
             - ./backend/.env
+
     
     # frontend:
     #     build:
