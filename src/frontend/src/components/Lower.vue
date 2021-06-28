@@ -1,54 +1,58 @@
 <template>
   <div>
-    <table class="">
+    <table class="ml-8">
       <tbody>
+        
         <tr>
-          <td class="pr-4"><p>Was PowerPoint Used?</p></td>
+          <label for="title" class="block text-md font-medium text-gray-700">
+            Meeting Title: &nbsp;
+            <input
+              type="text"
+              name= "title"
+              v-model="title"
+              placeholder="Discuss Things..."
+              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-full sm:text-sm border-gray-300 rounded-md"
+            />
+          </label>
+        </tr>
+        <tr>
+          <label for="comment" class="block text-md font-medium text-gray-700">
+            Comment: &nbsp;
+            <input
+              type="text"
+              name= "comment"
+              v-model="comment"
+              placeholder="What was discussed..."
+              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-full sm:text-sm border-gray-300 rounded-md"
+            />
+          </label>
+        </tr>
+        <tr>
+          <td class="text-md font-medium text-gray-700"><p>Was PowerPoint Used?</p></td>
           <td class="py-2">
             <Toggle v-model="powerpoint"></Toggle>
           </td>
         </tr>
         <tr v-show="powerpoint">
-          <td><p>Number of Slides:</p></td>
-          <td class="py-2">
+          <label for="numSlides" class="block text-md font-medium text-gray-700">
+            Number of Slides: &nbsp;
             <input
-              class="rounded-md px-2 mb-2"
               type="text"
+              name= "numSlides"
               v-model="numSlides"
-              placeholder="Powerpoint Slides"
-            />
-          </td>
-        </tr>
-        <tr>
-          <td class="pr-4"><p>Meeting Title:</p></td>
-          <td class="py-2">
-            <input
-              class="rounded-md px-2 mb-2"
-              type="text"
-              v-model="title"
               placeholder="Discuss Things..."
+              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-full sm:text-sm border-gray-300 rounded-md"
             />
-          </td>
-        </tr>
-        <tr>
-          <td class="pr-4"><p>Comment:</p></td>
-          <td class="py-2">
-            <textarea
-              class="rounded-md px-2 w-60"
-              v-model="comment"
-              rows="3"
-              placeholder="Lorem Ipsum..."
-            />
-          </td>
+          </label>
         </tr>
       </tbody>
     </table>
 
-    <div class="mt-4">
+    <div class="mt-4 ml-4">
       <button
         class="
-          delay-100
-          duration-200
+          delay-50
+          duration-100
           bg-rrblue-400
           hover:bg-rrblue-200
           text-white
@@ -57,7 +61,7 @@
           px-4
           mr-4
           rounded-md
-          text-lg
+          text-md
           focus:outline-none
         "
         @click.prevent="onSubmit"

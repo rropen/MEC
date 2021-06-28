@@ -86,9 +86,11 @@ cd src
 
 # Build the container
 docker compose -f docker-compose.yml -f local-docker-compose build
+or 
+docker-compose -f docker-compose.yml -f local-docker-compose.yml build
 
 # Run the container in detached mode to return your command prompt
-docker compose up -d
+docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d backend
 
 # Check the status of your container.
 docker ps

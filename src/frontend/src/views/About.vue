@@ -1,13 +1,16 @@
 <template>
-  <div id="app"></div>
+    <div class="flex h-screen">
+  <div class="m-auto">
+    <h3>title</h3>
+    <button>button</button>
+  </div>
+</div>
 </template>
 
-<script>
-export default {
-  name: "App",
-  data() {
-    return {};
-  },
-  components: {},
-};
+<script lang="ts">
+import { defineComponent } from 'vue'
+export default defineComponent({
+    name: "Statistics",
+    
+})
 </script>

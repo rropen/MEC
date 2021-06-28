@@ -80,6 +80,7 @@
 <script>
 import CostCounter from "./CostCounter.vue";
 import Table from "../components/Lower.vue";
+import Statistics from "../components/Statistics.vue";
 // import Charts from './Charts';
 
 export default {
