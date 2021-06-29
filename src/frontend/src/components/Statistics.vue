@@ -39,7 +39,7 @@
         </dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div class="flex items-baseline text-2xl font-semibold text-indigo-600" v-if="monthlyClicked">
-            {{ averageMonthlyTime }}
+            {{ averageMonthlyCost.toFixed(1) }}
             <span class="ml-2 text-sm font-medium text-gray-500"> /min </span>
           </div>
           <div v-if="totalClicked" class="flex items-baseline text-2xl font-semibold text-indigo-600">{{ averageTime }}
@@ -171,7 +171,7 @@ export default {
     const changeMonthlyPrevious = ref(0)
     const changeMonthlyPercent = ref(0)
     const changeMonthlyType = ref(0)
-
+    const meetingTime = ref(0)
     // If monthly or total is monthlyClicked,
     let monthlyClicked = ref(false)
     let totalClicked = ref(true)
@@ -192,34 +192,30 @@ export default {
           let meetingAmount = response.data.length
           
           // Gets current Date
-          const currentTime = Date.now();
+          const currentTime = Math.floor(new Date().getTime()/1000.0);
           // Date 30 days ago
-          const oldTime = currentTime - (86400 * 30)
+          const thirtyDaysAgo = currentTime - 2629743
           
-          
+          let meetingTime = 0 
           while (n < meetingAmount) {
 
-            let meetingTime = 0 
-            meetingTime = response.data[n]['date']
+            meetingTime = response.data[n]['date'] / 1000
             // If the date of the meeting is less than 30 days from today then count it towards monthly Value
-            console.log(meetingTime - oldTime)
-            if (meetingTime > oldTime) {
+            
+            if (meetingTime > thirtyDaysAgo) {
             totalMonthlyCost.value = response.data[n]['totalCost'] + totalMonthlyCost.value
             totalMonthlyTime.value = response.data[n]['time'] + totalMonthlyTime.value
             totalMonthlyPowerpointSlides.value = response.data[n]['powerpointSlides'] + totalMonthlyPowerpointSlides.value
             averageMonthlyTime.value = totalMonthlyTime.value / meetingAmount
             averageMonthlyCost.value = totalMonthlyCost.value / meetingAmount
-            console.log("i ran")
             }
             // Else count it towards older value and add the monthly value to the total
-            
             totalCost.value = response.data[n]['totalCost'] + totalCost.value
             totalTime.value = response.data[n]['time'] + totalTime.value
             totalPowerpointSlides.value = response.data[n]['powerpointSlides'] + totalPowerpointSlides.value
             averageTime.value = totalTime.value / meetingAmount
             averageCost.value = totalCost.value / meetingAmount
             n++
-            console.log("Total Ran")
             
           }
         })
