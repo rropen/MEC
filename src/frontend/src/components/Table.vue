@@ -150,6 +150,20 @@
                 >
                   Cost
                 </th>
+                <!-- <th
+                  scope="col"
+                  class="
+                    px-6
+                    py-3
+                    text-left text-xs
+                    font-medium
+                    text-rrgrey-800
+                    uppercase
+                    tracking-wider
+                  "
+                >
+                  Delete
+                </th> -->
               </tr>
             </thead>
             <tbody>
@@ -185,6 +199,9 @@
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
                   $&nbsp;{{ row.totalCost }}
                 </td>
+                <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">
+                  <button @click="deleteRow">Delete</button>
+                </td> -->
               </tr>
             </tbody>
           </table>
@@ -239,6 +256,11 @@ export default {
         return 0;
       }
     });
+    // const deleteRow = computed(() => {
+    //   console.log("I was clicked")
+    //   console.log(props.rows.length)
+    //   return 0;
+    // })
     return { filters, totalCost, macbookpros, azuremonth };
   },
 };
