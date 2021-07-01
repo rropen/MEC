@@ -1,6 +1,18 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="flex flex-col mb-6">
+  <div class="flex flex-col">
+    <div
+          class="grid justify-items-center mb-6 float-right flex flex-col text-rrpink-600 font-semibold"
+        >
+          <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
+          <p v-show="macbookpros != 0">
+            Opportunity Cost - MacBook Pros: {{ macbookpros }}
+          </p>
+          <p v-show="azuremonth != 0">
+            Opportunity Cost - Months of Paid Azure App Service:
+            {{ azuremonth }}
+          </p>
+        </div>
     <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
       <div
         class="
@@ -206,18 +218,7 @@
             </tbody>
           </table>
         </div>
-        <div
-          class="float-right flex flex-col pt-4 text-rrpink-600 font-semibold"
-        >
-          <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
-          <p v-show="macbookpros != 0">
-            Opportunity Cost - MacBook Pros: {{ macbookpros }}
-          </p>
-          <p v-show="azuremonth != 0">
-            Opportunity Cost - Months of Paid Azure App Service:
-            {{ azuremonth }}
-          </p>
-        </div>
+        
       </div>
     </div>
   </div>

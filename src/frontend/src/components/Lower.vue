@@ -48,7 +48,7 @@
       </tbody>
     </table>
 
-    <div class="mt-4 ml-4">
+    <div class="mt-4 ml-8">
       <button
         class="
           delay-50
@@ -69,7 +69,7 @@
         Submit
       </button>
     </div>
-    <Table class="mt-20" :rows="rows" />
+    <Table class="mt-6" :rows="rows" />
   </div>
 </template>
 
