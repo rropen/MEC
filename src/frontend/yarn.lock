@@ -67,7 +67,7 @@
   dependencies:
     conventional-changelog-conventionalcommits "^4.3.1"
 
-"@commitlint/ensure@^12.1.1":
+"@commitlint/ensure@^12.1.4":
   version "12.1.4"
   resolved "https://registry.yarnpkg.com/@commitlint/ensure/-/ensure-12.1.4.tgz#287ae2dcc5ccb086e749705b1bd9bdb99773056f"
   integrity sha512-MxHIBuAG9M4xl33qUfIeMSasbv3ktK0W+iygldBxZOL4QSYC2Gn66pZAQMnV9o3V+sVFHoAK2XUKqBAYrgbEqw==
@@ -119,7 +119,7 @@
     lodash "^4.17.19"
     resolve-from "^5.0.0"
 
-"@commitlint/message@^12.1.1":
+"@commitlint/message@^12.1.4":
   version "12.1.4"
   resolved "https://registry.yarnpkg.com/@commitlint/message/-/message-12.1.4.tgz#3895edcc0709deca5945f3d55f5ea95a9f1f446d"
   integrity sha512-6QhalEKsKQ/Y16/cTk5NH4iByz26fqws2ub+AinHPtM7Io0jy4e3rym9iE+TkEqiqWZlUigZnTwbPvRJeSUBaA==
@@ -163,7 +163,7 @@
     "@commitlint/to-lines" "^12.1.4"
     "@commitlint/types" "^12.1.4"
 
-"@commitlint/to-lines@^12.1.1":
+"@commitlint/to-lines@^12.1.4":
   version "12.1.4"
   resolved "https://registry.yarnpkg.com/@commitlint/to-lines/-/to-lines-12.1.4.tgz#caa582dbf121f377a0588bb64e25c4854843cd25"
   integrity sha512-TParumvbi8bdx3EdLXz2MaX+e15ZgoCqNUgqHsRLwyqLUTRbqCVkzrfadG1UcMQk8/d5aMbb327ZKG3Q4BRorw==
