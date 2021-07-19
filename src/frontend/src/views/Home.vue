@@ -91,7 +91,6 @@ export default {
     CostCounter,
     // Charts,
   },
-  name: "App",
   data() {
     return {
       timerEnabled: false,

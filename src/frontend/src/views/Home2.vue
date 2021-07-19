@@ -1,52 +1,62 @@
 <template>
   <div>
-    <Statistics/>
-    <div
-      @keyup.esc="PastMeetingModal = false"
-      class="flex"
-    >
+    <Statistics />
+    <div @keyup.esc="PastMeetingModal = false" class="flex">
       <div class="ml-8 w-screen">
         <div class="flex justify-end mr-8">
-        <button
-          class="
-            mr-8
-            delay-50
-            duration-100
-            bg-rrblue-400
-            hover:bg-rrblue-200
-            text-white
-            font-semibold
-            py-2
-            px-4
-            rounded-md
-            text-md
-            focus:outline-none
-          "
-          @click="PastMeetingModal = !PastMeetingModal"
+          <button
+            class="
+              mr-8
+              delay-50
+              duration-100
+              bg-rrblue-400
+              hover:bg-rrblue-200
+              text-white
+              font-semibold
+              py-2
+              px-4
+              rounded-md
+              text-md
+              focus:outline-none
+            "
+            @click="PastMeetingModal = !PastMeetingModal"
+          >
+            <teleport to="#modals">
+              <PastMeetingForm
+                v-if="PastMeetingModal"
+                @close="hideModal()"
+                @updateTable="updateTable()"
+              >
+              </PastMeetingForm>
+            </teleport>
+            Enter Past Meeting
+          </button>
+        </div>
+        <label
+          for="employeeNumber"
+          class="block text-md font-medium text-gray-700"
         >
-          <teleport to="#modals">
-            <PastMeetingForm
-              v-if="PastMeetingModal"
-              @close="hideModal()"
-              @updateTable="updateTable()"
-            >
-            </PastMeetingForm>
-          </teleport>
-          Enter Past Meeting
-        </button>
-      </div>
-          <label for="employeeNumber" class="block text-md font-medium text-gray-700">
-            Employees: &nbsp;
-            <input
-              type="text"
-              name= "employeeNumber"
-              v-model="employeeNumber"
-              placeholder="0"
-              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-30 sm:text-sm border-gray-300 rounded-md"
-              :class="{ '': employeeNumber == 0 }"
-            />
-          </label>
-        
+          Employees: &nbsp;
+          <input
+            type="text"
+            name="employeeNumber"
+            v-model="employeeNumber"
+            placeholder="0"
+            class="
+              mb-6
+              shadow-sm
+              focus:ring-bg-rrblue-400
+              focus:border-bg-rrblue-400
+              block
+              w-30
+              sm:text-sm
+              border-gray-300
+              rounded-md
+            "
+            :class="{ '': employeeNumber == 0 }"
+          />
+        </label>
+
         <!-- This creates our start and stop button for the counter -->
         <div class="flex-auto">
           <button
@@ -131,8 +141,6 @@
             >
           </p>
         </div>
-      
-      
       </div>
     </div>
 
@@ -157,7 +165,7 @@ import Lower from "../components/Lower.vue";
 import PastMeetingForm from "../components/PastMeetingForm.vue";
 import Statistics from "../components/Statistics.vue";
 export default {
-  name: "Home",
+  name: "Home2",
 
   components: {
     // CostCounter,
@@ -166,7 +174,6 @@ export default {
     Statistics,
     // Charts,
   },
-  name: "App",
   data() {
     return {
       timerEnabled: false,
