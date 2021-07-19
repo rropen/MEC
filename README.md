@@ -104,4 +104,21 @@ alembic upgrade head
 exit
 ```
 
+### Run Locally
+
+If you want to install the dependencies and run the backend project locally for some reason, use [pdm](https://pdm.fming.dev/usage/project.html).
+
+``` bash
+# verify you have pdm installed
+pdm --version
+
+# if you don't, install it
+pip install pdm
+
+cd src/backend
+pdm install
+```
+
+To run the project just run `pdm run uvicorn main:app --workers 4 --host 0.0.0.0 --port 8181 --reload`
+
 Your backend container should be running at `http://localhost:8181/docs` on your local machine.
