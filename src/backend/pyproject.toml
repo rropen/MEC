@@ -5,7 +5,17 @@ description = "FastAPI-based API for the MEC App"
 authors = [
     {name = "Josh Haines", email = "Josh@JoshHaines.com"},
 ]
-dependencies = ["sqlalchemy==1.4.15", "pydantic==1.8.2", "pip==21.1.1", "msal==1.11.0", "pyodbc==4.0.30", "alembic==1.6.2", "python-dotenv==0.17.1"]
+dependencies = [
+    "sqlalchemy==1.4.15",
+    "pydantic==1.8.2",
+    "pip==21.1.1",
+    "msal==1.11.0",
+    "pyodbc==4.0.30",
+    "alembic==1.6.2",
+    "python-dotenv~=0.18",
+    "uvicorn~=0.14",
+    "fastapi~=0.66",
+]
 requires-python = ">=3.9"
 dynamic = ["classifiers"]
 license = {text = "MIT"}
