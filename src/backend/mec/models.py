@@ -1,6 +1,6 @@
-from sqlalchemy import Boolean, Column, Integer, String, Numeric,DateTime
-from api.database import Base
-import datetime
+from sqlalchemy import Boolean, Column, Integer, String, Numeric, DateTime
+from mec.database import Base
+
 
 class Meeting(Base):
     __tablename__ = "meetings"
@@ -9,11 +9,10 @@ class Meeting(Base):
     id = Column(Integer, primary_key=True, index=True)
     meetingId = Column(String)
     date = Column(String)
-    employeeNumber = Column(Numeric(3,0))
-    time = Column(Numeric(3,0))
-    totalCost = Column(Numeric(7,2))
+    employeeNumber = Column(Numeric(3, 0))
+    time = Column(Numeric(3, 0))
+    totalCost = Column(Numeric(7, 2))
     powerpoint = Column(Boolean(True))
-    powerpointSlides = Column(Numeric(3,0))
+    powerpointSlides = Column(Numeric(3, 0))
     comment = Column(String)
     title = Column(String)
-
