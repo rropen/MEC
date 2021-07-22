@@ -104,7 +104,11 @@
             <label class="mt-3" for="powerpoint" :class="labelClasses"
               >Was PowerPoint Used?</label
             >
-            <Toggle v-model="powerpoint" :class="fieldClasses"></Toggle>
+            <Toggle
+              :powerpoint="powerpoint"
+              @click="powerpoint = !powerpoint"
+              :class="fieldClasses"
+            ></Toggle>
             <label
               v-show="powerpoint"
               class=""
@@ -130,7 +134,6 @@
               <button
                 @click="onSubmit"
                 class="
-                  mr-8
                   delay-100
                   duration-200
                   bg-rrblue-400
@@ -159,8 +162,7 @@
                   py-2
                   px-4
                   ring-1 ring-rrblue-400
-                  hover:ring-rrgrey-600
-                  hover:border-transparent
+                  hover:ring-rrgrey-600 hover:border-transparent
                   rounded-md
                   focus:outline-none
                 "
@@ -239,7 +241,7 @@ export default defineComponent({
     // Send data for a new row to the api
     function sendRow(rowVals) {
       axios
-        .post("/meeting", rowVals, {
+        .post("/meetings", rowVals, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",

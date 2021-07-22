@@ -2,16 +2,24 @@
   <div>
     <table class="ml-8">
       <tbody>
-        
         <tr>
           <label for="title" class="block text-md font-medium text-gray-700">
             Meeting Title: &nbsp;
             <input
               type="text"
-              name= "title"
+              name="title"
               v-model="title"
               placeholder="Discuss Things..."
-              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-full sm:text-sm border-gray-300 rounded-md"
+              class="
+                mb-6
+                shadow-sm
+                focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+                block
+                w-full
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
             />
           </label>
         </tr>
@@ -20,28 +28,54 @@
             Comment: &nbsp;
             <input
               type="text"
-              name= "comment"
+              name="comment"
               v-model="comment"
               placeholder="What was discussed..."
-              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-full sm:text-sm border-gray-300 rounded-md"
+              class="
+                mb-6
+                shadow-sm
+                focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+                block
+                w-full
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
             />
           </label>
         </tr>
         <tr>
-          <td class="text-md font-medium text-gray-700"><p>Was PowerPoint Used?</p></td>
+          <td class="text-md font-medium text-gray-700">
+            <p>Was PowerPoint Used?</p>
+          </td>
           <td class="py-2">
-            <Toggle v-model="powerpoint"></Toggle>
+            <Toggle
+              @click="powerpoint = !powerpoint"
+              :powerpoint="powerpoint"
+            ></Toggle>
           </td>
         </tr>
         <tr v-show="powerpoint">
-          <label for="numSlides" class="block text-md font-medium text-gray-700">
+          <label
+            for="numSlides"
+            class="block text-md font-medium text-gray-700"
+          >
             Number of Slides: &nbsp;
             <input
               type="text"
-              name= "numSlides"
+              name="numSlides"
               v-model="numSlides"
               placeholder="Discuss Things..."
-              class="mb-6 shadow-sm focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400 block w-full sm:text-sm border-gray-300 rounded-md"
+              class="
+                mb-6
+                shadow-sm
+                focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+                block
+                w-full
+                sm:text-sm
+                border-gray-300
+                rounded-md
+              "
             />
           </label>
         </tr>
@@ -51,17 +85,16 @@
     <div class="mt-4 ml-8">
       <button
         class="
-          delay-50
-          duration-100
+          delay-100
+          duration-200
           bg-rrblue-400
           hover:bg-rrblue-200
           text-white
           font-semibold
           py-2
           px-4
-          mr-4
           rounded-md
-          text-md
+          text-lg
           focus:outline-none
         "
         @click.prevent="onSubmit"
@@ -69,7 +102,7 @@
         Submit
       </button>
     </div>
-    <Table class="mt-6" :rows="rows" />
+    <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable()" />
   </div>
 </template>
 
@@ -106,6 +139,7 @@ export default {
         .get("/meetings")
         .then(function (response) {
           let data = response.data;
+          // console.log("fetching from Lower");
           rows.value = data;
           // console.log("Rows before fetch: ", rows.value);
           // rows.push(response.data);
@@ -120,7 +154,7 @@ export default {
     // Send data for a new row to the api
     function sendRow(rowVals) {
       axios
-        .post("/meeting", rowVals, {
+        .post("/meetings", rowVals, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",

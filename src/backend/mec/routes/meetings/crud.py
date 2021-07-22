@@ -24,7 +24,7 @@ def create_meeting(db: Session, meeting_data):
     db.add(meeting)
     db.commit()
 
-    # Check the record
+    # Check the new record
     new_meeting = db.query(Meeting).filter_by(id=meeting.id).first()
     if new_meeting.meetingId == meeting_data.meetingId:
         return True  # successfully created record

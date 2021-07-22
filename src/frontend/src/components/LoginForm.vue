@@ -87,35 +87,35 @@
 import router from "../router/index";
 
 import { reactive, defineComponent } from "vue";
-import { useStore } from "../store/store";
-import { ActionTypes } from "../types";
+// import { useStore } from "../store/store";
+// import { ActionTypes } from "../types";
 
 export default defineComponent({
   name: "LoginForm",
   components: {},
   setup() {
-    const store = useStore();
+    // const store = useStore();
     const userDetails = reactive({
       username: "eve.holt@reqres.in",
       password: "cityslicka",
       rememberMe: false,
     });
 
-    function onSubmit() {
-      store
-        .dispatch(ActionTypes.retrieveToken, {
-          username: userDetails.username,
-          password: userDetails.password,
-        })
-        .then((response) => {
-          router.push({ name: "Home" });
-          console.log("LoginForm: ", response);
-        })
-        .catch((response) => {
-          console.log("Error: ", response);
-        });
-    }
-    return { userDetails, onSubmit };
+    // function onSubmit() {
+    //   store
+    //     .dispatch(ActionTypes.retrieveToken, {
+    //       username: userDetails.username,
+    //       password: userDetails.password,
+    //     })
+    //     .then((response) => {
+    //       router.push({ name: "Home" });
+    //       console.log("LoginForm: ", response);
+    //     })
+    //     .catch((response) => {
+    //       console.log("Error: ", response);
+    //     });
+    // }
+    // return { userDetails, onSubmit };
   },
 });
 </script>
