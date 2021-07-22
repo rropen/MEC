@@ -13,6 +13,11 @@ report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
 # VSCode
 *.code-workspace
 
+# PDM
+.pdm.toml
+__pypackages__
+MEC_BACKEND.egg-info/
+
 # Storybook
 storybook-static/
 

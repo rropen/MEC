@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.4.0](https://github.com/rropen/mec/compare/v0.2.6...v0.4.0) (2021-07-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* **delete rows:** API endpoints changed slightly, upgraded yarn packages
+* **frontend and backend:** db schema is different so previous sqlite local databases won't work correctly
+
+### Features
+
+* **add past meeting form:** built a form for entering old meetings with validation, submission ([4ddbf11](https://github.com/rropen/mec/commit/4ddbf1155c8d0dd1002c088a743840bc4e8069ce))
+* **api:** updates to API, modifying structure, added a delete meeting endpoint ([b7bfd28](https://github.com/rropen/mec/commit/b7bfd28a0101b358ff497cc435669c871133361a)), closes [#14](https://github.com/rropen/mec/issues/14)
+* **delete rows:** update API with delete endpoint, add delete functionality to frontend ([c5c0963](https://github.com/rropen/mec/commit/c5c0963d22a886678e89952c0ff14b54cb845dce)), closes [#14](https://github.com/rropen/mec/issues/14)
+* **frontend and backend:** restyled ui, modified api & db, changed some functionality ([5046469](https://github.com/rropen/mec/commit/5046469b2079e6719d9c96407f9091490d278f18))
+* **statistics.vue and home2.vue:** added statistics to home page w/ homepage reformat ([d616d68](https://github.com/rropen/mec/commit/d616d684743ee61d8e1df90efbf93354af53eb5e)), closes [#12](https://github.com/rropen/mec/issues/12)
+
+
+### Bug Fixes
+
+* src/frontend/Dockerfile to reduce vulnerabilities ([ed96b57](https://github.com/rropen/mec/commit/ed96b574109efd4a8ae7a3e6e9a811d01fc0c4bb))
+
 ## [0.3.0](https://github.com/rollsroycedev/MEC/compare/v0.2.5...v0.3.0) (2021-05-28)
 
 
