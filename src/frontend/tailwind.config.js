@@ -6,9 +6,9 @@ module.exports = {
     content: [".public/**/*.html", "./src/**/*.vue"],
   },
   future: {},
-  presets: [],
+  // presets: [],
   darkMode: false, // or 'media' or 'class'
-  mode: "jit",
+  // mode: "jit",
   important: false,
   separator: ":",
   theme: {
