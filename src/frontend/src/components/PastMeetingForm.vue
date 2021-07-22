@@ -105,7 +105,7 @@
               >Was PowerPoint Used?</label
             >
             <Toggle
-              :powerpoint="powerpoint"
+              :toggleValue="powerpoint"
               @click="powerpoint = !powerpoint"
               :class="fieldClasses"
             ></Toggle>
@@ -202,6 +202,7 @@ export default defineComponent({
     const costRate = ref(135); // $135/hr/employee
     const meetingDate = ref("");
 
+    // Styling
     const labelClasses = {
       "mb-0": true,
       "mt-8": true,
@@ -234,6 +235,7 @@ export default defineComponent({
       return (employeeNumber.value * minutes.value * costRate.value) / 60;
     });
 
+    // Cancel button is clicked
     const onCancel = () => {
       emit("close");
     };
@@ -249,7 +251,6 @@ export default defineComponent({
         })
         .then(function (response) {
           // console.log("Successful Response: ", response);
-          // console.log("Rows before fetch: ", rows.value);
           emit("updateTable");
         })
         .catch(function (error) {
@@ -271,7 +272,6 @@ export default defineComponent({
         comment: comment.value,
         title: title.value,
       };
-      // console.log("rowvals: ", rowVals);
       sendRow(rowVals);
     }
 

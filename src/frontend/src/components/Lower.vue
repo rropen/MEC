@@ -51,7 +51,7 @@
           <td class="py-2">
             <Toggle
               @click="powerpoint = !powerpoint"
-              :powerpoint="powerpoint"
+              :toggleValue="powerpoint"
             ></Toggle>
           </td>
         </tr>

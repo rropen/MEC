@@ -87,9 +87,11 @@ export default defineComponent({
   name: "DeleteDialog",
   components: {},
   setup(_, { emit }) {
+    // Cancel button is clicked
     const onCancel = () => {
       emit("close");
     };
+    // Confirm button is clicked
     const confirmed = () => {
       emit("confirmed");
     };
