@@ -2,238 +2,106 @@
 <template>
   <div class="flex flex-col">
     <div
-          class="grid justify-items-center mb-6 float-right flex flex-col text-rrpink-600 font-semibold"
-        >
-          <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
-          <p v-show="macbookpros != 0">
-            Opportunity Cost - MacBook Pros: {{ macbookpros }}
-          </p>
-          <p v-show="azuremonth != 0">
-            Opportunity Cost - Months of Paid Azure App Service:
-            {{ azuremonth }}
-          </p>
-        </div>
-    <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-      <div
-        class="
-          py-2
-          mx-auto
-          align-middle
-          inline-block
-          min-w-full
-          sm:px-6
-          lg:px-8
-        "
-      >
-        <div
-          class="
-            shadow
-            overflow-hidden
-            border-b border-rrgrey-200
-            sm:rounded-lg
-          "
-        >
-          <table class="min-w-full divide-y divide-rrgrey-200">
-            <thead class="bg-rrgrey-300">
-              <tr>
-                <!-- <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Meeting ID
-                </th> -->
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Title
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Comment
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Date
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Employees
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Minutes
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  PowerPoint
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  # Slides
-                </th>
-                <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Cost
-                </th>
-                <!-- <th
-                  scope="col"
-                  class="
-                    px-6
-                    py-3
-                    text-left text-xs
-                    font-medium
-                    text-rrgrey-800
-                    uppercase
-                    tracking-wider
-                  "
-                >
-                  Delete
-                </th> -->
-              </tr>
-            </thead>
-            <tbody>
-              <tr
-                v-for="(row, rowIdx) in rows"
-                :key="row.meetingId"
-                :class="rowIdx % 2 === 0 ? 'bg-white' : 'bg-rrgrey-200'"
-              >
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.title }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.comment }}
-                </td>
-                <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.meetingId }}
-                </td> -->
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ filters.formatDate(row.date) }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.employeeNumber }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.time }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.powerpoint }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  {{ row.powerpointSlides }}
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-rrgrey-800">
-                  $&nbsp;{{ row.totalCost }}
-                </td>
-                <!-- <td class="px-6 py-4 whitespace-nowrap text-sm text-red-600">
-                  <button @click="deleteRow">Delete</button>
-                </td> -->
-              </tr>
-            </tbody>
-          </table>
-        </div>
-        
-      </div>
+      class="
+        grid
+        justify-items-center
+        mb-6
+        float-right
+        flex flex-col
+        text-rrpink-600
+        font-semibold
+      "
+    >
+      <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
+      <p v-show="macbookpros != 0">
+        Opportunity Cost - MacBook Pros: {{ macbookpros }}
+      </p>
+      <p v-show="azuremonth != 0">
+        Opportunity Cost - Months of Paid Azure App Service:
+        {{ azuremonth }}
+      </p>
     </div>
+    <DataTable
+      :value="rows"
+      stripedRows
+      :paginator="true"
+      :rows="10"
+      autoLayout
+      sortField="time"
+      :sortOrder="-1"
+      paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+      :rowsPerPageOptions="[10, 20, 50]"
+      responsiveLayout="scroll"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+    >
+      <Column field="meetingId" header="Meeting ID" :hidden="true"></Column>
+      <Column field="title" header="Title"></Column>
+      <Column field="comment" header="Comment"></Column>
+      <Column field="date" header="Date" :sortable="true">
+        <template #body="slotProps">
+          {{ filters.formatDate(slotProps.data.date) }}
+        </template></Column
+      >
+      <Column
+        field="employeeNumber"
+        header="Employees"
+        :sortable="true"
+      ></Column>
+      <Column field="time" header="Minutes" :sortable="true"></Column>
+      <Column field="powerpoint" header="PowerPoint" :sortable="true"></Column>
+      <Column
+        field="powerpointSlides"
+        header="# Slides"
+        :sortable="true"
+      ></Column>
+      <Column field="totalCost" header="Cost" :sortable="true">
+        <template #body="slotProps">
+          ${{ slotProps.data.totalCost.toFixed(2) }}
+        </template></Column
+      >
+      <Column field="meetingId" header="Delete">
+        <template #body="slotProps">
+          <Button
+            icon="pi pi-trash"
+            class="p-button-rounded p-button-danger"
+            @click="confirmDeleteRow(slotProps.data)"
+          ></Button>
+        </template>
+      </Column>
+    </DataTable>
+    <teleport to="#modals">
+      <DeleteDialog
+        v-if="deleteRowDialog"
+        @updateTable="updateTable()"
+        @close="deleteRowDialog = false"
+        @confirmed="deleteConfirmed()"
+      >
+      </DeleteDialog>
+    </teleport>
   </div>
 </template>
 
 <script>
 import filters from "../filters";
-import { computed } from "vue";
+import { computed, ref } from "vue";
+import DeleteDialog from "../components/DeleteDialog.vue";
+import DataTable from "primevue/datatable";
+import Column from "primevue/column";
+import Button from "primevue/button";
+import axios from "axios";
 
 export default {
   name: "Table",
   props: {
     rows: Array,
   },
-  setup(props) {
+  components: {
+    DataTable,
+    Column,
+    Button,
+    DeleteDialog,
+  },
+  setup(props, { emit }) {
     const totalCost = computed(() => {
       var total = 0;
       for (var i = 0; i < props.rows.length; i++) {
@@ -257,12 +125,49 @@ export default {
         return 0;
       }
     });
-    // const deleteRow = computed(() => {
-    //   console.log("I was clicked")
-    //   console.log(props.rows.length)
-    //   return 0;
-    // })
-    return { filters, totalCost, macbookpros, azuremonth };
+    const rowToDelete = ref({});
+    const deleteRowDialog = ref(false);
+    const confirmDeleteRow = (rowData) => {
+      rowToDelete.value = rowData;
+      // console.log(deleteRowDialog.value);
+      deleteRowDialog.value = true;
+    };
+    // Send an API call to delete the previously marked row from the database
+    function deleteConfirmed() {
+      // console.log("Row To Delete: ", rowToDelete.value.meetingId);
+      axios
+        .delete("/meetings/" + rowToDelete.value.meetingId)
+        .then(function (response) {
+          emit("fetchTableAfterDelete");
+          deleteRowDialog.value = false;
+        })
+        .catch(function (error) {
+          console.log("Delete Error: ", error);
+        });
+    }
+    return {
+      filters,
+      totalCost,
+      macbookpros,
+      azuremonth,
+      confirmDeleteRow,
+      deleteConfirmed,
+      rowToDelete,
+      deleteRowDialog,
+    };
   },
 };
 </script>
+<style>
+@import "primevue/resources/themes/saga-blue/theme.css";
+@import "primevue/resources/primevue.min.css";
+@import "primeicons/primeicons.css";
+
+.pi-refresh,
+.pi-cloud {
+  display: none;
+}
+.p-paginator-current {
+  padding-bottom: 5px;
+}
+</style>

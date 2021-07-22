@@ -4,9 +4,7 @@
       class="font-sans flex flex-row justify-start text-center sm:flex-row sm:text-left sm:justify-start bg-rrblue-800 w-h h-16 leading-16"
     >
       <div class="mr-2 ml-6">
-        <a href="/"
-          ><img class="w-8 mt-3" src="../assets/img/monogram.jpg"
-        /></a>
+        <a href="/"><img class="w-8 mt-3" src="../assets/img/monogram.jpg"/></a>
       </div>
       <div class="h-16">
         <router-link class="" :to="{ name: 'Home2' }"
@@ -31,7 +29,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import { ref, computed, defineComponent } from "vue";
 
 export default defineComponent({

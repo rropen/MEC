@@ -6,9 +6,8 @@
         <div class="flex justify-end mr-8">
           <button
             class="
-              mr-8
-              delay-50
-              duration-100
+              delay-100
+              duration-200
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -16,7 +15,7 @@
               py-2
               px-4
               rounded-md
-              text-md
+              text-lg
               focus:outline-none
             "
             @click="PastMeetingModal = !PastMeetingModal"
@@ -45,8 +44,7 @@
             class="
               mb-6
               shadow-sm
-              focus:ring-bg-rrblue-400
-              focus:border-bg-rrblue-400
+              focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
               block
               w-30
               sm:text-sm
@@ -62,9 +60,8 @@
           <button
             v-if="employeeNumber != 0"
             class="
-              mr-8
-              delay-50
-              duration-100
+              delay-100
+              duration-200
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -72,8 +69,9 @@
               py-2
               px-4
               rounded-md
-              text-md
+              text-lg
               focus:outline-none
+              mr-8
             "
             @click="play()"
           >
@@ -82,9 +80,8 @@
           <button
             v-if="employeeNumber != 0"
             class="
-              mr-8
-              delay-50
-              duration-100
+              delay-100
+              duration-200
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -92,8 +89,9 @@
               py-2
               px-4
               rounded-md
-              text-md
+              text-lg
               focus:outline-none
+              mr-8
             "
             @click="pause()"
           >
@@ -101,8 +99,8 @@
           </button>
           <button
             class="
-              delay-50
-              duration-100
+              delay-100
+              duration-200
               bg-rrblue-400
               hover:bg-rrblue-200
               text-white
@@ -110,7 +108,7 @@
               py-2
               px-4
               rounded-md
-              text-md
+              text-lg
               focus:outline-none
             "
             @click="reset()"
@@ -239,7 +237,6 @@ export default {
     updateTable() {
       this.$refs.fetchTablefromHome.fetchTable();
     },
-    // This sends the information to the table when the submit button is clickedd
   },
 };
 </script>

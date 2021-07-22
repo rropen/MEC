@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends, Path
 from mec.database import SessionLocal
 
-
+# Create a database connection we can use
 def get_db():
     db = SessionLocal()
     try:

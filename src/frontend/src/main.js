@@ -4,6 +4,8 @@ import router from "./router";
 import VueApexCharts from "vue3-apexcharts";
 import "./index.css";
 
+//prime components
+import PrimeVue from "primevue/config";
 //axios
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8181";
@@ -17,4 +19,5 @@ createApp(App)
   .use(router)
   // .use(VGrid)
   .use(VueApexCharts)
+  .use(PrimeVue)
   .mount("#app");

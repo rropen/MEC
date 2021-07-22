@@ -14,7 +14,7 @@ class MeetingBase(BaseModel):
     date: str
     employeeNumber: int
     time: int
-    totalCost: int
+    totalCost: float 
     powerpoint: bool
     powerpointSlides: int
     comment: str
