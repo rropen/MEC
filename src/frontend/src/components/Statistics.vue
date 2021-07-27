@@ -3,6 +3,7 @@
   <div class="grid justify-items-center mb-8">
     <div class="grid grid-cols-2">
       <button
+      id="totalButton"
         class="
           mr-8
           delay-50
@@ -25,6 +26,7 @@
         Total
       </button>
       <button
+      id="daysButton"
         class="
           mr-8
           delay-50
@@ -64,6 +66,7 @@
         <dt class="text-base font-normal text-gray-900">Average Time</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
+          id="monthlyClicked"
             class="flex items-baseline text-2xl font-semibold text-indigo-600"
             v-if="monthlyClicked"
           >
@@ -121,6 +124,7 @@
             <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
           </div>
           <div
+            id="totalClicked"
             v-if="totalClicked"
             class="flex items-baseline text-2xl font-semibold text-indigo-600"
           >
@@ -196,7 +200,9 @@ import axios from "axios";
 
 export default {
   name: "Statistics",
-  props: {},
+  props: {
+    test: 0
+  },
   components: {
     ArrowSmDownIcon,
     ArrowSmUpIcon,

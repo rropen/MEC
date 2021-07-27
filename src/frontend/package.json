@@ -5,24 +5,31 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "test:unit": "vue-cli-service test:unit",
+    "commit": "cz",
     "release": "standard-version",
-    "vite": "vite",
-    "commit": "cz"
+    "test": "jest",
+    "vite": "vite"
   },
   "dependencies": {
     "@headlessui/vue": "^1.2.0",
     "@heroicons/vue": "^1.0.1",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/compiler-sfc": "^3.1.5",
     "apexcharts": "^3.26.0",
     "axios": "^0.21.1",
+    "flush-promises": "^1.0.2",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nanoid": "^3.1.23",
+    "package.json": "^2.0.1",
     "primeicons": "^4.1.0",
     "primevue": "^3.5.1",
     "vee-validate": "^4.4.4",
-    "vue": "^3.0.11",
+    "vue": "^3.1.5",
     "vue-apexcharts": "^1.6.0",
     "vue-axios": "^3.2.4",
+    "vue-cli-plugin-vue-next": "^0.1.4",
     "vue-router": "^4.0.6",
     "vue3-apexcharts": "^1.2.1",
     "yarn": "^1.22.10",
@@ -36,18 +43,22 @@
     "@tailwindcss/line-clamp": "^0.2.0",
     "@tailwindcss/typography": "^0.4.0",
     "@vitejs/plugin-vue": "^1.2.1",
-    "@vue/compiler-sfc": "^3.0.11",
+    "@vue/cli-plugin-unit-jest": "~4.5.0",
+    "@vue/test-utils": "^2.0.0-alpha.1",
     "autoprefixer": "^10.3.1",
     "commitizen": "^4.2.3",
     "cypress": "^8.0.0",
     "cz-conventional-changelog": "3.3.0",
     "husky": "^6.0.0",
+    "jest": "26.0.0",
     "postcss": "^8.3.6",
     "prettier": "^2.3.0",
     "standard-version": "^9.2.0",
     "tailwindcss": "^2.2.6",
+    "typescript": "~3.9.3",
     "vite": "^2.1.5",
-    "vue-loader": "^16.2.0"
+    "vue-jest": "^5.0.0-0",
+    "vue-loader": "^16.3.3"
   },
   "eslintConfig": {
     "root": true,
@@ -60,14 +71,14 @@
       "@vue/prettier"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "src/frontend/node_modules/cz-conventional-changelog"
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "src/frontend/node_modules/cz-conventional-changelog"
+    }
   }
 }

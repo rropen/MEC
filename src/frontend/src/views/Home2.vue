@@ -5,6 +5,7 @@
       <div class="ml-8 w-screen">
         <div class="flex justify-end mr-8">
           <button
+            id="pastMeeting"
             class="
               delay-100
               duration-200
@@ -37,6 +38,7 @@
         >
           Employees: &nbsp;
           <input
+          id="employeeNumber"
             type="text"
             name="employeeNumber"
             v-model="employeeNumber"
@@ -73,11 +75,13 @@
               focus:outline-none
               mr-8
             "
+            id="startButton"
             @click="play()"
           >
             Start
           </button>
           <button
+          id="stopButton"
             v-if="employeeNumber != 0"
             class="
               delay-100
@@ -98,6 +102,7 @@
             Stop
           </button>
           <button
+          id="clearButton"
             class="
               delay-100
               duration-200
