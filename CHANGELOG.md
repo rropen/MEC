@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.4.1](https://github.com/rropen/mec/compare/v0.4.0...v0.4.1) (2021-07-22)
+
+
+### Bug Fixes
+
+* src/frontend/Dockerfile to reduce vulnerabilities ([4de3a68](https://github.com/rropen/mec/commit/4de3a680a0d34dae81ac336daf3a0ef09cc71950))
+* **tailwindcss:** update tailwind config to repair IntelliSense error in VSCode ([85e45cf](https://github.com/rropen/mec/commit/85e45cfc631756829c2813762b96411a1bea7466))
+
 ## [0.4.0](https://github.com/rropen/mec/compare/v0.2.6...v0.4.0) (2021-07-22)
 
 

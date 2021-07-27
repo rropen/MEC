@@ -1,17 +1,9 @@
-const colors = require("tailwindcss/colors");
+const colors = require("../colors");
 
 module.exports = {
-  purge: {
-    enabled: process.env.NODE_ENV === "production",
-    content: [".public/**/*.html", "./src/**/*.vue"],
-  },
-  // future: {},
+  purge: [],
   presets: [],
   darkMode: false, // or 'media' or 'class'
-  mode: "jit",
-  important: false,
-  separator: ":",
-  plugins: [require("@tailwindcss/forms")],
   theme: {
     screens: {
       sm: "640px",
@@ -23,51 +15,6 @@ module.exports = {
     colors: {
       transparent: "transparent",
       current: "currentColor",
-
-      rrblue: {
-        200: "#4f98ff", // Light Cobalt Blue
-        400: "#006dff", // Cobalt Blue
-        600: "#271BCB", // Unlisted, but in Cobalt
-        800: "#10069f", // Rolls-Royce Blue
-      },
-      rrgrey: {
-        200: "#efeff4", // Grey 1
-        300: "#DCDBE0", // Grey ?
-        400: "#c8c7cc", // Grey 2
-        600: "#8a8a8f", // Grey 3
-        800: "#666666", // Grey 4
-        900: "#333333", //Grey5
-      },
-      rrteal: {
-        200: "#8be8df", // Extra Light Turquoise
-        400: "#00bfbd", // Light Turquoise
-        600: "#007588", // Turquoise
-        800: "#004a50", // Dark Turquoise
-      },
-      rrgreen: {
-        200: "#e5f08d", // Extra Light Green
-        400: "#c4db3e", // Light Green
-        600: "#819c00", // Green
-        800: "#034F00", // Dark Green
-      },
-      rrorange: {
-        200: "#ffb69a", // Extra Light Orange
-        400: "#ff7140", // Light Orange
-        600: "#d83f11", // Orange
-        800: "#9f0000", // Dark Orange
-      },
-      rrpink: {
-        200: "#fda7c7", // Extra Light Magenta
-        400: "#fa4692", // Light Magenta
-        600: "#e21d60", // Magenta
-        800: "#880e4f", // Dark Magenta
-      },
-      rrpurple: {
-        200: "#e2acff", // Extra Light Violet
-        400: "#c15eff", // Light Violet
-        600: "#8c2ace", // Violet
-        800: "#58009c", // Dark Violet
-      },
 
       black: colors.black,
       white: colors.white,
@@ -168,6 +115,7 @@ module.exports = {
     },
     blur: {
       0: "0",
+      none: "0",
       sm: "4px",
       DEFAULT: "8px",
       md: "12px",
@@ -300,7 +248,8 @@ module.exports = {
     },
     fontFamily: {
       sans: [
-        "RR Pioneer",
+        "ui-sans-serif",
+        "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",
         '"Segoe UI"',
@@ -313,7 +262,6 @@ module.exports = {
         '"Segoe UI Emoji"',
         '"Segoe UI Symbol"',
         '"Noto Color Emoji"',
-        "system-ui",
       ],
       serif: [
         "ui-serif",
@@ -567,7 +515,6 @@ module.exports = {
       8: "2rem",
       9: "2.25rem",
       10: "2.5rem",
-      16: "4rem",
     },
     listStyleType: {
       none: "none",
@@ -879,6 +826,8 @@ module.exports = {
     "even",
     "visited",
     "checked",
+    "empty",
+    "read-only",
     "group-hover",
     "group-focus",
     "focus-within",
@@ -1081,4 +1030,5 @@ module.exports = {
     wordBreak: ["responsive"],
     zIndex: ["responsive", "focus-within", "focus"],
   },
+  plugins: [],
 };
