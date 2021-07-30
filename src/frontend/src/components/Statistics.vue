@@ -74,6 +74,7 @@
             <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
           </div>
           <div
+          id="totalClicked"
             v-if="totalClicked"
             class="flex items-baseline text-2xl font-semibold text-indigo-600"
           >
@@ -124,7 +125,6 @@
             <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
           </div>
           <div
-            id="totalClicked"
             v-if="totalClicked"
             class="flex items-baseline text-2xl font-semibold text-indigo-600"
           >

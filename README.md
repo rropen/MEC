@@ -122,3 +122,11 @@ pdm install
 To run the project just run `pdm run uvicorn main:app --workers 4 --host 0.0.0.0 --port 8181 --reload`
 
 Your backend container should be running at `http://localhost:8181/docs` on your local machine.
+
+### Integration Testing
+
+To use the integration testing, run the app at localhost:3000 with "yarn vite" then run "yarn run cypress open"
+
+### Component Testing
+
+To run the components testing run "yarn cypress open-ct"
