@@ -125,8 +125,9 @@ Your backend container should be running at `http://localhost:8181/docs` on your
 
 ### Integration Testing
 
-To use the integration testing, run the app at localhost:3000 with "yarn vite" then run "yarn run cypress open"
+To use the integration testing, run the app at localhost:3000 with `yarn vite` then run `yarn run cypress open`
 
 ### Component Testing
 
-To run the components testing run "yarn cypress open-ct"
+To run the components testing run:
+`yarn cypress open-ct`
