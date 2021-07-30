@@ -1,0 +1,15 @@
+import {mount, shallowMount} from '@cypress/vue';
+import Header from '@/components/Header'; 
+import "../index.css";
+
+describe('Meeting Statistics', () => {
+    
+    it('Header is visible', () => {
+        mount(Header)
+        cy.get('.flex').should("be.visible")
+    })
+    it('Logo is visible', () => {
+        mount(Header)
+        cy.get('.w-8').should("be.visible")
+    })
+})
