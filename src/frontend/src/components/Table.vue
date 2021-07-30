@@ -170,4 +170,11 @@ export default {
 .p-paginator-current {
   padding-bottom: 5px;
 }
+
+.p-button.p-button-danger,
+.p-buttonset.p-button-danger > .p-button,
+.p-splitbutton.p-button-danger > .p-button {
+  background: #e21d60 !important;
+  border: 1px solid #e21d60 !important;
+}
 </style>
