@@ -18,12 +18,13 @@ router = APIRouter()
 
 
 @router.get("/")
-def get_meetings(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+def get_meetings(skip: int = 2, limit: int = 100, db: Session = Depends(get_db)):
     """
     ## Get Meetings
 
     Get a list of all the meetings stored in the database
     """
+    print(skip)
     meetings = crud.get_all(db, skip=skip, limit=limit)
     if not meetings:
         raise HTTPException(status_code=404, detail="Meetings not found")

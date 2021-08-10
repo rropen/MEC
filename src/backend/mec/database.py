@@ -18,9 +18,10 @@ import os
 # SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://' + SQL_USER_NAME + '@' + SQL_SERVER + ':' + SQL_PASSWORD + '@' + SQL_SERVER + ':1433/' + SQL_DATABASE + '?driver=ODBC+Driver+17+for+SQL+Server'
 # SQLALCHEMY_TRACK_MODIFICATIONS = False
 
-# DATABASE_URL = "sqlite:///./meetings.db"
-print("Database Url: {}".format(os.getenv("DATABASE_URL")))
-DATABASE_URL = os.getenv("DATABASE_URL")
+DATABASE_URL = "sqlite:///./meetings.db"
+# print("Database Url: {}".format(os.getenv("DATABASE_URL")))
+DATABASE_URL = os.getenv("DATABASE_URL",'sqlite:///./meetings.db')
+print(DATABASE_URL)
 assert DATABASE_URL != ""
 
 # check_same_thread = false only works in sqlite, not postgres or others
