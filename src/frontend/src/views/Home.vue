@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Statistics />
+    <Statistics :rows="rows" />
     <div @keyup.esc="PastMeetingModal = false" class="flex">
       <div class="ml-8 w-screen">
         <div class="flex justify-end mr-8">
@@ -141,7 +141,6 @@
         </div>
       </div>
     </div>
-
     <!-- This is the Table rendered in the home page -->
     <!-- <Lower
       class="mt-4"
