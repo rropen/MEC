@@ -1,6 +1,9 @@
 from mec.models import Meeting
 from sqlalchemy.orm import Session
 
+DEFAULT_VALUE = 'hello'
+def bar(text=DEFAULT_VALUE):
+    print(text)
 
 def get_all(db: Session, skip: int = 0, limit: int = 25):
     """Get all the meetings and return the them."""
