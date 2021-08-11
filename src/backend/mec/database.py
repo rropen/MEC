@@ -20,7 +20,7 @@ import os
 
 DATABASE_URL = "sqlite:///./meetings.db"
 # print("Database Url: {}".format(os.getenv("DATABASE_URL")))
-DATABASE_URL = os.getenv("DATABASE_URL",'sqlite:///./meetings.db')
+DATABASE_URL = os.getenv("DATABASE_URL", "sqlite:///./meetings.db")
 print(DATABASE_URL)
 assert DATABASE_URL != ""
 

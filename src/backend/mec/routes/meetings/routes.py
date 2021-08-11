@@ -4,6 +4,7 @@ from typing import List
 from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends, Path
 from mec.database import SessionLocal
+from icecream import ic
 
 # Create a database connection we can use
 def get_db():
@@ -24,7 +25,6 @@ def get_meetings(skip: int = 2, limit: int = 100, db: Session = Depends(get_db))
 
     Get a list of all the meetings stored in the database
     """
-    print(skip)
     meetings = crud.get_all(db, skip=skip, limit=limit)
     if not meetings:
         raise HTTPException(status_code=404, detail="Meetings not found")
@@ -32,16 +32,16 @@ def get_meetings(skip: int = 2, limit: int = 100, db: Session = Depends(get_db))
     for meeting in meetings:
         response_object.append(
             {
-                "id": meeting.id,
-                "meetingId": meeting.meetingId,
-                "date": meeting.date,
-                "employeeNumber": meeting.employeeNumber,
-                "time": meeting.time,
-                "totalCost": meeting.totalCost,
-                "powerpoint": meeting.powerpoint,
-                "powerpointSlides": meeting.powerpointSlides,
-                "comment": meeting.comment,
-                "title": meeting.title,
+                "id": meeting["id"],
+                "meetingId": meeting["meetingId"],
+                "date": meeting["date"],
+                "employeeNumber": meeting["employeeNumber"],
+                "time": meeting["time"],
+                "totalCost": meeting["totalCost"],
+                "powerpoint": meeting["powerpoint"],
+                "powerpointSlides": meeting["powerpointSlides"],
+                "comment": meeting["comment"],
+                "title": meeting["title"],
             }
         )
     return response_object
