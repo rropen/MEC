@@ -73,7 +73,6 @@ def test_get_meetings(test_app, monkeypatch):
 #         "title": "string",
 #     }
 
-
 #     async def mock_post(db):
 #         return 1
 
