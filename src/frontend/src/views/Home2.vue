@@ -38,7 +38,7 @@
         >
           Employees: &nbsp;
           <input
-          id="employeeNumber"
+            id="employeeNumber"
             type="text"
             name="employeeNumber"
             v-model="employeeNumber"
@@ -46,7 +46,8 @@
             class="
               mb-6
               shadow-sm
-              focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+              focus:ring-bg-rrblue-400
+              focus:border-bg-rrblue-400
               block
               w-30
               sm:text-sm
@@ -81,7 +82,7 @@
             Start
           </button>
           <button
-          id="stopButton"
+            id="stopButton"
             v-if="employeeNumber != 0"
             class="
               delay-100
@@ -102,7 +103,7 @@
             Stop
           </button>
           <button
-          id="clearButton"
+            id="clearButton"
             class="
               delay-100
               duration-200

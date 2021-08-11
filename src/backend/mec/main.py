@@ -16,8 +16,8 @@ if os.environ.get("ENV") == "Local":
     ui_url = "http://localhost:3000"
 
 # allow override
-if os.environ.get("UI_URL"):
-    ui_url = os.environ.get("UI_URL")
+if os.environ.get("UI_URL", "http://localhost:3000"):
+    ui_url = os.environ.get("UI_URL", "http://localhost:3000")
 
 # throw an error if URL is unset.
 assert ui_url != ""

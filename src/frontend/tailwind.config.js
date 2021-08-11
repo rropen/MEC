@@ -8,7 +8,7 @@ module.exports = {
   // future: {},
   presets: [],
   darkMode: false, // or 'media' or 'class'
-  mode: "jit",
+  // mode: "jit",
   important: false,
   separator: ":",
   plugins: [require("@tailwindcss/forms")],
