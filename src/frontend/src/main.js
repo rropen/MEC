@@ -1,7 +1,6 @@
 import { createApp } from "vue";
 import App from "./App.vue";
 import router from "./router";
-import VueApexCharts from "vue3-apexcharts";
 import "./index.css";
 
 //prime components
@@ -18,6 +17,5 @@ createApp(App)
   // .use($)
   .use(router)
   // .use(VGrid)
-  .use(VueApexCharts)
   .use(PrimeVue)
   .mount("#app");
