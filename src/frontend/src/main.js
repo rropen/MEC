@@ -9,7 +9,6 @@ import PrimeVue from "primevue/config";
 import axios from "axios";
 axios.defaults.baseURL = "http://localhost:8181";
 // axios.defaults.baseURL = process.env.VUE_APP_API_URL;
-// import $ from "jquery";
 
 // import store from './store'
 createApp(App)

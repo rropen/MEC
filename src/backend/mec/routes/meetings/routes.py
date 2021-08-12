@@ -18,7 +18,7 @@ def get_db():
 router = APIRouter()
 
 
-@router.get("/")
+@router.get("/", response_model=List[Meeting])
 def get_meetings(skip: int = 2, limit: int = 100, db: Session = Depends(get_db)):
     """
     ## Get Meetings
@@ -28,23 +28,7 @@ def get_meetings(skip: int = 2, limit: int = 100, db: Session = Depends(get_db))
     meetings = crud.get_all(db, skip=skip, limit=limit)
     if not meetings:
         raise HTTPException(status_code=404, detail="Meetings not found")
-    response_object = []
-    for meeting in meetings:
-        response_object.append(
-            {
-                "id": meeting["id"],
-                "meetingId": meeting["meetingId"],
-                "date": meeting["date"],
-                "employeeNumber": meeting["employeeNumber"],
-                "time": meeting["time"],
-                "totalCost": meeting["totalCost"],
-                "powerpoint": meeting["powerpoint"],
-                "powerpointSlides": meeting["powerpointSlides"],
-                "comment": meeting["comment"],
-                "title": meeting["title"],
-            }
-        )
-    return response_object
+    return meetings
 
 
 @router.post("/")

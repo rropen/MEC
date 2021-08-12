@@ -32,7 +32,11 @@ RUN apt-get update \
     && apt-get -y install unixodbc unixodbc-dev apt-utils netcat gunicorn libpq-dev python3-dev gcc libpq-dev build-essential vim \
     && apt-get autoremove -y \
     && apt-get clean all
-COPY requirements.txt .
 RUN pip install --upgrade pip setuptools wheel
+# WORKDIR /app
+COPY requirements.txt .
+# COPY pyproject.toml .
+# COPY pdm.lock .
 RUN pip install -r requirements.txt
+# RUN pdm install --prod
 # COPY . /app

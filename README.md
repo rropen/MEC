@@ -64,14 +64,53 @@ yarn vite # crazy fast development mode - app available at http://localhost:3000
 yarn build
 ```
 
-### Integration Testing
+### End-To-End Testing
 
-To use the integration testing, run the app at localhost:3000 with `yarn vite` then run `yarn run cypress open`
+You can run the E2E tests in one of two ways:
+
+**In a Terminal**
+
+``` bash
+# navigate to the frontend folder
+cd /src/frontend
+
+# run the command
+yarn cy
+```
+
+**Interactively in a Browser**
+
+``` bash
+# navigate to the frontend folder
+cd /src/frontend
+
+# run the command
+yarn cy-open
+```
 
 ### Component Testing
 
-To run the components testing run:
-`yarn cypress open-ct`
+You can run the component tests in one of two ways:
+
+**In a Terminal**
+
+``` bash
+# navigate to the frontend folder
+cd /src/frontend
+
+# run the command
+yarn cy-ct
+```
+
+**Interactively in a Browser**
+
+``` bash
+# navigate to the frontend folder
+cd /src/frontend
+
+# run the command
+yarn cy-open-ct
+```
 
 ## Backend
 
@@ -115,7 +154,9 @@ exit
 
 ### Run Locally
 
-If you want to install the dependencies and run the backend project locally for some reason, use [pdm](https://pdm.fming.dev/usage/project.html).
+If you want to install the dependencies and run the backend project locally for some reason, use [pdm](https://pdm.fming.dev/usage/project.html).  PDM uses the `pyproject.toml` file to store the project requirements instead of the `requirements.txt` like most people are used to.  It's actually a much nicer system that lets you avoid the virtual environment messes of the past.  But it's a bit different and can take some getting used to.
+
+>You'll need python 3.8 or higher installed on your machine to use the packages as specified.
 
 ``` bash
 # verify you have pdm installed
