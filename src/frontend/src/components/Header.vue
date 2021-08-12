@@ -1,15 +1,35 @@
 <template>
   <div class="wrapper">
     <nav
-      class="font-sans flex flex-row justify-start text-center sm:flex-row sm:text-left sm:justify-start bg-rrblue-800 w-h h-16 leading-16"
+      class="
+        font-sans
+        flex flex-row
+        justify-start
+        text-center
+        sm:flex-row sm:text-left sm:justify-start
+        bg-rrblue-800
+        w-h
+        h-16
+        leading-16
+      "
     >
       <div class="mr-2 ml-6">
-        <a href="/"><img class="w-8 mt-3" src="../assets/img/monogram.jpg"/></a>
+        <a href="/"
+          ><img class="w-8 mt-3" src="../assets/img/monogram.jpg"
+        /></a>
       </div>
       <div class="h-16">
-        <router-link class="" :to="{ name: 'Home2' }"
+        <router-link class="" :to="{ name: 'Home' }"
           ><div
-            class="text-xl leading-16 no-underline text-white hover:text-white mr-6 font-sans"
+            class="
+              text-xl
+              leading-16
+              no-underline
+              text-white
+              hover:text-white
+              mr-6
+              font-sans
+            "
           >
             <span class="text-rrpink-400" v-if="env == 'development'">dev</span
             >Meeting Efficiency Calculator
@@ -19,7 +39,15 @@
       <div class="h-16">
         <router-link :to="{ name: 'About' }"
           ><div
-            class="h-full w-auto px-6 inline-block no-underline text-white hover:text-white hover:bg-rrblue-400"
+            class="
+              h-full
+              w-auto
+              px-6
+              inline-block
+              no-underline
+              text-white
+              hover:text-white hover:bg-rrblue-400
+            "
           >
             About
           </div></router-link
@@ -30,17 +58,15 @@
 </template>
 
 <script>
-import { ref, computed, defineComponent } from "vue";
+import { ref, defineComponent } from "vue";
 
 export default defineComponent({
   name: "Header",
   components: {},
   setup() {
-    const showUserDropdown = ref(false);
     const env = process.env.VUE_APP_ENV;
 
     return {
-      showUserDropdown,
       env,
     };
   },

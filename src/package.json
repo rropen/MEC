@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "@types/jest": "^26.0.24",
-    "apexcharts": "^3.27.1"
-  }
-}

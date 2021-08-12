@@ -3,7 +3,7 @@
   <div class="grid justify-items-center mb-8">
     <div class="grid grid-cols-2">
       <button
-      id="totalButton"
+        id="totalButton"
         class="
           mr-8
           delay-50
@@ -26,7 +26,7 @@
         Total
       </button>
       <button
-      id="daysButton"
+        id="daysButton"
         class="
           mr-8
           delay-50
@@ -66,7 +66,7 @@
         <dt class="text-base font-normal text-gray-900">Average Time</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
-          id="monthlyClicked"
+            id="monthlyClicked"
             class="flex items-baseline text-2xl font-semibold text-indigo-600"
             v-if="monthlyClicked"
           >
@@ -74,7 +74,7 @@
             <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
           </div>
           <div
-          id="totalClicked"
+            id="totalClicked"
             v-if="totalClicked"
             class="flex items-baseline text-2xl font-semibold text-indigo-600"
           >
@@ -195,13 +195,13 @@
 
 <script>
 import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/vue/solid";
-import { ref, onMounted } from "vue";
+import { ref, onMounted, watchEffect } from "vue";
 import axios from "axios";
 
 export default {
   name: "Statistics",
   props: {
-    test: 0
+    rows: Array,
   },
   components: {
     ArrowSmDownIcon,
@@ -209,7 +209,7 @@ export default {
   },
 
   setup(props, context) {
-    let rows = ref([]);
+    // let rows = ref([]);
     const totalCost = ref(0);
     const totalTime = ref(0);
     const totalPowerpointSlides = ref(0);
@@ -233,73 +233,45 @@ export default {
     // If monthly or total is monthlyClicked,
     let monthlyClicked = ref(false);
     let totalClicked = ref(true);
+    // const totalCost = computed(() => {});
+    let n = 0;
+    let monthlyMeetingAmount = 0;
+    const currentTime = Math.floor(new Date().getTime() / 1000.0);
+    // const thirtyDaysAgo = currentTime - 2629743;
+    watchEffect(() => {
+      while (n < props.rows.length) {
+        console.log("Rows being watched: ", props.rows);
+        meetingTime = props.rows[n]["date"] / 1000;
+        // If the date of the meeting is less than 30 days from today then count it towards monthly Value
 
-    // Fetch table data from the API
-    function fetchTable() {
-      axios
-        .get("/meetings")
-        .then(function (response) {
-          // console.log("fetching from stats");
-          let data = response.data;
-          rows.value = data;
-          // console.log("Rows before fetch: ", rows.value);
-          // rows.push(response.data);
-          // console.log("response: ", response.data);
-          // console.log("rows: ", rows);
+        if (meetingTime > currentTime - 2629743) {
+          totalMonthlyCost.value =
+            props.rows[n]["totalCost"] + totalMonthlyCost.value;
+          totalMonthlyTime.value =
+            props.rows[n]["time"] + totalMonthlyTime.value;
+          totalMonthlyPowerpointSlides.value =
+            props.rows[n]["powerpointSlides"] +
+            totalMonthlyPowerpointSlides.value;
 
-          // Im not sure how to do this better but their is a way.
-          //This below pulls the information from the API and puts calculates
-          //the statistics on it
-          let n = 0;
-          let meetingAmount = response.data.length;
-          let monthlyMeetingAmount = 0;
-          // Gets current Date
-          const currentTime = Math.floor(new Date().getTime() / 1000.0);
-          // Date 30 days ago
-          const thirtyDaysAgo = currentTime - 2629743;
-
-          while (n < meetingAmount) {
-            meetingTime = response.data[n]["date"] / 1000;
-            // If the date of the meeting is less than 30 days from today then count it towards monthly Value
-
-            if (meetingTime > thirtyDaysAgo) {
-              totalMonthlyCost.value =
-                response.data[n]["totalCost"] + totalMonthlyCost.value;
-              totalMonthlyTime.value =
-                response.data[n]["time"] + totalMonthlyTime.value;
-              totalMonthlyPowerpointSlides.value =
-                response.data[n]["powerpointSlides"] +
-                totalMonthlyPowerpointSlides.value;
-
-              meetingAmount = response.data.length;
-              averageMonthlyTime.value =
-                totalMonthlyTime.value / monthlyMeetingAmount;
-              averageMonthlyCost.value =
-                totalMonthlyCost.value / monthlyMeetingAmount;
-              // console.log(averageMonthlyTime.value);
-            }
-            // Else count it towards older value and add the monthly value to the total
-            totalCost.value = response.data[n]["totalCost"] + totalCost.value;
-            totalTime.value = response.data[n]["time"] + totalTime.value;
-            totalPowerpointSlides.value =
-              response.data[n]["powerpointSlides"] +
-              totalPowerpointSlides.value;
-            averageTime.value = totalTime.value / meetingAmount;
-            averageCost.value = totalCost.value / meetingAmount;
-            monthlyMeetingAmount++;
-            n++;
-          }
-        })
-        .catch(function (error) {
-          console.log("Get Error: ", error);
-        });
-    }
-    onMounted(() => {
-      fetchTable();
+          // meetingAmount = props.rows.length;
+          averageMonthlyTime.value =
+            totalMonthlyTime.value / monthlyMeetingAmount;
+          averageMonthlyCost.value =
+            totalMonthlyCost.value / monthlyMeetingAmount;
+        }
+        // Else count it towards older value and add the monthly value to the total
+        totalCost.value = props.rows[n]["totalCost"] + totalCost.value;
+        totalTime.value = props.rows[n]["time"] + totalTime.value;
+        totalPowerpointSlides.value =
+          props.rows[n]["powerpointSlides"] + totalPowerpointSlides.value;
+        averageTime.value = totalTime.value / props.rows.length;
+        averageCost.value = totalCost.value / props.rows.length;
+        monthlyMeetingAmount++;
+        n++;
+      }
     });
+
     return {
-      fetchTable,
-      rows,
       totalCost,
       totalTime,
       totalPowerpointSlides,

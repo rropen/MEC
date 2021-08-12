@@ -144,3 +144,5 @@ yarn.lock
 .dccache
 src/backend/.coverage
 src/backend/tests/.coverage
+
+screenshots/

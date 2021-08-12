@@ -102,6 +102,7 @@ export default {
     DeleteDialog,
   },
   setup(props, { emit }) {
+    console.log("rows at load: ", props.rows);
     const totalCost = computed(() => {
       var total = 0;
       for (var i = 0; i < props.rows.length; i++) {
@@ -169,5 +170,12 @@ export default {
 }
 .p-paginator-current {
   padding-bottom: 5px;
+}
+
+.p-button.p-button-danger,
+.p-buttonset.p-button-danger > .p-button,
+.p-splitbutton.p-button-danger > .p-button {
+  background: #e21d60 !important;
+  border: 1px solid #e21d60 !important;
 }
 </style>
