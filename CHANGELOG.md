@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.5.0](https://github.com/rropen/mec/compare/v0.3.1...v0.5.0) (2021-08-12)
+
+
+### ⚠ BREAKING CHANGES
+
+* **vite, cypress:** A number of changes
+
+### Features
+
+* **vite, cypress:** remove vue-cli, add vite, refactor cypress for testing ([1325ad6](https://github.com/rropen/mec/commit/1325ad6c9769a31bbdffc9955febcceb1fff2d18)), closes [#20](https://github.com/rropen/mec/issues/20)
+
 ### [0.4.1](https://github.com/rropen/mec/compare/v0.4.0...v0.4.1) (2021-07-22)
 
 
