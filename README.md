@@ -45,6 +45,7 @@ yarn commit  # interactive commit messages
 The following are good examples of commit messages:
 
 `style(footer): remove blue border surrounding the right side text box`
+
 `refactor(button props): change the button props to allow a text value to be passed in`
 
 ### Changelog Update
