@@ -1,6 +1,6 @@
 {
   "name": "meeting_efficiency_calculator",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "scripts": {
     "vite": "vite"
@@ -8,15 +8,23 @@
   "dependencies": {
     "@headlessui/vue": "^1.2.0",
     "@heroicons/vue": "^1.0.1",
+    "@vue/cli-plugin-babel": "^4.5.13",
+    "@vue/compiler-sfc": "^3.1.5",
     "apexcharts": "^3.26.0",
+    "autoprefixer": "^9",
     "axios": "^0.21.1",
+    "flush-promises": "^1.0.2",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",
     "nanoid": "^3.1.23",
+    "node-sass": "^6.0.1",
+    "package.json": "^2.0.1",
+    "postcss": "^7",
     "primeicons": "^4.1.0",
     "primevue": "^3.5.1",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "vee-validate": "^4.4.4",
-    "vue": "^3.0.11",
+    "vue": "^3.1.5",
     "vue-apexcharts": "^1.6.0",
     "vue-axios": "^3.2.4",
     "vue-router": "^4.0.6",
@@ -24,6 +32,8 @@
     "yup": "^0.32.9"
   },
   "devDependencies": {
+    "@cypress/vue": "^3.0.0-beta.4",
+    "@cypress/webpack-dev-server": "^1.4.0",
     "@tailwindcss/aspect-ratio": "^0.2.0",
     "@tailwindcss/forms": "^0.3.3",
     "@tailwindcss/line-clamp": "^0.2.0",
@@ -35,8 +45,9 @@
     "postcss": "^8.2.10",
     "prettier": "^2.3.0",
     "tailwindcss": "^2.1.1",
+    "typescript": "~3.9.3",
     "vite": "^2.1.5",
-    "vue-loader": "^16.2.0"
+    "vue-loader": "^16.3.3"
   },
   "eslintConfig": {
     "root": true,
@@ -49,14 +60,14 @@
       "@vue/prettier"
     ]
   },
-  "config": {
-    "commitizen": {
-      "path": "src/frontend/node_modules/cz-conventional-changelog"
-    }
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "config": {
+    "commitizen": {
+      "path": "src/frontend/node_modules/cz-conventional-changelog"
+    }
   }
 }

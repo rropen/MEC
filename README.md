@@ -64,6 +64,15 @@ yarn vite # crazy fast development mode - app available at http://localhost:3000
 yarn build
 ```
 
+### Integration Testing
+
+To use the integration testing, run the app at localhost:3000 with `yarn vite` then run `yarn run cypress open`
+
+### Component Testing
+
+To run the components testing run:
+`yarn cypress open-ct`
+
 ## Backend
 
 For local development, the backend should be run in docker.  You'll need to do one step before building the container.
@@ -122,3 +131,19 @@ pdm install
 To run the project just run `pdm run uvicorn main:app --workers 4 --host 0.0.0.0 --port 8181 --reload`
 
 Your backend container should be running at `http://localhost:8181/docs` on your local machine.
+
+### Unit Testing
+
+To run the backend unit tests:
+
+``` bash
+# Move to the tests directory
+cd src/backend/tests
+
+# Run pytest
+pdm run pytest
+```
+
+Note: The command line options for pytest are configured in the `pytest.ini` file so you don't need to add them when running the command.
+
+Code coverage will be displayed if all tests pass.
