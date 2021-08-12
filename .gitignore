@@ -142,3 +142,5 @@ pnpm-debug.log*
 *.sw?
 yarn.lock
 .dccache
+src/backend/.coverage
+src/backend/tests/.coverage
