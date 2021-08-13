@@ -1,6 +1,6 @@
 {
   "name": "meeting_efficiency_calculator",
-  "version": "0.5.1",
+  "version": "0.5.3",
   "scripts": {
     "release": "standard-version",
     "commit": "cz",
