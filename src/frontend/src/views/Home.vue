@@ -44,7 +44,8 @@
             class="
               mb-6
               shadow-sm
-              focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+              focus:ring-bg-rrblue-400
+              focus:border-bg-rrblue-400
               block
               w-30
               sm:text-sm
@@ -163,7 +164,8 @@
                 class="
                   mb-6
                   shadow-sm
-                  focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+                  focus:ring-bg-rrblue-400
+                  focus:border-bg-rrblue-400
                   block
                   w-full
                   sm:text-sm
@@ -187,7 +189,8 @@
                 class="
                   mb-6
                   shadow-sm
-                  focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+                  focus:ring-bg-rrblue-400
+                  focus:border-bg-rrblue-400
                   block
                   w-full
                   sm:text-sm
@@ -222,7 +225,8 @@
                 class="
                   mb-6
                   shadow-sm
-                  focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
+                  focus:ring-bg-rrblue-400
+                  focus:border-bg-rrblue-400
                   block
                   w-full
                   sm:text-sm

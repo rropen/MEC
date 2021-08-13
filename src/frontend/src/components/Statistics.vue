@@ -5,18 +5,19 @@
       <button
         id="totalButton"
         class="
-          mr-8
-          delay-50
-          duration-100
-          bg-rrblue-400
-          hover:bg-rrblue-200
-          text-white
-          font-semibold
+          relative
+          inline-flex
+          items-center
+          px-12
           py-2
-          w-32
-          rounded-md
+          rounded-l-md
+          border border-gray-300
+          bg-rrblue-400
           text-md
-          focus:outline-none
+          font-medium
+          text-white text-center
+          hover:bg-rrblue-200
+          text-center
         "
         @click="
           totalClicked = true;
@@ -28,18 +29,19 @@
       <button
         id="daysButton"
         class="
-          mr-8
-          delay-50
-          duration-100
-          bg-rrblue-400
-          hover:bg-rrblue-200
-          text-white
-          font-semibold
+          -ml-px
+          relative
+          inline-flex
+          items-center
+          px-4
           py-2
-          rounded-md
+          rounded-r-md
+          border border-gray-300
+          bg-rrblue-400
           text-md
-          focus:outline-none
-          w-32
+          font-medium
+          text-white
+          hover:bg-rrblue-200
         "
         @click="
           monthlyClicked = true;
@@ -58,7 +60,8 @@
         overflow-hidden
         shadow
         divide-y divide-gray-200
-        md:grid-cols-5 md:divide-y-0 md:divide-x
+        md:grid-cols-5
+        md:divide-y-0 md:divide-x
       "
     >
       <!-- These are the 5 stat cards -->
