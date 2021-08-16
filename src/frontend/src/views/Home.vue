@@ -276,6 +276,7 @@ import PastMeetingForm from "../components/PastMeetingForm.vue";
 import Statistics from "../components/Statistics.vue";
 import Toggle from "../components/Toggle.vue";
 import Table from "../components/Table.vue";
+import { nanoid } from "nanoid";
 
 export default {
   name: "Home",
@@ -340,7 +341,7 @@ export default {
         time: parseInt(props.minutes),
         powerpoint: powerpoint.value,
         powerpointSlides: parseInt(numSlides.value),
-        totalCost: parseFloat(props.cost.toFixed(2)),
+        totalCost: parseFloat(this.costCalc.toFixed(2)),
         comment: comment.value,
         title: title.value,
       };

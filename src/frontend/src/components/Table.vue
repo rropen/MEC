@@ -102,7 +102,7 @@ export default {
     DeleteDialog,
   },
   setup(props, { emit }) {
-    console.log("rows at load: ", props.rows);
+    // console.log("rows at load: ", props.rows);
     const totalCost = computed(() => {
       var total = 0;
       for (var i = 0; i < props.rows.length; i++) {

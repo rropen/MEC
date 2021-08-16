@@ -243,7 +243,7 @@ export default {
     // const thirtyDaysAgo = currentTime - 2629743;
     watchEffect(() => {
       while (n < props.rows.length) {
-        console.log("Rows being watched: ", props.rows);
+        // console.log("Rows being watched: ", props.rows);
         meetingTime = props.rows[n]["date"] / 1000;
         // If the date of the meeting is less than 30 days from today then count it towards monthly Value
 
