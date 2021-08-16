@@ -1,11 +1,12 @@
 <template>
-  <label for="DropDown" class="block text-md font-medium text-gray-700 mr-6">
-    <Menu
-      name="DropDown"
-      as="div"
-      class="pt-6 relative inline-block text-left"
-      v-model="DropDown"
-    >
+  <Menu
+    name="DropDown"
+    as="div"
+    class="relative inline-block text-left"
+    v-model="DropDown"
+  >
+    <label for="DropDown" class="block text-md font-medium text-gray-700 mr-6"
+      >Purpose:
       <div>
         <MenuButton
           class="
@@ -14,7 +15,7 @@
             w-full
             rounded-md
             border border-gray-300
-            px-4
+            px-6
             py-2
             bg-white
             text-sm
@@ -23,7 +24,7 @@
             hover:bg-gray-50
           "
         >
-          Meeting Purpose
+          {{ this.MeetingPurpose }}
           <ChevronDownIcon class="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
         </MenuButton>
       </div>
@@ -51,7 +52,10 @@
           "
         >
           <div class="py-1">
-            <MenuItem v-slot="{ active }">
+            <MenuItem
+              @click="this.MeetingPurpose = `Decision`"
+              v-slot="{ active }"
+            >
               <a
                 href="#"
                 :class="[
@@ -61,7 +65,10 @@
                 >Decision</a
               >
             </MenuItem>
-            <MenuItem v-slot="{ active }">
+            <MenuItem
+              @click="this.MeetingPurpose = `Informative`"
+              v-slot="{ active }"
+            >
               <a
                 href="#"
                 :class="[
@@ -71,7 +78,10 @@
                 >Informative</a
               >
             </MenuItem>
-            <MenuItem v-slot="{ active }">
+            <MenuItem
+              @click="this.MeetingPurpose = `Course Of Action`"
+              v-slot="{ active }"
+            >
               <a
                 href="#"
                 :class="[
@@ -84,13 +94,14 @@
           </div>
         </MenuItems>
       </transition>
-    </Menu>
-  </label>
+    </label>
+  </Menu>
 </template>
 
 <script>
 import { Menu, MenuButton, MenuItem, MenuItems } from "@headlessui/vue";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
+import { ref } from "vue";
 
 export default {
   name: "DropDown",
@@ -100,6 +111,12 @@ export default {
     MenuItem,
     MenuItems,
     ChevronDownIcon,
+  },
+  setup(props) {
+    let MeetingPurpose = ref("Meeting Purpose");
+    return {
+      MeetingPurpose,
+    };
   },
 };
 </script>

@@ -229,6 +229,7 @@
         Submit
       </button>
     </div>
+    <!-- <my-button v-on:click="handleClick">Test</my-button> -->
 
     <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable()" />
   </div>
