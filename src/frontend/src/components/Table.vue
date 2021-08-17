@@ -36,7 +36,12 @@
     >
       <Column field="meetingId" header="Meeting ID" :hidden="true"></Column>
       <Column field="title" header="Title"></Column>
-      <Column field="comment" header="Comment"></Column>
+      <Column
+        field="meetingDesignation"
+        header="Meeting Designation"
+        :sortable="true"
+      ></Column>
+
       <Column field="date" header="Date" :sortable="true">
         <template #body="slotProps">
           {{ filters.formatDate(slotProps.data.date) }}
@@ -48,12 +53,12 @@
         :sortable="true"
       ></Column>
       <Column field="time" header="Minutes" :sortable="true"></Column>
-      <Column field="powerpoint" header="PowerPoint" :sortable="true"></Column>
       <Column
         field="powerpointSlides"
         header="# Slides"
         :sortable="true"
       ></Column>
+      <Column field="comment" header="Comment"></Column>
       <Column field="totalCost" header="Cost" :sortable="true">
         <template #body="slotProps">
           ${{ slotProps.data.totalCost.toFixed(2) }}

@@ -276,6 +276,7 @@ import PastMeetingForm from "../components/PastMeetingForm.vue";
 import Statistics from "../components/Statistics.vue";
 import Toggle from "../components/Toggle.vue";
 import Table from "../components/Table.vue";
+import { nanoid } from "nanoid";
 
 export default {
   name: "Home",

@@ -84,12 +84,6 @@
             {{ averageTime.toFixed(1) }}
             <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
           </div>
-          <!-- <div :class="[changeType === 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800', 'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0']">
-            <ArrowSmUpIcon v-if="changeType === 0 " class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" aria-hidden="true" />
-            <ArrowSmDownIcon v-else class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" aria-hidden="true" />
-            <span class="sr-only"> {{ changeType === 0 ? 'Increased' : 'Decreased' }} by </span>
-            {{ changePrevious }}
-          </div> -->
         </dd>
       </div>
       <div class="px-4 py-5 sm:p-6 grid">
@@ -109,12 +103,6 @@
             {{ totalTime }}
             <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
           </div>
-          <!-- <div :class="[changeType === 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800', 'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0']">
-            <ArrowSmUpIcon v-if="changeType === 0 " class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" aria-hidden="true" />
-            <ArrowSmDownIcon v-else class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" aria-hidden="true" />
-            <span class="sr-only"> {{ changeType === 0 ? 'Increased' : 'Decreased' }} by </span>
-            {{ changePrevious }}
-          </div> -->
         </dd>
       </div>
       <div class="px-4 py-5 sm:p-6 grid">
@@ -134,12 +122,6 @@
             ${{ totalCost.toFixed(2) }}
             <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
           </div>
-          <!-- <div :class="[changeType === 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800', 'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0']">
-            <ArrowSmUpIcon v-if="changeType === 0 " class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" aria-hidden="true" />
-            <ArrowSmDownIcon v-else class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" aria-hidden="true" />
-            <span class="sr-only"> {{ changeType === 0 ? 'Increased' : 'Decreased' }} by </span>
-            {{ changePrevious }}
-          </div> -->
         </dd>
       </div>
       <div class="px-4 py-5 sm:p-6 grid">
@@ -159,12 +141,6 @@
             ${{ averageCost.toFixed(2) }}
             <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
           </div>
-          <!-- <div :class="[changeType === 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800', 'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0']">
-            <ArrowSmUpIcon v-if="changeType === 0 " class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" aria-hidden="true" />
-            <ArrowSmDownIcon v-else class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" aria-hidden="true" />
-            <span class="sr-only"> {{ changeType === 0 ? 'Increased' : 'Decreased' }} by </span>
-            {{ changePrevious }}
-          </div> -->
         </dd>
       </div>
       <div class="px-4 py-5 sm:p-6 grid">
@@ -184,12 +160,6 @@
             {{ totalPowerpointSlides }}
             <span class="ml-2 text-sm font-medium text-gray-500"> Slides </span>
           </div>
-          <!-- <div :class="[changeType === 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800', 'inline-flex items-baseline px-2.5 py-0.5 rounded-full text-sm font-medium md:mt-2 lg:mt-0']">
-            <ArrowSmUpIcon v-if="changeType === 0 " class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-green-500" aria-hidden="true" />
-            <ArrowSmDownIcon v-else class="-ml-1 mr-0.5 flex-shrink-0 self-center h-5 w-5 text-red-500" aria-hidden="true" />
-            <span class="sr-only"> {{ changeType === 0 ? 'Increased' : 'Decreased' }} by </span>
-            {{ changePrevious }}
-          </div> -->
         </dd>
       </div>
     </dl>
