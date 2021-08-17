@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.4](https://github.com/rropen/mec/compare/v0.5.3...v0.5.4) (2021-08-16)
+
+
+### Features
+
+* **dropdown.vue:** revamp of Homepage. W/ Purpose added ([ca53e0a](https://github.com/rropen/mec/commit/ca53e0aaa6d70062ae59ce4a535c9790e768b443))
+* **homev2.vue:** redesigning the Home page with new layout and inputs ([3e13093](https://github.com/rropen/mec/commit/3e130938573f1e9484af06620bd40967980e97cf))
+* **logo:** upload rr logo for other uses ([f7ca391](https://github.com/rropen/mec/commit/f7ca3914eb7718dee620e53182173e008ee40a40))
+
+
+### Bug Fixes
+
+* **nanoid:** add missing import for nanoid ([9693917](https://github.com/rropen/mec/commit/96939171d3f30b62deaa8140917075bed02e8996))
+
 ### [0.5.3](https://github.com/rropen/mec/compare/v0.5.2...v0.5.3) (2021-08-12)
 
 ### [0.5.2](https://github.com/rropen/mec/compare/v0.5.1...v0.5.2) (2021-08-12)

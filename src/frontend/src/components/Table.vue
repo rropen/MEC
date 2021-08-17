@@ -107,7 +107,10 @@ export default {
     DeleteDialog,
   },
   setup(props, { emit }) {
-    console.log("rows at load: ", props.rows);
+    // console.log("rows at load: ", props.rows);
+    const rowToDelete = ref({});
+    const deleteRowDialog = ref(false);
+
     const totalCost = computed(() => {
       var total = 0;
       for (var i = 0; i < props.rows.length; i++) {
@@ -115,6 +118,7 @@ export default {
       }
       return total;
     });
+
     const macbookpros = computed(() => {
       let num = totalCost.value / 2700;
       if (num > 1) {
@@ -123,6 +127,7 @@ export default {
         return 0;
       }
     });
+
     const azuremonth = computed(() => {
       let num = totalCost.value / 15;
       if (num > 1) {
@@ -131,13 +136,13 @@ export default {
         return 0;
       }
     });
-    const rowToDelete = ref({});
-    const deleteRowDialog = ref(false);
+
     const confirmDeleteRow = (rowData) => {
       rowToDelete.value = rowData;
       // console.log(deleteRowDialog.value);
       deleteRowDialog.value = true;
     };
+
     // Send an API call to delete the previously marked row from the database
     function deleteConfirmed() {
       // console.log("Row To Delete: ", rowToDelete.value.meetingId);

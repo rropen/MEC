@@ -168,8 +168,7 @@
 
 <script>
 import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/vue/solid";
-import { ref, onMounted, watchEffect } from "vue";
-import axios from "axios";
+import { ref, watch } from "vue";
 
 export default {
   name: "Statistics",
@@ -181,8 +180,7 @@ export default {
     ArrowSmUpIcon,
   },
 
-  setup(props, context) {
-    // let rows = ref([]);
+  setup(props) {
     const totalCost = ref(0);
     const totalTime = ref(0);
     const totalPowerpointSlides = ref(0);
@@ -191,8 +189,6 @@ export default {
     const changePrevious = ref(0);
     const changePercent = ref(0);
     const changeType = ref(0);
-
-    // These are the variables for calcualting monthly
     const totalMonthlyCost = ref(0);
     const totalMonthlyTime = ref(0);
     const totalMonthlyPowerpointSlides = ref(0);
@@ -202,47 +198,61 @@ export default {
     const changeMonthlyPercent = ref(0);
     const changeMonthlyType = ref(0);
     let meetingTime = ref(0);
-
-    // If monthly or total is monthlyClicked,
     let monthlyClicked = ref(false);
     let totalClicked = ref(true);
-    // const totalCost = computed(() => {});
-    let n = 0;
+    let currentTime = Math.floor(new Date().getTime() / 1000.0);
     let monthlyMeetingAmount = 0;
-    const currentTime = Math.floor(new Date().getTime() / 1000.0);
-    // const thirtyDaysAgo = currentTime - 2629743;
-    watchEffect(() => {
-      while (n < props.rows.length) {
-        console.log("Rows being watched: ", props.rows);
-        meetingTime = props.rows[n]["date"] / 1000;
-        // If the date of the meeting is less than 30 days from today then count it towards monthly Value
+    let n = 0;
 
-        if (meetingTime > currentTime - 2629743) {
-          totalMonthlyCost.value =
-            props.rows[n]["totalCost"] + totalMonthlyCost.value;
-          totalMonthlyTime.value =
-            props.rows[n]["time"] + totalMonthlyTime.value;
-          totalMonthlyPowerpointSlides.value =
-            props.rows[n]["powerpointSlides"] +
-            totalMonthlyPowerpointSlides.value;
+    // Reset all cumulative stats if the meeting rows information changes
+    function resetVals() {
+      currentTime = Math.floor(new Date().getTime() / 1000.0);
+      totalMonthlyCost.value = 0;
+      totalMonthlyTime.value = 0;
+      totalMonthlyPowerpointSlides.value = 0;
+      totalCost.value = 0;
+      totalTime.value = 0;
+      totalPowerpointSlides.value = 0;
+      monthlyMeetingAmount = 0;
+      n = 0;
+    }
 
-          // meetingAmount = props.rows.length;
-          averageMonthlyTime.value =
-            totalMonthlyTime.value / monthlyMeetingAmount;
-          averageMonthlyCost.value =
-            totalMonthlyCost.value / monthlyMeetingAmount;
+    /* Watch for changes to the incoming list of meetings ("rows" prop) and re-run
+    the calculations for the statistics shown in this component. */
+    watch(
+      () => props.rows,
+      () => {
+        resetVals();
+        while (n < props.rows.length) {
+          meetingTime = props.rows[n]["date"] / 1000;
+
+          /* If the date of the meeting is less than 30 days from today then
+          count it towards monthly Value */
+          if (meetingTime > currentTime - 2629743) {
+            totalMonthlyCost.value =
+              totalMonthlyCost.value + props.rows[n]["totalCost"];
+            totalMonthlyTime.value =
+              totalMonthlyTime.value + props.rows[n]["time"];
+            totalMonthlyPowerpointSlides.value =
+              totalMonthlyPowerpointSlides.value +
+              props.rows[n]["powerpointSlides"];
+            averageMonthlyTime.value =
+              totalMonthlyTime.value / monthlyMeetingAmount;
+            averageMonthlyCost.value =
+              totalMonthlyCost.value / monthlyMeetingAmount;
+          }
+          // Else count it towards older value and add the monthly value to the total
+          totalCost.value = totalCost.value + props.rows[n]["totalCost"];
+          totalTime.value = totalTime.value + props.rows[n]["time"];
+          totalPowerpointSlides.value =
+            totalPowerpointSlides.value + props.rows[n]["powerpointSlides"];
+          averageTime.value = totalTime.value / props.rows.length;
+          averageCost.value = totalCost.value / props.rows.length;
+          monthlyMeetingAmount++;
+          n++;
         }
-        // Else count it towards older value and add the monthly value to the total
-        totalCost.value = props.rows[n]["totalCost"] + totalCost.value;
-        totalTime.value = props.rows[n]["time"] + totalTime.value;
-        totalPowerpointSlides.value =
-          props.rows[n]["powerpointSlides"] + totalPowerpointSlides.value;
-        averageTime.value = totalTime.value / props.rows.length;
-        averageCost.value = totalCost.value / props.rows.length;
-        monthlyMeetingAmount++;
-        n++;
       }
-    });
+    );
 
     return {
       totalCost,
