@@ -132,6 +132,7 @@
             />
             <div class="flex flex-row justify-center mt-10">
               <button
+                type="button"
                 @click="onSubmit"
                 class="
                   delay-100
@@ -151,6 +152,7 @@
               </button>
               <button
                 @click="onCancel"
+                type="button"
                 class="
                   delay-100
                   duration-200
@@ -162,7 +164,8 @@
                   py-2
                   px-4
                   ring-1 ring-rrblue-400
-                  hover:ring-rrgrey-600 hover:border-transparent
+                  hover:ring-rrgrey-600
+                  hover:border-transparent
                   rounded-md
                   focus:outline-none
                 "
@@ -189,6 +192,7 @@ import { Field, Form, ErrorMessage } from "vee-validate";
 import { object, string, number, date } from "yup";
 import { nanoid } from "nanoid";
 import axios from "axios";
+
 export default defineComponent({
   name: "PastMeetingForm",
   components: { Field, Form, ErrorMessage, Toggle },

@@ -24,7 +24,7 @@
               <PastMeetingForm
                 v-if="pastMeetingModal"
                 @close="pastMeetingModal = false"
-                @updateTable="updateTable()"
+                @updateTable="fetchTable()"
               >
               </PastMeetingForm>
             </teleport>
@@ -259,7 +259,7 @@
           Submit
         </button>
       </div>
-      <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable()" />
+      <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable" />
     </div>
   </div>
 
@@ -288,7 +288,7 @@ export default {
     Table,
   },
 
-  setup(props) {
+  setup() {
     const HOURLYRATE = 135;
     const powerpoint = ref(false);
     const numSlides = ref(0);
@@ -304,6 +304,14 @@ export default {
     let minutes = computed(() => {
       return Math.floor(seconds.value / 60);
     });
+
+    function resetForm() {
+      employeeNumber.value = 0;
+      title.value = "";
+      comment.value = "";
+      powerpoint.value = false;
+      numSlides.value = 0;
+    }
 
     watch(timerEnabled, () => {
       if (timerEnabled) {
@@ -330,7 +338,7 @@ export default {
         .get("/meetings")
         .then(function (response) {
           let data = response.data;
-          // console.log("fetching from Lower");
+          // console.log("fetching table: ");
           rows.value = data;
           // console.log("Rows before fetch: ", rows.value);
           // rows.push(response.data);
@@ -355,6 +363,7 @@ export default {
           // console.log("Successful Response: ", response);
           // console.log("Rows before fetch: ", rows.value);
           fetchTable();
+          resetForm();
         })
         .catch(function (error) {
           console.log("Post Error: ", error);
@@ -374,7 +383,7 @@ export default {
         comment: comment.value,
         title: title.value,
       };
-      console.log("rowvals: ", rowVals);
+      // console.log("rowvals: ", rowVals);
       sendRow(rowVals);
     }
 
