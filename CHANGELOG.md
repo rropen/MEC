@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.5](https://github.com/rropen/mec/compare/v0.5.4...v0.5.5) (2021-08-18)
+
+
+### Bug Fixes
+
+* **snyk:** repaired snyk quality finding ([2a032f0](https://github.com/rropen/mec/commit/2a032f0d39710ad4804aedaa8eac65d3eda998a6))
+* **stats, forms:** form reset, stats corrections, comment cleanup ([a241cc5](https://github.com/rropen/mec/commit/a241cc545a754a943a0378340d4a7b8c79c4d7f2))
+
 ### [0.5.4](https://github.com/rropen/mec/compare/v0.5.3...v0.5.4) (2021-08-16)
 
 
