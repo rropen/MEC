@@ -4,7 +4,7 @@
 <script>
 // your vue component
 export default {
-  props: ['costCalc'],
+  props: ["costCalc"],
   data() {
     return {
       timerEnabled: false,

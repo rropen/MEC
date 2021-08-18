@@ -37,8 +37,8 @@
       <Column field="meetingId" header="Meeting ID" :hidden="true"></Column>
       <Column field="title" header="Title"></Column>
       <Column
-        field="meetingDesignation"
-        header="Meeting Designation"
+        field="meetingGroup"
+        header="Meeting Group"
         :sortable="true"
       ></Column>
 
@@ -59,7 +59,8 @@
         :sortable="true"
       ></Column>
       <Column field="comment" header="Comment"></Column>
-      <Column field="totalCost" header="Cost" :sortable="true">
+      <Column field="groupCost" header="Group Cost" :sortable="true"></Column>
+      <Column field="totalCost" header="Individual Cost" :sortable="true">
         <template #body="slotProps">
           ${{ slotProps.data.totalCost.toFixed(2) }}
         </template></Column

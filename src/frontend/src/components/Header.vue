@@ -6,7 +6,9 @@
         flex flex-row
         justify-start
         text-center
-        sm:flex-row sm:text-left sm:justify-start
+        sm:flex-row
+        sm:text-left
+        sm:justify-start
         bg-rrblue-800
         w-h
         h-16
@@ -46,7 +48,8 @@
               inline-block
               no-underline
               text-white
-              hover:text-white hover:bg-rrblue-400
+              hover:text-white
+              hover:bg-rrblue-400
             "
           >
             About

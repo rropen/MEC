@@ -1,36 +1,8 @@
 <template>
   <div>
     <Statistics :rows="rows" />
-    <div @keyup.esc="PastMeetingModal = false" class="flex justify-center">
-      <!-- <div class="">
-        <button
-          class="
-            delay-100
-            duration-200
-            bg-rrblue-400
-            hover:bg-rrblue-200
-            text-white
-            font-semibold
-            py-2
-            px-4
-            rounded-md
-            text-lg
-            focus:outline-none
-          "
-          @click="PastMeetingModal = !PastMeetingModal"
-        >
-          <teleport to="#modals">
-            <PastMeetingForm
-              v-if="PastMeetingModal"
-              @close="hideModal()"
-              @updateTable="updateTable()"
-            >
-            </PastMeetingForm>
-          </teleport>
-          Enter Past Meeting
-        </button>
-      </div> -->
 
+    <div @keyup.esc="PastMeetingModal = false" class="flex justify-center">
       <label
         for="employeeNumber"
         class="block text-md font-medium text-gray-700 justify-center mr-6"
@@ -98,7 +70,31 @@
           "
         />
       </label>
-      <DropDown />
+      <label
+        for="Meeting Group"
+        class="block text-md font-medium text-gray-700 mr-6"
+      >
+        Meeting Group: &nbsp;
+        <input
+          type="text"
+          name="meetingGroup"
+          v-model="meetingGroup"
+          placeholder="Group..."
+          class="
+            mb-6
+            shadow-sm
+            focus:ring-bg-rrblue-400
+            focus:border-bg-rrblue-400
+            block
+            w-full
+            sm:text-sm
+            border-gray-300
+            rounded-md
+          "
+        />
+      </label>
+      <!-- This is for the purpose dropdown -->
+      <!-- <DropDown /> -->
 
       <!-- This creates our start and stop button for the counter -->
     </div>
@@ -212,6 +208,7 @@
     <div class="flex justify-center mt-10">
       <button
         class="
+          mr-6
           delay-100
           duration-200
           bg-rrblue-400
@@ -219,16 +216,45 @@
           text-white
           font-semibold
           py-3
-          px-12
+          px-4
+          rounded-md
+          text-lg
+          focus:outline-none
+        "
+        @click="PastMeetingModal = !PastMeetingModal"
+      >
+        <teleport to="#modals">
+          <PastMeetingForm
+            v-if="PastMeetingModal"
+            @close="hideModal()"
+            @updateTable="updateTable()"
+          >
+          </PastMeetingForm>
+        </teleport>
+        Enter Past Meeting
+      </button>
+
+      <button
+        class="
+          mr-2
+          delay-100
+          duration-200
+          bg-rrblue-400
+          hover:bg-rrblue-200
+          text-white
+          font-semibold
+          py-3
+          px-6
           rounded-md
           text-lg
           focus:outline-none
         "
         @click.prevent="onSubmit"
       >
-        Submit
+        Submit Meeting
       </button>
     </div>
+
     <!-- <my-button v-on:click="handleClick">Test</my-button> -->
 
     <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable()" />
@@ -239,41 +265,68 @@
 </template>
 
 <script>
-import { ref, onMounted, computed } from "vue";
+import { ref, onMounted, computed, watch } from "vue";
 import axios from "axios";
-
 // import Lower from "../components/Lower.vue";
 import PastMeetingForm from "../components/PastMeetingForm.vue";
 import Statistics from "../components/Statistics.vue";
 import Toggle from "../components/Toggle.vue";
 import Table from "../components/Table.vue";
-import DropDown from "../components/DropDown.vue";
-
+import { nanoid } from "nanoid";
 export default {
   name: "Home",
-
   components: {
     PastMeetingForm,
     Statistics,
     Toggle,
     Table,
-    DropDown,
   },
-
-  setup(props) {
-    const powerpoint = ref(false);
+  setup() {
+    const HOURLYRATE = 135;
+    const meetingGroup = ref("");
     const numSlides = ref(0);
     const rows = ref([]);
     const comment = ref("");
     const title = ref("");
-
+    const timerEnabled = ref(false);
+    const costCalc = ref(0);
+    const groupCost = ref(0);
+    const seconds = ref(0);
+    const pastMeetingModal = ref(false);
+    const employeeNumber = ref(0);
+    let minutes = computed(() => {
+      return Math.floor(seconds.value / 60);
+    });
+    function resetForm() {
+      employeeNumber.value = 0;
+      title.value = "";
+      comment.value = "";
+      numSlides.value = 0;
+    }
+    watch(timerEnabled, () => {
+      if (timerEnabled) {
+        costCalc.value += 0.000001;
+      }
+    });
+    watch(
+      costCalc,
+      () => {
+        if (costCalc.value > 0 && timerEnabled.value) {
+          setTimeout(() => {
+            costCalc.value = costCalc.value + HOURLYRATE / 60 / 60;
+            Math.floor((seconds.value += 1 / employeeNumber.value));
+          }, 1000 / employeeNumber.value);
+        }
+      },
+      { immediate: true }
+    );
     // Fetch table data from the API
     function fetchTable() {
       axios
         .get("/meetings")
         .then(function (response) {
           let data = response.data;
-          // console.log("fetching from Lower");
+          // console.log("fetching table: ");
           rows.value = data;
           // console.log("Rows before fetch: ", rows.value);
           // rows.push(response.data);
@@ -284,7 +337,6 @@ export default {
           console.log("Get Error: ", error);
         });
     }
-
     // Send data for a new row to the api
     function sendRow(rowVals) {
       axios
@@ -298,6 +350,7 @@ export default {
           // console.log("Successful Response: ", response);
           // console.log("Rows before fetch: ", rows.value);
           fetchTable();
+          resetForm();
         })
         .catch(function (error) {
           console.log("Post Error: ", error);
@@ -309,24 +362,23 @@ export default {
       const rowVals = {
         meetingId: nanoid(),
         date: Date.now(),
-        employeeNumber: parseInt(props.employeeNumber),
-        time: parseInt(props.minutes),
-        powerpoint: powerpoint.value,
+        employeeNumber: parseInt(employeeNumber.value),
+        time: parseInt(minutes.value),
+        totalCost: parseFloat(costCalc.value.toFixed(2)),
+        meetingGroup: meetingGroup.value,
         powerpointSlides: parseInt(numSlides.value),
-        totalCost: parseFloat(props.cost.toFixed(2)),
         comment: comment.value,
         title: title.value,
+        groupCost: groupCost.value,
       };
-      console.log("rowvals: ", rowVals);
+      // console.log("rowvals: ", rowVals);
       sendRow(rowVals);
     }
-
     onMounted(() => {
       fetchTable();
     });
-
     return {
-      powerpoint,
+      meetingGroup,
       numSlides,
       fetchTable,
       rows,
@@ -334,70 +386,14 @@ export default {
       sendRow,
       title,
       comment,
+      timerEnabled,
+      costCalc,
+      minutes,
+      seconds,
+      pastMeetingModal,
+      employeeNumber,
+      groupCost,
     };
-  },
-  data() {
-    return {
-      timerEnabled: false,
-      PastMeetingModal: false,
-      costCalc: 0,
-      date: "",
-      employeeNumber: 0,
-      costHr: "",
-      seconds: 50,
-    };
-  },
-  computed: {
-    // a computed getter
-    minutes: function () {
-      // `this` points to the vm instance
-      return Math.floor(this.seconds / 60);
-    },
-  },
-  watch: {
-    timerEnabled(value) {
-      if (value) {
-        // The value is calculated by 1000 = 1 sec. And the .039 is the cost per signle employe at $135 per hr
-        setTimeout(() => {
-          this.costCalc = this.costCalc + 0.039;
-          this.seconds = this.seconds + 1 / this.employeeNumber;
-        }, 1000 / this.employeeNumber);
-      }
-    },
-    costCalc: {
-      handler(value) {
-        if (value > 0.0 && this.timerEnabled) {
-          setTimeout(() => {
-            this.costCalc = this.costCalc + 0.039;
-            this.seconds = this.seconds + 1 / this.employeeNumber;
-          }, 1000 / this.employeeNumber);
-          // this.seconds = this.seconds + 1;
-        }
-      },
-      // This ensures the watcher is triggered upon creation
-      immediate: true,
-    },
-  },
-
-  methods: {
-    // This is how you start and stop the cost calculation
-    play() {
-      this.timerEnabled = true;
-    },
-    pause() {
-      this.timerEnabled = false;
-    },
-    reset() {
-      this.costCalc = 0;
-      this.seconds = 0;
-      this.minutes = 0;
-    },
-    hideModal() {
-      this.PastMeetingModal = false;
-    },
-    updateTable() {
-      this.$refs.fetchTablefromHome.fetchTable();
-    },
   },
 };
 </script>
