@@ -16,10 +16,11 @@ def create_meeting(db: Session, meeting_data):
     meeting.time = meeting_data.time
     meeting.date = meeting_data.date
     meeting.employeeNumber = meeting_data.employeeNumber
-    meeting.powerpoint = meeting_data.powerpoint
+    meeting.meetingGroup = meeting_data.meetingGroup
     meeting.powerpointSlides = meeting_data.powerpointSlides
     meeting.comment = meeting_data.comment
     meeting.title = meeting_data.title
+    meeting.groupCost = meeting_data.groupCost
 
     db.add(meeting)
     db.commit()

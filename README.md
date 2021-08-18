@@ -14,7 +14,7 @@ The valulation of each employee is at $140 per hour.
 
 ## Project Notes
 
-``` bash
+```bash
 # install npm packages to allow project-wide committing
 yarn install # in the root directory
 
@@ -25,7 +25,7 @@ yarn install
 
 Note: Make sure you have the following settings in your VSCode Settings.json file to allow auto lint on save.
 
-``` json
+```json
 "editor.codeActionsOnSave": {
         "source.fixAll": true,
     }
@@ -35,7 +35,7 @@ Note: Make sure you have the following settings in your VSCode Settings.json fil
 
 This is the standard we use for commits: [Commit Standard](https://www.conventionalcommits.org/en/v1.0.0/)
 
-``` bash
+```bash
 git add xxx  # stage your files
 git commit -m "foo bar"  # this will fail on auto-commit-lint
 git commit -m "feat(foo): bar stuff & things"  # this will pass
@@ -50,17 +50,17 @@ The following are good examples of commit messages:
 
 ### Changelog Update
 
-``` bash
+```bash
 yarn release  # after commiting
 ```
 
 ## Frontend
 
-For local development, the frontend just runs on your machine.  Install the packages in `src/frontend` and run it with the commands below.  This is the easiest way to work on this service.
+For local development, the frontend just runs on your machine. Install the packages in `src/frontend` and run it with the commands below. This is the easiest way to work on this service.
 
 ### Compiles and hot-reloads for development
 
-``` bash
+```bash
 # from the root/src/frontend folder
 yarn serve # standard development mode - app available at http://localhost:8080
 yarn vite # crazy fast development mode - app available at http://localhost:3000
@@ -68,7 +68,7 @@ yarn vite # crazy fast development mode - app available at http://localhost:3000
 
 ### Compiles and minifies for production
 
-``` bash
+```bash
 yarn build
 ```
 
@@ -78,7 +78,7 @@ You can run the E2E tests in one of two ways:
 
 **In a Terminal**
 
-``` bash
+```bash
 # navigate to the frontend folder
 cd /src/frontend
 
@@ -88,7 +88,7 @@ yarn cy
 
 **Interactively in a Browser**
 
-``` bash
+```bash
 # navigate to the frontend folder
 cd /src/frontend
 
@@ -102,7 +102,7 @@ You can run the component tests in one of two ways:
 
 **In a Terminal**
 
-``` bash
+```bash
 # navigate to the frontend folder
 cd /src/frontend
 
@@ -112,7 +112,7 @@ yarn cy-ct
 
 **Interactively in a Browser**
 
-``` bash
+```bash
 # navigate to the frontend folder
 cd /src/frontend
 
@@ -122,9 +122,9 @@ yarn cy-open-ct
 
 ## Backend
 
-For local development, the backend should be run in docker.  You'll need to do one step before building the container.
+For local development, the backend should be run in docker. You'll need to do one step before building the container.
 
-``` bash
+```bash
 # Navigate to the backend service location
 cd src/backend
 
@@ -132,17 +132,15 @@ cd src/backend
 cp .env.example .env
 ```
 
-The example .env file should already be sufficient for local development with only the two environment variables.  The .env file you use for your development shouldn't be committed to source code.  This should be taken care of automatically by the .gitignore file.
+The example .env file should already be sufficient for local development with only the two environment variables. The .env file you use for your development shouldn't be committed to source code. This should be taken care of automatically by the .gitignore file.
 
 ### Build the docker image
 
-``` bash
+```bash
 # Move to the docker-compose context where the docker-compose files are located
 cd src
 
 # Build the container
-docker compose -f docker-compose.yml -f local-docker-compose build
-or 
 docker-compose -f docker-compose.yml -f local-docker-compose.yml build
 
 # Run the container in detached mode to return your command prompt
@@ -162,11 +160,11 @@ exit
 
 ### Run Locally
 
-If you want to install the dependencies and run the backend project locally for some reason, use [pdm](https://pdm.fming.dev/usage/project.html).  PDM uses the `pyproject.toml` file to store the project requirements instead of the `requirements.txt` like most people are used to.  It's actually a much nicer system that lets you avoid the virtual environment messes of the past.  But it's a bit different and can take some getting used to.
+If you want to install the dependencies and run the backend project locally for some reason, use [pdm](https://pdm.fming.dev/usage/project.html). PDM uses the `pyproject.toml` file to store the project requirements instead of the `requirements.txt` like most people are used to. It's actually a much nicer system that lets you avoid the virtual environment messes of the past. But it's a bit different and can take some getting used to.
 
->You'll need python 3.8 or higher installed on your machine to use the packages as specified.
+> You'll need python 3.8 or higher installed on your machine to use the packages as specified.
 
-``` bash
+```bash
 # verify you have pdm installed
 pdm --version
 
@@ -185,7 +183,7 @@ Your backend container should be running at `http://localhost:8181/docs` on your
 
 To run the backend unit tests:
 
-``` bash
+```bash
 # Move to the tests directory
 cd src/backend/tests
 

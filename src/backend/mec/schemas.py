@@ -15,10 +15,11 @@ class MeetingBase(BaseModel):
     employeeNumber: int
     time: int
     totalCost: float
-    powerpoint: bool
+    meetingGroup: str
     powerpointSlides: int
     comment: str
     title: str
+    groupCost: float
 
 
 class MeetingCreate(MeetingBase):
