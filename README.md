@@ -1,8 +1,17 @@
-# MEC
+<p>
+    <img alt="Rolls-Royce Logo" width="140" src="https://raw.githubusercontent.com/rropen/.github/main/img/logo.png">
+    <br>
+    Meeting Efficiency Calculator  
+</p>
 
-[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
+<p>
+    <a href="https://github.com/rrglobal/Developer-Handbook"><img src="https://img.shields.io/badge/Rolls--Royce-Software%20Factory-10069f"></a>
+    <a href="http://commitizen.github.io/cz-cli/"><img src="https://img.shields.io/badge/commitizen-friendly-brightgreen?style=flat"></a><br><br>
+</p>
 
-Meeting Efficiency Calculator (MEC)
+------
+
+## Overview
 
 ## About
 
