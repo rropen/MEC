@@ -3,12 +3,14 @@ import App from "./App.vue";
 import router from "./router";
 import "./index.css";
 
-//prime components
 import PrimeVue from "primevue/config";
-//axios
 import axios from "axios";
-axios.defaults.baseURL = "http://localhost:8181";
-// axios.defaults.baseURL = process.env.VUE_APP_API_URL;
+
+// Uses Ncodb backend by default, if user passes in follwing will use fastAPI instead:
+
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+axios.defaults.headers.common["xc-auth"] =
+  import.meta.env.VITE_NOCODB_AUTH_TOKEN;
 
 // import store from './store'
 createApp(App)

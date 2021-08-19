@@ -1,7 +1,6 @@
 <template>
   <div>
     <Statistics :rows="rows" />
-
     <div @keyup.esc="PastMeetingModal = false" class="flex justify-center">
       <label
         for="employeeNumber"
@@ -93,8 +92,6 @@
           "
         />
       </label>
-      <!-- This is for the purpose dropdown -->
-      <!-- <DropDown /> -->
 
       <!-- This creates our start and stop button for the counter -->
     </div>
@@ -256,13 +253,8 @@
       </button>
     </div>
 
-    <!-- <my-button v-on:click="handleClick">Test</my-button> -->
-
     <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable()" />
   </div>
-
-  <!-- This is the charts that are rendered in the home page -->
-  <!-- <Charts :cost-calc="this.costCalc.toFixed(2)" /> -->
 </template>
 
 <script>
@@ -324,15 +316,12 @@ export default {
     // Fetch table data from the API
     function fetchTable() {
       axios
-        .get("/meetings")
+        // .get("/meetings")
+        .get("/", {})
+
         .then(function (response) {
           let data = response.data;
-          // console.log("fetching table: ");
           rows.value = data;
-          // console.log("Rows before fetch: ", rows.value);
-          // rows.push(response.data);
-          // console.log("response: ", response.data);
-          // console.log("rows: ", rows);
         })
         .catch(function (error) {
           console.log("Get Error: ", error);
@@ -341,15 +330,13 @@ export default {
     // Send data for a new row to the api
     function sendRow(rowVals) {
       axios
-        .post("/meetings", rowVals, {
+        .post("/", rowVals, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",
           },
         })
         .then(function (response) {
-          // console.log("Successful Response: ", response);
-          // console.log("Rows before fetch: ", rows.value);
           fetchTable();
           resetForm();
         })
@@ -372,7 +359,6 @@ export default {
         title: title.value,
         groupCost: groupCost.value,
       };
-      // console.log("rowvals: ", rowVals);
       sendRow(rowVals);
     }
     onMounted(() => {
