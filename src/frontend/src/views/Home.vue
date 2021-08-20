@@ -1,7 +1,7 @@
 <template>
   <div>
     <Statistics :rows="rows" />
-    <div @keyup.esc="PastMeetingModal = false" class="flex justify-center">
+    <div @keyup.esc="pastMeetingModal = false" class="flex justify-center">
       <label
         for="employeeNumber"
         class="block text-md font-medium text-gray-700 justify-center mr-6"
@@ -150,7 +150,6 @@
           px-4
           py-2
           rounded-l-md
-          border border-gray-300
           bg-rrblue-400
           text-md
           font-medium
@@ -170,27 +169,27 @@
           items-center
           px-4
           py-2
-          border border-gray-300
-          bg-red-500
+          bg-rrpink-600
           text-md
           font-medium
           text-white
-          hover:bg-red-400
+          hover:bg-rrpink-400
         "
         @click="timerEnabled = false"
       >
         Stop
       </button>
       <button
+        :class="{
+          '-ml-px rounded-r-md': employeeNumber != 0,
+          'rounded-md': employeeNumber == 0,
+        }"
         class="
-          -ml-px
           relative
           inline-flex
           items-center
           px-4
           py-2
-          rounded-r-md
-          border border-gray-300
           bg-rrblue-400
           text-md
           font-medium
@@ -218,12 +217,12 @@
           text-lg
           focus:outline-none
         "
-        @click="PastMeetingModal = !PastMeetingModal"
+        @click="pastMeetingModal = !pastMeetingModal"
         v-if="employeeNumber < 1"
       >
         <teleport to="#modals">
           <PastMeetingForm
-            v-if="PastMeetingModal"
+            v-if="pastMeetingModal"
             @close="hideModal()"
             @updateTable="updateTable()"
           >
@@ -317,7 +316,7 @@ export default {
     function fetchTable() {
       axios
         // .get("/meetings")
-        .get("/", {})
+        .get("/meetings", {})
 
         .then(function (response) {
           let data = response.data;
@@ -330,7 +329,7 @@ export default {
     // Send data for a new row to the api
     function sendRow(rowVals) {
       axios
-        .post("/", rowVals, {
+        .post("/meetings", rowVals, {
           headers: {
             // Overwrite Axios's automatically set Content-Type
             "Content-Type": "application/json",

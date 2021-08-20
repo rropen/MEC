@@ -1,5 +1,5 @@
 <p>
-    <img alt="Rolls-Royce Logo" width="140" src="https://raw.githubusercontent.com/rropen/.github/main/img/logo.png">
+    <img alt="Rolls-Royce Logo" width="100" src="https://raw.githubusercontent.com/rropen/.github/main/img/logo.png">
     <br>
     Meeting Efficiency Calculator  
 </p>
