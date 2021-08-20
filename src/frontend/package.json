@@ -56,13 +56,24 @@
   "eslintConfig": {
     "root": true,
     "env": {
-      "node": true
+      "node": true,
+      "browser": true,
+      "es2021": true
     },
     "extends": [
-      "plugin:vue/vue3-recommended",
       "plugin:vue/strongly-recommended",
+      "plugin:vue/vue3-recommended",
+      "eslint:recommended",
       "@vue/prettier"
-    ]
+    ],
+    "parserOptions": {
+      "ecmaVersion": 12,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "vue"
+    ],
+    "rules": {}
   },
   "commitlint": {
     "extends": [
