@@ -224,7 +224,7 @@
           <PastMeetingForm
             v-if="pastMeetingModal"
             @close="hideModal()"
-            @updateTable="updateTable()"
+            @updateTable="fetchTable()"
           >
           </PastMeetingForm>
         </teleport>
@@ -289,6 +289,11 @@ export default {
     let minutes = computed(() => {
       return Math.floor(seconds.value / 60);
     });
+
+    function hideModal() {
+      pastMeetingModal.value = false;
+    }
+
     function resetForm() {
       employeeNumber.value = 0;
       title.value = "";
@@ -367,6 +372,7 @@ export default {
       meetingGroup,
       numSlides,
       fetchTable,
+      hideModal,
       rows,
       onSubmit,
       sendRow,

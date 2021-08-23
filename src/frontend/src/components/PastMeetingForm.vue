@@ -55,6 +55,18 @@
               v-model="title"
             ></Field>
             <ErrorMessage :class="errorClasses" name="title" />
+            <label class="" :class="labelClasses" for="meetingGroup"
+              >Meeting Group</label
+            >
+            <Field
+              class=""
+              name="meetingGroup"
+              id="meetingGroup"
+              type="text"
+              :class="fieldClasses"
+              v-model="meetingGroup"
+            ></Field>
+            <ErrorMessage :class="errorClasses" name="meetingGroup" />
             <label class="" :class="labelClasses" for="meetingDate"
               >Meeting Date</label
             >
@@ -205,6 +217,8 @@ export default defineComponent({
     const title = ref("");
     const costRate = ref(135); // $135/hr/employee
     const meetingDate = ref("");
+    const meetingGroup = ref("");
+    const groupCost = ref(0);
 
     // Styling
     const labelClasses = {
@@ -232,6 +246,7 @@ export default defineComponent({
       numSlides: number().integer().label("Number of Slides"),
       cost: number().required().label("Cost"),
       comment: string().label("Comment"),
+      meetingGroup: string().label("Meeting Group"),
       title: string().label("Title"),
     });
 
@@ -270,11 +285,13 @@ export default defineComponent({
         date: Date.parse(meetingDate.value),
         employeeNumber: parseInt(employeeNumber.value),
         time: parseInt(minutes.value),
-        powerpoint: powerpoint.value,
-        powerpointSlides: parseInt(numSlides.value),
         totalCost: parseFloat(cost.value.toFixed(2)),
+        meetingGroup: meetingGroup.value,
+        // powerpoint: powerpoint.value,
+        powerpointSlides: parseInt(numSlides.value),
         comment: comment.value,
         title: title.value,
+        groupCost: groupCost.value,
       };
       sendRow(rowVals);
     }
@@ -289,6 +306,8 @@ export default defineComponent({
       employeeNumber,
       meetingDate,
       minutes,
+      meetingGroup,
+      groupCost,
       powerpoint,
       numSlides,
       comment,
