@@ -311,7 +311,7 @@ export default {
         if (costCalc.value > 0 && timerEnabled.value) {
           setTimeout(() => {
             costCalc.value = costCalc.value + HOURLYRATE / 60 / 60;
-            Math.floor((seconds.value += 1 / employeeNumber.value));
+            seconds.value = seconds.value + 1 / employeeNumber.value;
           }, 1000 / employeeNumber.value);
         }
       },
