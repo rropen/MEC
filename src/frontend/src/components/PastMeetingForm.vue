@@ -47,9 +47,9 @@
               >Meeting Title</label
             >
             <Field
+              id="pastMeetingTitle"
               class=""
               name="title"
-              id="title"
               type="text"
               :class="fieldClasses"
               v-model="title"
@@ -61,7 +61,7 @@
             <Field
               class=""
               name="meetingGroup"
-              id="meetingGroup"
+              id="pastMeetingGroup"
               type="text"
               :class="fieldClasses"
               v-model="meetingGroup"
@@ -73,7 +73,7 @@
             <Field
               class=""
               name="meetingDate"
-              id="meetingDate"
+              id="pastMeetingDate"
               type="date"
               :class="fieldClasses"
               v-model="meetingDate"
@@ -83,7 +83,7 @@
             <Field
               class=""
               name="comment"
-              id="comment"
+              id="pastMeetingComment"
               type="text"
               :class="fieldClasses"
               v-model="comment"
@@ -95,7 +95,7 @@
             <Field
               class=""
               name="employeeNumber"
-              id="employeeNumber"
+              id="pastMeetingEmployeeNumber"
               type="text"
               :class="fieldClasses"
               v-model="employeeNumber"
@@ -107,32 +107,18 @@
             <Field
               class=""
               name="minutes"
-              id="minutes"
+              id="pastMeetingMinutes"
               type="text"
               :class="fieldClasses"
               v-model="minutes"
             ></Field>
             <ErrorMessage :class="errorClasses" name="minutes" />
-            <label class="mt-3" for="powerpoint" :class="labelClasses"
-              >Was PowerPoint Used?</label
-            >
-            <Toggle
-              :toggleValue="powerpoint"
-              @click="powerpoint = !powerpoint"
-              :class="fieldClasses"
-            ></Toggle>
-            <label
-              v-show="powerpoint"
-              class=""
-              :class="labelClasses"
-              for="numSlides"
+            <label :class="labelClasses" for="numSlides"
               >Number of Slides</label
             >
             <Field
-              v-show="powerpoint"
-              class=""
               name="numSlides"
-              id="numSlides"
+              id="pastMeetingNumSlides"
               type="text"
               :class="fieldClasses"
               v-model="numSlides"
@@ -144,6 +130,7 @@
             />
             <div class="flex flex-row justify-center mt-10">
               <button
+                id="pastMeetingSubmit"
                 type="button"
                 @click="onSubmit"
                 class="
@@ -268,6 +255,7 @@ export default defineComponent({
             "Content-Type": "application/json",
           },
         })
+
         .then(function (response) {
           // console.log("Successful Response: ", response);
           emit("updateTable");

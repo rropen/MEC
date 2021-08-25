@@ -1,13 +1,14 @@
 <template>
-  <div>
+  <div @keyup.esc="pastMeetingModal = false">
     <Statistics :rows="rows" />
-    <div @keyup.esc="pastMeetingModal = false" class="flex justify-center">
+    <div class="flex justify-center">
       <label
         for="employeeNumber"
         class="block text-md font-medium text-gray-700 justify-center mr-6"
       >
         Employees: &nbsp;
         <input
+          id="employeeNumber"
           type="text"
           name="employeeNumber"
           v-model="employeeNumber"
@@ -29,6 +30,7 @@
       <label for="title" class="block text-md font-medium text-gray-700 mr-6">
         Meeting Title: &nbsp;
         <input
+          id="meetingTitle"
           type="text"
           name="title"
           v-model="title"
@@ -52,6 +54,7 @@
       >
         Powerpoint Slides: &nbsp;
         <input
+          id="numSlides"
           type="text"
           name="numSlides"
           v-model="numSlides"
@@ -75,6 +78,7 @@
       >
         Meeting Group: &nbsp;
         <input
+          id="meetingGroup"
           type="text"
           name="meetingGroup"
           v-model="meetingGroup"
@@ -99,6 +103,7 @@
       <label for="comment" class="text-md font-medium text-gray-700 mr-6 w-1/3">
         Comment: &nbsp;
         <input
+          id="comment"
           type="text"
           name="comment"
           v-model="comment"
@@ -142,6 +147,7 @@
 
     <div class="flex justify-center">
       <button
+        id="start"
         v-if="employeeNumber != 0"
         class="
           relative
@@ -150,6 +156,7 @@
           px-4
           py-2
           rounded-l-md
+          border border-gray-300
           bg-rrblue-400
           text-md
           font-medium
@@ -161,6 +168,7 @@
         Start
       </button>
       <button
+        id="stop"
         v-if="employeeNumber != 0"
         class="
           -ml-px
@@ -169,27 +177,28 @@
           items-center
           px-4
           py-2
-          bg-rrpink-600
+          border border-gray-300
+          bg-red-500
           text-md
           font-medium
           text-white
-          hover:bg-rrpink-400
+          hover:bg-red-400
         "
         @click="timerEnabled = false"
       >
         Stop
       </button>
       <button
-        :class="{
-          '-ml-px rounded-r-md': employeeNumber != 0,
-          'rounded-md': employeeNumber == 0,
-        }"
+        id="clear"
         class="
+          -ml-px
           relative
           inline-flex
           items-center
           px-4
           py-2
+          rounded-r-md
+          border border-gray-300
           bg-rrblue-400
           text-md
           font-medium
@@ -203,6 +212,7 @@
     </div>
     <div class="flex justify-center mt-10">
       <button
+        id="pastMeeting"
         class="
           mr-6
           delay-100
@@ -223,7 +233,7 @@
         <teleport to="#modals">
           <PastMeetingForm
             v-if="pastMeetingModal"
-            @close="hideModal()"
+            @close="pastMeetingModal = false"
             @updateTable="fetchTable()"
           >
           </PastMeetingForm>
@@ -289,11 +299,6 @@ export default {
     let minutes = computed(() => {
       return Math.floor(seconds.value / 60);
     });
-
-    function hideModal() {
-      pastMeetingModal.value = false;
-    }
-
     function resetForm() {
       employeeNumber.value = 0;
       title.value = "";
@@ -311,7 +316,7 @@ export default {
         if (costCalc.value > 0 && timerEnabled.value) {
           setTimeout(() => {
             costCalc.value = costCalc.value + HOURLYRATE / 60 / 60;
-            seconds.value = seconds.value + 1 / employeeNumber.value;
+            Math.floor((seconds.value += 1 / employeeNumber.value));
           }, 1000 / employeeNumber.value);
         }
       },
@@ -356,7 +361,7 @@ export default {
         date: Date.now(),
         employeeNumber: parseInt(employeeNumber.value),
         time: parseInt(minutes.value),
-        totalCost: parseFloat(costCalc.value.toFixed(2)),
+        totalCost: -parseFloat(costCalc.value.toFixed(2)),
         meetingGroup: meetingGroup.value,
         powerpointSlides: parseInt(numSlides.value),
         comment: comment.value,
@@ -372,7 +377,6 @@ export default {
       meetingGroup,
       numSlides,
       fetchTable,
-      hideModal,
       rows,
       onSubmit,
       sendRow,
