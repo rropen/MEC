@@ -1,7 +1,7 @@
 <template>
   <div class="bg-rrgrey-200">
     <div class="w-1/3 mx-auto text-center">
-      <img class="mb-8 pt-32 mx-auto" src="@/assets/img/risks.png" />
+      <img class="mb-8 pt-32 mx-auto" src="../assets/img/risks.png" />
       <h1 class="text-lg font-semibold text-rrgrey-900">
         404 - Page Not Found
       </h1>
