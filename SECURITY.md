@@ -8,7 +8,7 @@ project.
 
 ## Public Software Policy
 
-The `MEC` project are intended to be public facing. They're being used in a pathfinder capacity and will play a small part in the Rolls-Royce Digital Transformation efforts.  If you have any questions, please contact the lead maintainer at [Josh.Haines@Rolls-Royce.com](mailto:Josh.Haines@Rolls-Royce.com).
+The `MEC` project is intended to be public facing. It is being used in a pathfinder capacity and will play a small part in the Rolls-Royce Digital Transformation efforts.  If you have any questions, please contact the lead maintainer at [Josh.Haines@Rolls-Royce.com](mailto:Josh.Haines@Rolls-Royce.com).
 
 ## Reporting a Bug
 
