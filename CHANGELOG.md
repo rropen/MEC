@@ -2,6 +2,38 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.5.6](https://github.com/rropen/MEC/compare/v0.5.5...v0.5.6) (2021-09-01)
+
+
+### Features
+
+* **404:** add 404 page from DigCap project ([5a6c988](https://github.com/rropen/MEC/commit/5a6c9889136c6d1f8394e313fdfdbaf9e4faa4e0))
+* **404:** add 404 page functionality ([f59c352](https://github.com/rropen/MEC/commit/f59c352cfe4d45c0076e0a70ed597050c684050d))
+* added meetingGroup, groupCost to backend. Removed powerpoint(T/F) ([28304ad](https://github.com/rropen/MEC/commit/28304add4b6de9e2dc11a6244faf69f8524b7803))
+* home Page Rework: Added Meeting Group ([67ed971](https://github.com/rropen/MEC/commit/67ed9719893075d765f0b42e6c493f752fe175e3))
+* new Home Page ([35b289a](https://github.com/rropen/MEC/commit/35b289a0f146ea88f7694b5563371ce135e54c4c))
+* nocodb Backend Added with fastAPI option ([8215dc5](https://github.com/rropen/MEC/commit/8215dc526c792fb3ab89f523a4e72dfd67a29563))
+* **risk.png:** add risk icon for the 404 page ([9c4d0bf](https://github.com/rropen/MEC/commit/9c4d0bf9a547a8db4842a128d3e75ee6a3ce3013))
+
+
+### Bug Fixes
+
+* **button:** update button style classes ([89303ca](https://github.com/rropen/MEC/commit/89303ca0c2171f089803a7078438117c318b92ae))
+* fixed Integration Tests and Past Meeting Input ([54147b9](https://github.com/rropen/MEC/commit/54147b973c1023cab9483002c8afe031ab901467))
+* gpg key ([e8e5563](https://github.com/rropen/MEC/commit/e8e5563a22c64b17c564f3ca19070866a461dcf3))
+* gPG KEy ([d34232b](https://github.com/rropen/MEC/commit/d34232bf5e34df8cfa81359377f42a42b247a818))
+* gPG KEY ([0599125](https://github.com/rropen/MEC/commit/05991255b586fdf0eb445b0ab694ebea54513822))
+* **pastMeeting:** repair past meeting form functionality ([7811cf6](https://github.com/rropen/MEC/commit/7811cf6f88670058cf391462bbfbd953737ee238))
+* **snyk quality:** correct snyk quality finding ([d2221f6](https://github.com/rropen/MEC/commit/d2221f61727f04aa4b4572273a8d8fa6211a3c7f))
+* **snyk quality:** update per snyk code quality ([54a5d9e](https://github.com/rropen/MEC/commit/54a5d9edd504181069a65eb1bc53f060a068b516))
+* **statistics:** correct math and refactor statistics ([0c8f9d5](https://github.com/rropen/MEC/commit/0c8f9d57909dc5818954a6ce82486d7a5d120fc8))
+* **statistics:** correct stats component math ([7d6a5c3](https://github.com/rropen/MEC/commit/7d6a5c3d6c170ce2a8b0e3fc35bd4910a6a85b41))
+* upgrade @vitejs/plugin-vue from 1.2.1 to 1.4.0 ([419f5ab](https://github.com/rropen/MEC/commit/419f5ab9de461320e02d0b64813e248494f0d49c))
+* upgrade @vue/compiler-sfc from 3.1.5 to 3.2.1 ([90060f6](https://github.com/rropen/MEC/commit/90060f6f610be25cc26a72a9302ce70797c20941))
+* upgrade apexcharts from 3.26.0 to 3.27.3 ([7765c31](https://github.com/rropen/MEC/commit/7765c311ecdb06d9d74df8cef122a5aa21c2a4e0))
+* upgrade vite from 2.1.5 to 2.4.4 ([d1e2064](https://github.com/rropen/MEC/commit/d1e20642c72841662c70cf2dcc718d720f3abf3f))
+* upgrade vue from 3.1.5 to 3.2.1 ([07593c0](https://github.com/rropen/MEC/commit/07593c017e840b1764f171f3527d9053a9aa9d51))
+
 ### [0.5.5](https://github.com/rropen/mec/compare/v0.5.4...v0.5.5) (2021-08-18)
 
 
