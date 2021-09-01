@@ -18,7 +18,7 @@
           text-white text-center
           hover:bg-rrblue-200
         "
-        @click="lastThirtyDays = true"
+        @click="lastThirtyDays = false"
       >
         Total
       </button>
@@ -39,7 +39,7 @@
           text-white
           hover:bg-rrblue-200
         "
-        @click="lastThirtyDays = false"
+        @click="lastThirtyDays = true"
       >
         Last 30 Days
       </button>
@@ -59,102 +59,63 @@
     >
       <!-- These are the 5 stat cards -->
       <div class="px-6 py-5 sm:p-6">
-        <dt class="text-base font-normal text-gray-900">Average Time</dt>
+        <dt class="text-base font-normal text-rrgrey-900">Average Time</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
-            id="monthlyClicked"
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
-            v-if="monthlyClicked"
-          >
-            {{ averageMonthlyTime.toFixed(1) }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
-          </div>
-          <div
             id="totalClicked"
-            v-if="totalClicked"
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
+            class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             {{ averageTime.toFixed(1) }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
+            <span class="ml-2 text-sm font-medium text-rrgrey-900"> min </span>
           </div>
         </dd>
       </div>
       <div class="px-4 py-5 sm:p-6 grid">
-        <dt class="text-base font-normal text-gray-900">Total Time</dt>
+        <dt class="text-base font-normal text-rrgrey-900">Total Time</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
-            v-if="monthlyClicked"
-          >
-            {{ totalMonthlyTime }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
-          </div>
-          <div
-            v-if="totalClicked"
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
+            class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             {{ totalTime }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> min </span>
+            <span class="ml-2 text-sm font-medium text-rrgrey-900"> min </span>
           </div>
         </dd>
       </div>
-      <!-- <div class="px-4 py-5 sm:p-6 grid">
-        <dt class="text-base font-normal text-gray-900">Total Cost</dt>
+      <div class="px-4 py-5 sm:p-6 grid">
+        <dt class="text-base font-normal text-rrgrey-900">Total Cost</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
-            v-if="monthlyClicked"
-          >
-            ${{ totalMonthlyCost.toFixed(2) }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
-          </div>
-          <div
-            v-if="totalClicked"
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
+            class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             ${{ totalCost.toFixed(2) }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
+            <span class="ml-2 text-sm font-medium text-rrgrey-900"> USD </span>
           </div>
         </dd>
-      </div> -->
-      <!-- <div class="px-4 py-5 sm:p-6 grid">
-        <dt class="text-base font-normal text-gray-900">Average Cost</dt>
+      </div>
+      <div class="px-4 py-5 sm:p-6 grid">
+        <dt class="text-base font-normal text-rrgrey-900">Average Cost</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
-            v-if="monthlyClicked"
-          >
-            ${{ averageMonthlyCost.toFixed(2) }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
-          </div>
-          <div
-            v-if="totalClicked"
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
+            class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             ${{ averageCost.toFixed(2) }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> USD </span>
+            <span class="ml-2 text-sm font-medium text-rrgrey-900"> USD </span>
           </div>
         </dd>
-      </div> -->
-      <!-- <div class="px-4 py-5 sm:p-6 grid">
-        <dt class="text-base font-normal text-gray-900">Powerpoint Slides</dt>
+      </div>
+      <div class="px-4 py-5 sm:p-6 grid">
+        <dt class="text-base font-normal text-rrgrey-900">Powerpoint Slides</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
-            v-if="monthlyClicked"
+            class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
-            {{ totalMonthlyPowerpointSlides }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> Slides </span>
-          </div>
-          <div
-            v-if="totalClicked"
-            class="flex items-baseline text-2xl font-semibold text-indigo-600"
-          >
-            {{ totalPowerpointSlides }}
-            <span class="ml-2 text-sm font-medium text-gray-500"> Slides </span>
+            {{ totalSlides }}
+            <span class="ml-2 text-sm font-medium text-rrgrey-900">
+              Slides
+            </span>
           </div>
         </dd>
-      </div> -->
+      </div>
     </dl>
   </div>
 </template>
@@ -176,59 +137,35 @@ export default {
   setup(props) {
     const lastThirtyDays = ref(true);
     const filteredRows = ref([]);
-    const averageTime = ref(0);
-
-    const totalCost = ref(0);
     const totalTime = ref(0);
-    const totalPowerpointSlides = ref(0);
+    const averageTime = ref(0);
+    const totalCost = ref(0);
     const averageCost = ref(0);
-    const changePrevious = ref(0);
-    const changePercent = ref(0);
-    const changeType = ref(0);
-    const totalMonthlyCost = ref(0);
-    const totalMonthlyTime = ref(0);
-    const totalMonthlyPowerpointSlides = ref(0);
-    const averageMonthlyCost = ref(0);
-    const averageMonthlyTime = ref(0);
-    const changeMonthlyPrevious = ref(0);
-    const changeMonthlyPercent = ref(0);
-    const changeMonthlyType = ref(0);
-    let meetingTime = ref(0);
-    let currentTime = Math.floor(new Date().getTime() / 1000.0);
-    let monthlyMeetingAmount = 0;
-    let n = 0;
+    const totalSlides = ref(0);
 
-    // Reset all cumulative stats if the meeting rows information changes
-    function resetVals() {
-      currentTime = Math.floor(new Date().getTime() / 1000.0);
-      totalMonthlyCost.value = 0;
-      totalMonthlyTime.value = 0;
-      totalMonthlyPowerpointSlides.value = 0;
-      totalCost.value = 0;
-      totalTime.value = 0;
-      totalPowerpointSlides.value = 0;
-      monthlyMeetingAmount = 0;
-      n = 0;
-    }
-
-    // True if meeting is in the last 30 days
     function filterLastThirtyDaysMeetings(meeting) {
       const dateCheck = Math.floor(new Date().getTime());
-      const val = meeting.date > dateCheck - 2629743000;
-      // console.log("Meeting: ", meeting.employeeNumber);
-      // console.log("Sent Meeting: ", meeting.date);
-      // console.log("Date Check: ", dateCheck);
-      // console.log("Val: ", val);
-      return val;
+      const isMeetingNewerThanThirty = meeting.date > dateCheck - 2629743000;
+      return isMeetingNewerThanThirty;
     }
 
-    // Calculate average time of meetings in an array
-    function timeAverage(meetings) {
-      // return meetings.reduce((meetings.))
-    }
+    // reduce function to sum time
+    const timeReducer = function (accumulator, meeting) {
+      return accumulator + meeting.time;
+    };
+
+    // reduce function to sum cost
+    const costReducer = function (accumulator, meeting) {
+      return accumulator + meeting.totalCost;
+    };
+
+    // reduce function to sum number of slides
+    const slideReducer = function (accumulator, meeting) {
+      return accumulator + meeting.powerpointSlides;
+    };
 
     watch(
-      () => props.rows,
+      () => [lastThirtyDays.value, props.rows],
       () => {
         // math on last 30 days worth of meetings
         if (!lastThirtyDays.value) {
@@ -236,74 +173,33 @@ export default {
 
           // math on all meetings
         } else {
-          // console.log("Rows: ", props.rows[1]);
           filteredRows.value = props.rows.filter(filterLastThirtyDaysMeetings);
         }
-        console.log("Filter Rows?: ", lastThirtyDays.value);
-        console.log("Rows: ", props.rows.length);
-        console.log("Filtered Length: ", filteredRows.value.length);
+
+        // Total Time
+        totalTime.value = filteredRows.value.reduce(timeReducer, 0);
 
         // Average Meeting Time
+        averageTime.value = totalTime.value / filteredRows.value.length;
+
+        // Total Cost
+        totalCost.value = filteredRows.value.reduce(costReducer, 0);
+
+        // Average Meeting Cost
+        averageCost.value = totalCost.value / filteredRows.value.length;
+
+        // Total PowerPoint Slides
+        totalSlides.value = filteredRows.value.reduce(slideReducer, 0);
       }
     );
 
-    /* Watch for changes to the incoming list of meetings ("rows" prop) and re-run
-    the calculations for the statistics shown in this component. */
-    // watch(
-    //   () => props.rows,
-    //   () => {
-    //     resetVals();
-    //     while (n < props.rows.length) {
-    //       meetingTime = props.rows[n]["date"] / 1000;
-
-    //       /* If the date of the meeting is less than 30 days from today then
-    //       count it towards monthly Value */
-    //       if (meetingTime > currentTime - 2629743) {
-    //         totalMonthlyCost.value =
-    //           totalMonthlyCost.value + props.rows[n]["totalCost"];
-    //         totalMonthlyTime.value =
-    //           totalMonthlyTime.value + props.rows[n]["time"];
-    //         totalMonthlyPowerpointSlides.value =
-    //           totalMonthlyPowerpointSlides.value +
-    //           props.rows[n]["powerpointSlides"];
-    //         averageMonthlyTime.value =
-    //           totalMonthlyTime.value / monthlyMeetingAmount;
-    //         averageMonthlyCost.value =
-    //           totalMonthlyCost.value / monthlyMeetingAmount;
-    //       }
-    //       // Else count it towards older value and add the monthly value to the total
-    //       totalCost.value = totalCost.value + props.rows[n]["totalCost"];
-    //       totalTime.value = totalTime.value + props.rows[n]["time"];
-    //       totalPowerpointSlides.value =
-    //         totalPowerpointSlides.value + props.rows[n]["powerpointSlides"];
-    //       averageTime.value = totalTime.value / props.rows.length;
-    //       averageCost.value = totalCost.value / props.rows.length;
-    //       monthlyMeetingAmount++;
-    //       n++;
-    //     }
-    //   }
-    // );
-
     return {
+      lastThirtyDays,
       totalCost,
       totalTime,
-      totalPowerpointSlides,
       averageCost,
       averageTime,
-      changePrevious,
-      changePercent,
-      changeType,
-      totalMonthlyCost,
-      totalMonthlyTime,
-      totalMonthlyPowerpointSlides,
-      averageMonthlyCost,
-      averageMonthlyTime,
-      changeMonthlyPrevious,
-      changeMonthlyPercent,
-      changeMonthlyType,
-      // monthlyClicked,
-      // totalClicked,
-      lastThirtyDays,
+      totalSlides,
     };
   },
 };
