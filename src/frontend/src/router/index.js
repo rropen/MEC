@@ -16,6 +16,11 @@ const routes = [
     name: "HomeV2",
     component: () => import("../views/HomeV2.vue"),
   },
+  {
+    path: "/:pathMatch(.*)*",
+    name: "not-found",
+    component: () => import("../views/404.vue"),
+  },
 ];
 
 const router = createRouter({
