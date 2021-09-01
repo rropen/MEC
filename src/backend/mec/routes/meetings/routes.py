@@ -5,6 +5,7 @@ from sqlalchemy.orm import Session
 from fastapi import APIRouter, HTTPException, Depends, Path
 from mec.database import SessionLocal
 from icecream import ic
+import json
 
 # Create a database connection we can use
 def get_db():
@@ -78,3 +79,8 @@ def delete_meeting(
             "code": "error",
             "message": "Meeting not Deleted or Multiple Meetings with same meetingId existed.",
         }
+@router.get("/test")
+def crud_test(db: Session = Depends(get_db)):
+    response = crud.group_cost(db)
+    # print(response)
+    return json.dumps(response)

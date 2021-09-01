@@ -7,7 +7,7 @@
         justify-items-center
         mb-6
         float-right
-        flex flex-col
+        flex-col
         text-rrpink-600
         font-semibold
       "
@@ -22,6 +22,7 @@
       </p>
     </div>
     <DataTable
+      id="dataTable"
       :value="rows"
       stripedRows
       :paginator="true"
@@ -35,7 +36,7 @@
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
     >
       <Column field="meetingId" header="Meeting ID" :hidden="true"></Column>
-      <Column field="title" header="Title"></Column>
+      <Column id="titleField" field="title" header="Title"></Column>
       <Column
         field="meetingGroup"
         header="Meeting Group"
@@ -68,6 +69,7 @@
       <Column field="meetingId" header="Delete">
         <template #body="slotProps">
           <Button
+            id="deleteButton"
             icon="pi pi-trash"
             class="p-button-rounded p-button-danger"
             @click="confirmDeleteRow(slotProps.data)"

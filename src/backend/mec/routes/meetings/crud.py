@@ -1,12 +1,22 @@
 from mec.models import Meeting
 from sqlalchemy.orm import Session
 
-
 def get_all(db: Session, skip: int = 0, limit: int = 25):
     """Get all the meetings and return the them."""
 
     return db.query(Meeting).offset(skip).limit(limit).all()
 
+def group_cost(db: Session):
+    """Finds the cost of meetings with the same group ID"""
+    meetings = db.query(Meeting).all()
+
+    meeting_list = []
+    for m in meetings: 
+        print("Title: {}".format(m.title))
+        print("Comments: {}".format(m.comment))
+        meeting_list.append(m.title)
+        
+    return meeting_list
 
 def create_meeting(db: Session, meeting_data):
     """Take data from request and create a new meeting in the database."""
