@@ -22,7 +22,7 @@
     "node-sass": "^6.0.1",
     "package.json": "^2.0.1",
     "primeicons": "^4.1.0",
-    "primevue": "^3.5.1",
+    "primevue": "^3.6.4",
     "vee-validate": "^4.4.4",
     "vue": "^3.2.1",
     "vue-apexcharts": "^1.6.0",
