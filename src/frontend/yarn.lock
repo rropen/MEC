@@ -4364,10 +4364,10 @@ validate-npm-package-license@^3.0.1:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
 
-vee-validate@^4.4.4:
-  version "4.4.7"
-  resolved "https://registry.npmjs.org/vee-validate/-/vee-validate-4.4.7.tgz"
-  integrity sha512-Yb5sMWbR4iNMlKH6lb16wfKPEV8GewnynakF5GdLXVShXAT459qXjb98kd0xeUCmDE3KorJh9OywlrkDLkiYUg==
+vee-validate@^4.4.9:
+  version "4.4.10"
+  resolved "https://registry.yarnpkg.com/vee-validate/-/vee-validate-4.4.10.tgz#59f3ceca1f925eca32d07dd812319ca72051343a"
+  integrity sha512-37Ch8PSyDNV1CfNHCN+3YWSHb8UL1vGjBi8rqVonyafxesxSnMQE/47vFZJ+pqxUfSsuj4wKcQNYhx8oDPVHww==
 
 verror@1.10.0:
   version "1.10.0"
