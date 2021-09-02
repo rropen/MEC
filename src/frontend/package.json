@@ -23,7 +23,7 @@
     "package.json": "^2.0.1",
     "primeicons": "^4.1.0",
     "primevue": "^3.6.4",
-    "vee-validate": "^4.4.4",
+    "vee-validate": "^4.4.9",
     "vue": "^3.2.1",
     "vue-apexcharts": "^1.6.0",
     "vue-axios": "^3.2.4",
