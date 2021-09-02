@@ -362,7 +362,7 @@ export default {
         date: Date.now(),
         employeeNumber: parseInt(employeeNumber.value),
         time: parseInt(minutes.value),
-        totalCost: -parseFloat(costCalc.value.toFixed(2)),
+        totalCost: parseFloat(costCalc.value.toFixed(2)),
         meetingGroup: meetingGroup.value,
         powerpointSlides: parseInt(numSlides.value),
         comment: comment.value,

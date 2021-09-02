@@ -38,6 +38,7 @@
         </header>
         <main class="text-rrgrey-800 text-lg flex justify-center mt-12">
           <button
+            id="confirmDelete"
             class="
               delay-100
               duration-200

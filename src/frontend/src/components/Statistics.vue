@@ -74,6 +74,7 @@
         <dt class="text-base font-normal text-rrgrey-900">Total Time</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
+            id="totalTime"
             class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             {{ totalTime }}
@@ -85,6 +86,7 @@
         <dt class="text-base font-normal text-rrgrey-900">Total Cost</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
+            id="totalCost"
             class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             ${{ totalCost.toFixed(2) }}
@@ -96,6 +98,7 @@
         <dt class="text-base font-normal text-rrgrey-900">Average Cost</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
+            id="averageCost"
             class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             ${{ averageCost.toFixed(2) }}
@@ -107,6 +110,7 @@
         <dt class="text-base font-normal text-rrgrey-900">Powerpoint Slides</dt>
         <dd class="mt-1 flex justify-between items-baseline md:block lg:flex">
           <div
+            id="totalSlides"
             class="flex items-baseline text-2xl font-semibold text-rrblue-600"
           >
             {{ totalSlides }}
