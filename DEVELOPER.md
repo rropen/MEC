@@ -6,6 +6,40 @@ The following document will explain how to configure your environment locally, r
 
 This project consists of two primary parts: a Vue.js [frontend](#frontend) and a FastAPI [backend](#backend).
 
+### Dependency Installation
+
+There are two different `package.json` files which will need to have dependencies installed.  You should install a modern version of [node](https://nodejs.org/en/download/) (14+) and the latest version of [yarn v1](https://classic.yarnpkg.com/en/docs/install#windows-stable) prior to running the following commands.
+
+```bash
+# double check node is installed
+node --version
+
+# double check yarn is installed
+yarn --version
+
+# install node packages to allow project-wide commit linting and other hooks
+cd c:/git/mec
+yarn install # in the root directory
+
+# install packages for the frontend
+cd src/frontend
+yarn install
+```
+
+>Make sure you have the following settings in your VSCode settings.json file to allow auto lint on save.
+
+```json
+"editor.codeActionsOnSave": {
+        "source.fixAll": true,
+    }
+```
+
+Prior to committing you'll also need to install `pre-commit` in your python environment which will enable the `black` fomatter for python.  On each committhe pre-commit hooks will automatically:
+
+* Format any python files with black
+* Format any javascript or similar files with prettier
+* lint any commit messages and enforce the commit standard outlined below.
+
 ### Commits & Contributions
 
 This is the standard we use for commits: [Commit Standard](https://www.conventionalcommits.org/en/v1.0.0/)
@@ -43,34 +77,6 @@ cd c:/git
 
 # clone
 git clone git@github.com:rropen/MEC.git
-```
-
-### Dependency Installation
-
-There are two different `package.json` files which will need to have dependencies installed.  You should install a modern version of [node](https://nodejs.org/en/download/) (14+) and the latest version of [yarn v1](https://classic.yarnpkg.com/en/docs/install#windows-stable) prior to running the following commands.
-
-```bash
-# double check node is installed
-node --version
-
-# double check yarn is installed
-yarn --version
-
-# install node packages to allow project-wide commit linting and other hooks
-cd c:/git/mec
-yarn install # in the root directory
-
-# install packages for the frontend
-cd src/frontend
-yarn install
-```
-
->Make sure you have the following settings in your VSCode settings.json file to allow auto lint on save.
-
-```json
-"editor.codeActionsOnSave": {
-        "source.fixAll": true,
-    }
 ```
 
 For local development, the frontend just runs on your machine. After installing the dependencies in `src/frontend` you can run it with the commands below. This is the easiest way to work on this service.
