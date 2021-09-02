@@ -142,10 +142,10 @@
   resolved "https://registry.npmjs.org/@headlessui/vue/-/vue-1.3.0.tgz"
   integrity sha512-d0/O3rbRadpWzi1LHGPE6ZXJIoUQC9yt0EdrBrsIxXfcpNo+KT1HKm5/EgZ3ra92hfJ7ups7QwqARaDIYeTZSg==
 
-"@heroicons/vue@^1.0.1":
-  version "1.0.2"
-  resolved "https://registry.npmjs.org/@heroicons/vue/-/vue-1.0.2.tgz"
-  integrity sha512-ZB2LkYOAsZaup8brJs1R7NEuUzIli+Qy2DUcB6r1z+VuTzrdpRjDKU0Mi7VqRropCdRbSla3JkekK5jBe4qvgA==
+"@heroicons/vue@^1.0.3":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@heroicons/vue/-/vue-1.0.4.tgz#dcfd957a9abc827321054e643f6fb73629b3eef6"
+  integrity sha512-jm7JMoUGr7Asn07oYNmewxkdQALnskTzRo17iGpHG/apLcc+GFdvdN4XvWZ2awStodaqeZ4eYWg7UcI0LvLETQ==
 
 "@humanwhocodes/config-array@^0.5.0":
   version "0.5.0"
