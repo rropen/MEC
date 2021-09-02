@@ -329,6 +329,11 @@
     "@vue/compiler-dom" "3.2.6"
     "@vue/shared" "3.2.6"
 
+"@vue/devtools-api@^6.0.0-beta.14":
+  version "6.0.0-beta.15"
+  resolved "https://registry.yarnpkg.com/@vue/devtools-api/-/devtools-api-6.0.0-beta.15.tgz#ad7cb384e062f165bcf9c83732125bffbc2ad83d"
+  integrity sha512-quBx4Jjpexo6KDiNUGFr/zF/2A4srKM9S9v2uHgMXSU//hjgq1eGzqkIFql8T9gfX5ZaVOUzYBP3jIdIR3PKIA==
+
 "@vue/reactivity@3.2.6":
   version "3.2.6"
   resolved "https://registry.yarnpkg.com/@vue/reactivity/-/reactivity-3.2.6.tgz#b8993fa6f48545178e588e25a9c9431a1c1b7d50"
@@ -3319,10 +3324,10 @@ prepend-http@^1.0.1:
   resolved "https://registry.npmjs.org/prepend-http/-/prepend-http-1.0.4.tgz"
   integrity sha1-1PRWKwzjaW5BrFLQ4ALlemNdxtw=
 
-prettier@^2.3.0:
-  version "2.3.0"
-  resolved "https://registry.npmjs.org/prettier/-/prettier-2.3.0.tgz"
-  integrity sha512-kXtO4s0Lz/DW/IJ9QdWhAf7/NmPWQXkFr/r/WkR3vyI+0v8amTDxiaQSLzs8NBlytfLWX/7uQUMIW677yLKl4w==
+prettier@^2.3.2:
+  version "2.3.2"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-2.3.2.tgz#ef280a05ec253712e486233db5c6f23441e7342d"
+  integrity sha512-lnJzDfJ66zkMy58OL5/NY5zp70S7Nz6KqcKkXYzn2tMVrNxvbqaBpg7H3qHaLxCJ5lNMsGuM8+ohS7cZrthdLQ==
 
 pretty-bytes@^5.6.0:
   version "5.6.0"
@@ -3339,10 +3344,10 @@ primeicons@^4.1.0:
   resolved "https://registry.npmjs.org/primeicons/-/primeicons-4.1.0.tgz"
   integrity sha512-uEv2pSPk1zQCfaB2VgnUfnUxxlGryYi+5rbdxmZBBt5v9S/pscIQYS5YDLxsQZ7D9jn5c76+Tx5wX/2J1nK6sA==
 
-primevue@^3.5.1:
-  version "3.5.1"
-  resolved "https://registry.npmjs.org/primevue/-/primevue-3.5.1.tgz"
-  integrity sha512-QLXhsXse21Gz22pFJWVScy443FhnIAOK1OF07VlkaqypylftcpeVF6g9pXCSpQfkXpUc0LsH6kqwB9IlO3Lcgw==
+primevue@^3.6.4:
+  version "3.7.0"
+  resolved "https://registry.yarnpkg.com/primevue/-/primevue-3.7.0.tgz#ce78c0b9c8383436725fdc1f8b0fd81b97673e0e"
+  integrity sha512-0W/epLCEgJanaxlS7IMQsLzJ6C+bjk/e89P40+JW3xMNgckS+/vbZyuv+w34eF5zkq7LkBKRegbdc0R9G/JtFA==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"
@@ -4413,10 +4418,12 @@ vue-eslint-parser@^7.10.0:
     lodash "^4.17.21"
     semver "^6.3.0"
 
-vue-router@^4.0.6:
-  version "4.0.6"
-  resolved "https://registry.npmjs.org/vue-router/-/vue-router-4.0.6.tgz"
-  integrity sha512-Y04llmK2PyaESj+N33VxLjGCUDuv9t4q2OpItEGU7POZiuQZaugV6cJpE6Qm1sVFtxufodLKN2y2dQl9nk0Reg==
+vue-router@^4.0.10:
+  version "4.0.11"
+  resolved "https://registry.yarnpkg.com/vue-router/-/vue-router-4.0.11.tgz#cd649a0941c635281763a20965b599643ddc68ed"
+  integrity sha512-sha6I8fx9HWtvTrFZfxZkiQQBpqSeT+UCwauYjkdOQYRvwsGwimlQQE2ayqUwuuXGzquFpCPoXzYKWlzL4OuXg==
+  dependencies:
+    "@vue/devtools-api" "^6.0.0-beta.14"
 
 vue@^3.2.1:
   version "3.2.6"
