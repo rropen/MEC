@@ -48,7 +48,7 @@
     "eslint-plugin-vue": "^7.16.0",
     "path-parse": "^1.0.7",
     "postcss": "^8.2.10",
-    "prettier": "^2.3.0",
+    "prettier": "^2.3.2",
     "start-server-and-test": "^1.13.1",
     "tailwindcss": "^2.1.1",
     "trim-newlines": "^3.0.1",
