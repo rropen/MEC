@@ -82,21 +82,16 @@
     </div>
   </div>
 </template>
-<script>
-import { defineComponent } from "vue";
-export default defineComponent({
-  name: "DeleteDialog",
-  components: {},
-  setup(_, { emit }) {
-    // Cancel button is clicked
-    const onCancel = () => {
-      emit("close");
-    };
-    // Confirm button is clicked
-    const confirmed = () => {
-      emit("confirmed");
-    };
-    return { onCancel, confirmed };
-  },
-});
+
+<script setup lang="ts">
+const emits = defineEmits(["close", "confirmed"]);
+
+// Cancel button is clicked
+const onCancel = () => {
+  emits("close");
+};
+// Confirm button is clicked
+const confirmed = () => {
+  emits("confirmed");
+};
 </script>

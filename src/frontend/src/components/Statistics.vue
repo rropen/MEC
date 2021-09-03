@@ -53,8 +53,7 @@
         overflow-hidden
         shadow
         divide-y divide-gray-200
-        md:grid-cols-5
-        md:divide-y-0 md:divide-x
+        md:grid-cols-5 md:divide-y-0 md:divide-x
       "
     >
       <!-- These are the 5 stat cards -->
@@ -124,87 +123,70 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
+import { meetingItem } from "../types";
 import { ArrowSmDownIcon, ArrowSmUpIcon } from "@heroicons/vue/solid";
-import { ref, watch } from "vue";
+import { ref, watch, PropType } from "vue";
 
-export default {
-  name: "Statistics",
-  props: {
-    rows: Array,
-  },
-  components: {
-    ArrowSmDownIcon,
-    ArrowSmUpIcon,
-  },
+const props = defineProps({
+  rows: Array as PropType<meetingItem[]>,
+});
 
-  setup(props) {
-    const lastThirtyDays = ref(true);
-    const filteredRows = ref([]);
-    const totalTime = ref(0);
-    const averageTime = ref(0);
-    const totalCost = ref(0);
-    const averageCost = ref(0);
-    const totalSlides = ref(0);
+const lastThirtyDays = ref(true);
+const filteredRows = ref<meetingItem[]>([]);
+const totalTime = ref(0);
+const averageTime = ref(0);
+const totalCost = ref(0);
+const averageCost = ref(0);
+const totalSlides = ref(0);
 
-    function filterLastThirtyDaysMeetings(meeting) {
-      const dateCheck = Math.floor(new Date().getTime());
-      const isMeetingNewerThanThirty = meeting.date > dateCheck - 2629743000;
-      return isMeetingNewerThanThirty;
+function filterLastThirtyDaysMeetings(meeting) {
+  const dateCheck = Math.floor(new Date().getTime());
+  const isMeetingNewerThanThirty = meeting.date > dateCheck - 2629743000;
+  return isMeetingNewerThanThirty;
+}
+
+// reduce function to sum time
+const timeReducer = function (accumulator, meeting: meetingItem) {
+  return accumulator + meeting.time;
+};
+
+// reduce function to sum cost
+const costReducer = function (accumulator, meeting: meetingItem) {
+  return accumulator + meeting.totalCost;
+};
+
+// reduce function to sum number of slides
+const slideReducer = function (accumulator, meeting: meetingItem) {
+  return accumulator + meeting.powerpointSlides;
+};
+
+watch(
+  () => [lastThirtyDays.value, props.rows],
+  () => {
+    // math on last 30 days worth of meetings
+    if (!lastThirtyDays.value) {
+      filteredRows.value = props.rows;
+
+      // math on all meetings
+    } else {
+      filteredRows.value = props.rows.filter(filterLastThirtyDaysMeetings);
     }
 
-    // reduce function to sum time
-    const timeReducer = function (accumulator, meeting) {
-      return accumulator + meeting.time;
-    };
+    // Total Time
+    totalTime.value = filteredRows.value.reduce(timeReducer, 0);
 
-    // reduce function to sum cost
-    const costReducer = function (accumulator, meeting) {
-      return accumulator + meeting.totalCost;
-    };
+    // Average Meeting Time
+    averageTime.value = totalTime.value / filteredRows.value.length;
 
-    // reduce function to sum number of slides
-    const slideReducer = function (accumulator, meeting) {
-      return accumulator + meeting.powerpointSlides;
-    };
+    // Total Cost
+    totalCost.value = filteredRows.value.reduce(costReducer, 0);
 
-    watch(
-      () => [lastThirtyDays.value, props.rows],
-      () => {
-        // math on last 30 days worth of meetings
-        if (!lastThirtyDays.value) {
-          filteredRows.value = props.rows;
+    // Average Meeting Cost
+    averageCost.value = totalCost.value / filteredRows.value.length;
 
-          // math on all meetings
-        } else {
-          filteredRows.value = props.rows.filter(filterLastThirtyDaysMeetings);
-        }
-
-        // Total Time
-        totalTime.value = filteredRows.value.reduce(timeReducer, 0);
-
-        // Average Meeting Time
-        averageTime.value = totalTime.value / filteredRows.value.length;
-
-        // Total Cost
-        totalCost.value = filteredRows.value.reduce(costReducer, 0);
-
-        // Average Meeting Cost
-        averageCost.value = totalCost.value / filteredRows.value.length;
-
-        // Total PowerPoint Slides
-        totalSlides.value = filteredRows.value.reduce(slideReducer, 0);
-      }
-    );
-
-    return {
-      lastThirtyDays,
-      totalCost,
-      totalTime,
-      averageCost,
-      averageTime,
-      totalSlides,
-    };
-  },
-};
+    // Total PowerPoint Slides
+    totalSlides.value = filteredRows.value.reduce(slideReducer, 0);
+  }
+);
 </script>
