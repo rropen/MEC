@@ -80,7 +80,6 @@
     <teleport to="#modals">
       <DeleteDialog
         v-if="deleteRowDialog"
-        @updateTable="updateTable()"
         @close="deleteRowDialog = false"
         @confirmed="deleteConfirmed()"
       >
@@ -89,88 +88,69 @@
   </div>
 </template>
 
-<script>
+<script lang="ts" setup>
 import filters from "../filters";
-import { computed, ref } from "vue";
+import { meetingItem } from "../types";
+import { computed, ref, PropType } from "vue";
 import DeleteDialog from "../components/DeleteDialog.vue";
 import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
 import axios from "axios";
 
-export default {
-  name: "Table",
-  props: {
-    rows: Array,
+const props = defineProps({
+  rows: {
+    type: Array as PropType<meetingItem[]>,
   },
-  components: {
-    DataTable,
-    Column,
-    Button,
-    DeleteDialog,
-  },
-  setup(props, { emit }) {
-    // console.log("rows at load: ", props.rows);
-    const rowToDelete = ref({});
-    const deleteRowDialog = ref(false);
+});
+const emits = defineEmits(["fetchTableAfterDelete"]);
 
-    const totalCost = computed(() => {
-      var total = 0;
-      for (var i = 0; i < props.rows.length; i++) {
-        total = total + props.rows[i].totalCost;
-      }
-      return total;
-    });
+const rowToDelete = ref<meetingItem>();
+const deleteRowDialog = ref(false);
 
-    const macbookpros = computed(() => {
-      let num = totalCost.value / 2700;
-      if (num > 1) {
-        return num.toFixed(0);
-      } else {
-        return 0;
-      }
-    });
+const totalCost = computed(() => {
+  var total = 0;
+  for (var i = 0; i < props.rows.length; i++) {
+    total = total + props.rows[i].totalCost;
+  }
+  return total;
+});
 
-    const azuremonth = computed(() => {
-      let num = totalCost.value / 15;
-      if (num > 1) {
-        return num.toFixed(0);
-      } else {
-        return 0;
-      }
-    });
+const macbookpros = computed(() => {
+  let num = totalCost.value / 2700;
+  if (num > 1) {
+    return num.toFixed(0);
+  } else {
+    return 0;
+  }
+});
 
-    const confirmDeleteRow = (rowData) => {
-      rowToDelete.value = rowData;
-      // console.log(deleteRowDialog.value);
-      deleteRowDialog.value = true;
-    };
+const azuremonth = computed(() => {
+  let num = totalCost.value / 15;
+  if (num > 1) {
+    return num.toFixed(0);
+  } else {
+    return 0;
+  }
+});
 
-    // Send an API call to delete the previously marked row from the database
-    function deleteConfirmed() {
-      // console.log("Row To Delete: ", rowToDelete.value.meetingId);
-      axios
-        .delete("/meetings/" + rowToDelete.value.meetingId)
-        .then(function (response) {
-          emit("fetchTableAfterDelete");
-          deleteRowDialog.value = false;
-        })
-        .catch(function (error) {
-          console.log("Delete Error: ", error);
-        });
-    }
-    return {
-      filters,
-      totalCost,
-      macbookpros,
-      azuremonth,
-      confirmDeleteRow,
-      deleteConfirmed,
-      rowToDelete,
-      deleteRowDialog,
-    };
-  },
+const confirmDeleteRow = (rowData) => {
+  rowToDelete.value = rowData;
+  deleteRowDialog.value = true;
 };
+
+// Send an API call to delete the previously marked row from the database
+function deleteConfirmed() {
+  axios
+    .delete("/meetings/" + rowToDelete.value.meetingId)
+    .then(function (response) {
+      emits("fetchTableAfterDelete");
+      deleteRowDialog.value = false;
+    })
+    .catch(function (error) {
+      console.log("Delete Error: ", error);
+    });
+}
 </script>
 <style>
 @import "primevue/resources/themes/saga-blue/theme.css";

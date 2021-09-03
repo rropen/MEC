@@ -1,7 +1,19 @@
 .
 <template>
   <div
-    class="wrapper flex text-sans flex-row justify-between bg-rrblue-800 text-rrgrey-400 pt-12 pb-4 px-12 clear-both"
+    class="
+      wrapper
+      flex
+      text-sans
+      flex-row
+      justify-between
+      bg-rrblue-800
+      text-rrgrey-400
+      pt-12
+      pb-4
+      px-12
+      clear-both
+    "
   >
     <div class="text-left ml-6 mb-2">
       <div id="leftSide">
@@ -22,7 +34,7 @@
           <a href="http://https://github.com/rropen/MEC">Github</a>
           <a
             href="https://rolls-royce.papirfly.com/portal/doc?query=%7B%22rootIds%22%3A%5B10368%5D%2C%22limit%22%3A1%2C%22nodeIds%22%3A%5B10368%5D%2C%22incXP%22%3Atrue%7D&docId=13007"
-            ><br>Cobalt</a
+            ><br />Cobalt</a
           >
         </li>
       </ul>
@@ -30,13 +42,4 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "Footer",
-  setup() {
-    return {};
-  },
-});
-</script>
+<script setup lang="ts"></script>

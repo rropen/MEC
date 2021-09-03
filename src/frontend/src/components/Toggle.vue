@@ -17,19 +17,10 @@
   </Switch>
 </template>
 
-<script>
-// import { ref } from "vue";
+<script setup lang="ts">
+import { PropType } from "vue";
 import { Switch } from "@headlessui/vue";
-
-export default {
-  props: {
-    toggleValue: Boolean,
-  },
-  components: {
-    Switch,
-  },
-  setup(props, context) {
-    return {};
-  },
-};
+const props = defineProps({
+  toggleValue: Boolean as PropType<boolean>,
+});
 </script>
