@@ -163,8 +163,7 @@
                   py-2
                   px-4
                   ring-1 ring-rrblue-400
-                  hover:ring-rrgrey-600
-                  hover:border-transparent
+                  hover:ring-rrgrey-600 hover:border-transparent
                   rounded-md
                   focus:outline-none
                 "
@@ -184,124 +183,97 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import Toggle from "../components/Toggle.vue";
 import { defineComponent, ref, computed } from "vue";
 import { Field, Form, ErrorMessage } from "vee-validate";
 import { object, string, number, date } from "yup";
 import { nanoid } from "nanoid";
 import axios from "axios";
+import { meetingItem } from "@/types";
 
-export default defineComponent({
-  name: "PastMeetingForm",
-  components: { Field, Form, ErrorMessage, Toggle },
-  setup(_, { emit }) {
-    const employeeNumber = ref(3);
-    const minutes = ref(4);
-    const powerpoint = ref(false);
-    const numSlides = ref(0);
-    const comment = ref("");
-    const title = ref("");
-    const costRate = ref(135); // $135/hr/employee
-    const meetingDate = ref("");
-    const meetingGroup = ref("");
-    const groupCost = ref(0);
+const emits = defineEmits(["close", "updateTable"]);
+const employeeNumber = ref(3);
+const minutes = ref(4);
+const powerpoint = ref(false);
+const numSlides = ref(0);
+const comment = ref("");
+const title = ref("");
+const costRate = ref(140); // $140/hr/employee
+const meetingDate = ref("");
+const meetingGroup = ref("");
+const groupCost = ref(0);
 
-    // Styling
-    const labelClasses = {
-      "mb-0": true,
-      "mt-8": true,
-    };
-    const errorClasses = {
-      "text-rrpink-400": true,
-      "font-medium": true,
-      "mt-0: true": true,
-    };
-    const fieldClasses = {
-      "mt-0": true,
-      "rounded-md": true,
-    };
+// Styling
+const labelClasses = {
+  "mb-0": true,
+  "mt-8": true,
+};
+const errorClasses = {
+  "text-rrpink-400": true,
+  "font-medium": true,
+  "mt-0: true": true,
+};
+const fieldClasses = {
+  "mt-0": true,
+  "rounded-md": true,
+};
 
-    // Pass validation schema to form fields
-    const schema = object().shape({
-      employeeNumber: number()
-        .integer()
-        .required()
-        .label("Number of Employees"),
-      minutes: number().required().integer().label("Meeting Length"),
-      meetingDate: date().required(),
-      numSlides: number().integer().label("Number of Slides"),
-      cost: number().required().label("Cost"),
-      comment: string().label("Comment"),
-      meetingGroup: string().label("Meeting Group"),
-      title: string().label("Title"),
-    });
-
-    const cost = computed(() => {
-      return (employeeNumber.value * minutes.value * costRate.value) / 60;
-    });
-
-    // Cancel button is clicked
-    const onCancel = () => {
-      emit("close");
-    };
-
-    // Send data for a new row to the api
-    function sendRow(rowVals) {
-      axios
-        .post("/meetings", rowVals, {
-          headers: {
-            // Overwrite Axios's automatically set Content-Type
-            "Content-Type": "application/json",
-          },
-        })
-
-        .then(function (response) {
-          // console.log("Successful Response: ", response);
-          emit("updateTable");
-        })
-        .catch(function (error) {
-          console.log("Post Error: ", error);
-        });
-      emit("close");
-    }
-
-    // Gather info upon form submit and call the api post request to push data to api
-    function onSubmit() {
-      const rowVals = {
-        meetingId: nanoid(),
-        date: Date.parse(meetingDate.value),
-        employeeNumber: parseInt(employeeNumber.value),
-        time: parseInt(minutes.value),
-        totalCost: parseFloat(cost.value.toFixed(2)),
-        meetingGroup: meetingGroup.value,
-        // powerpoint: powerpoint.value,
-        powerpointSlides: parseInt(numSlides.value),
-        comment: comment.value,
-        title: title.value,
-        groupCost: groupCost.value,
-      };
-      sendRow(rowVals);
-    }
-
-    return {
-      onCancel,
-      onSubmit,
-      schema,
-      labelClasses,
-      errorClasses,
-      fieldClasses,
-      employeeNumber,
-      meetingDate,
-      minutes,
-      meetingGroup,
-      groupCost,
-      powerpoint,
-      numSlides,
-      comment,
-      title,
-      cost,
-    };
-  },
+// Pass validation schema to form fields
+const schema = object().shape({
+  employeeNumber: number().integer().required().label("Number of Employees"),
+  minutes: number().required().integer().label("Meeting Length"),
+  meetingDate: date().required(),
+  numSlides: number().integer().label("Number of Slides"),
+  cost: number().required().label("Cost"),
+  comment: string().label("Comment"),
+  meetingGroup: string().label("Meeting Group"),
+  title: string().label("Title"),
 });
+
+const cost = computed(() => {
+  return (employeeNumber.value * minutes.value * costRate.value) / 60;
+});
+
+// Cancel button is clicked
+const onCancel = () => {
+  emits("close");
+};
+
+// Send data for a new row to the api
+function sendRow(rowVals) {
+  axios
+    .post("/meetings", rowVals, {
+      headers: {
+        // Overwrite Axios's automatically set Content-Type
+        "Content-Type": "application/json",
+      },
+    })
+
+    .then(function (response) {
+      // console.log("Successful Response: ", response);
+      emits("updateTable");
+    })
+    .catch(function (error) {
+      console.log("Post Error: ", error);
+    });
+  emits("close");
+}
+
+// Gather info upon form submit and call the api post request to push data to api
+function onSubmit() {
+  const rowVals: meetingItem = {
+    meetingId: nanoid(),
+    date: Date.parse(meetingDate.value),
+    employeeNumber: employeeNumber.value,
+    time: minutes.value,
+    totalCost: parseFloat(cost.value.toFixed(2)),
+    meetingGroup: meetingGroup.value,
+    powerpointSlides: numSlides.value,
+    comment: comment.value,
+    title: title.value,
+    groupCost: groupCost.value,
+  };
+  sendRow(rowVals);
+}
 </script>

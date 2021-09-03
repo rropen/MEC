@@ -16,8 +16,7 @@
           class="
             mb-6
             shadow-sm
-            focus:ring-bg-rrblue-400
-            focus:border-bg-rrblue-400
+            focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
             block
             w-30
             sm:text-sm
@@ -38,8 +37,7 @@
           class="
             mb-6
             shadow-sm
-            focus:ring-bg-rrblue-400
-            focus:border-bg-rrblue-400
+            focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
             block
             w-full
             sm:text-sm
@@ -62,8 +60,7 @@
           class="
             mb-6
             shadow-sm
-            focus:ring-bg-rrblue-400
-            focus:border-bg-rrblue-400
+            focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
             block
             w-full
             sm:text-sm
@@ -86,8 +83,7 @@
           class="
             mb-6
             shadow-sm
-            focus:ring-bg-rrblue-400
-            focus:border-bg-rrblue-400
+            focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
             block
             w-full
             sm:text-sm
@@ -111,8 +107,7 @@
           class="
             mb-6
             shadow-sm
-            focus:ring-bg-rrblue-400
-            focus:border-bg-rrblue-400
+            focus:ring-bg-rrblue-400 focus:border-bg-rrblue-400
             block
             w-full
             h-16
@@ -267,130 +262,109 @@
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { ref, onMounted, computed, watch } from "vue";
 import axios from "axios";
-// import Lower from "../components/Lower.vue";
 import PastMeetingForm from "../components/PastMeetingForm.vue";
 import Statistics from "../components/Statistics.vue";
-import Toggle from "../components/Toggle.vue";
 import Table from "../components/Table.vue";
 import { nanoid } from "nanoid";
-export default {
-  name: "Home",
-  components: {
-    PastMeetingForm,
-    Statistics,
-    Toggle,
-    Table,
-  },
-  setup() {
-    const HOURLYRATE = 135;
-    const meetingGroup = ref("");
-    const numSlides = ref(0);
-    const rows = ref([]);
-    const comment = ref("");
-    const title = ref("");
-    const timerEnabled = ref(false);
-    const costCalc = ref(0);
-    const groupCost = ref(0);
-    const seconds = ref(0);
-    const pastMeetingModal = ref(false);
-    const employeeNumber = ref(0);
-    let minutes = computed(() => {
-      return Math.floor(seconds.value / 60);
-    });
-    function resetForm() {
-      employeeNumber.value = 0;
-      title.value = "";
-      comment.value = "";
-      numSlides.value = 0;
+
+const HOURLYRATE = 135;
+const meetingGroup = ref("");
+const numSlides = ref(0);
+const rows = ref([]);
+const comment = ref("");
+const title = ref("");
+const timerEnabled = ref(false);
+const costCalc = ref(0);
+const groupCost = ref(0);
+const seconds = ref(0);
+const pastMeetingModal = ref(false);
+const employeeNumber = ref(0);
+let minutes = computed(() => {
+  return Math.floor(seconds.value / 60);
+});
+
+function resetForm() {
+  employeeNumber.value = 0;
+  title.value = "";
+  comment.value = "";
+  numSlides.value = 0;
+}
+
+// if the timer is going, increment cost
+watch(timerEnabled, () => {
+  if (timerEnabled) {
+    costCalc.value += 0.000001;
+  }
+});
+
+// do the cost calculation
+watch(
+  costCalc,
+  () => {
+    if (costCalc.value > 0 && timerEnabled.value) {
+      setTimeout(() => {
+        costCalc.value = costCalc.value + HOURLYRATE / 60 / 60;
+        seconds.value += 1 / employeeNumber.value;
+      }, 1000 / employeeNumber.value);
     }
-    watch(timerEnabled, () => {
-      if (timerEnabled) {
-        costCalc.value += 0.000001;
-      }
+  },
+  { immediate: true }
+);
+
+// Fetch table data from the API
+function fetchTable() {
+  axios
+    // .get("/meetings")
+    .get("/meetings", {})
+
+    .then(function (response) {
+      let data = response.data;
+      rows.value = data;
+    })
+    .catch(function (error) {
+      console.log("Get Error: ", error);
     });
-    watch(
-      costCalc,
-      () => {
-        if (costCalc.value > 0 && timerEnabled.value) {
-          setTimeout(() => {
-            costCalc.value = costCalc.value + HOURLYRATE / 60 / 60;
-            seconds.value += 1 / employeeNumber.value;
-          }, 1000 / employeeNumber.value);
-        }
+}
+
+// Send data for a new row to the api
+function sendRow(rowVals) {
+  axios
+    .post("/meetings", rowVals, {
+      headers: {
+        // Overwrite Axios's automatically set Content-Type
+        "Content-Type": "application/json",
       },
-      { immediate: true }
-    );
-    // Fetch table data from the API
-    function fetchTable() {
-      axios
-        // .get("/meetings")
-        .get("/meetings", {})
-
-        .then(function (response) {
-          let data = response.data;
-          rows.value = data;
-        })
-        .catch(function (error) {
-          console.log("Get Error: ", error);
-        });
-    }
-    // Send data for a new row to the api
-    function sendRow(rowVals) {
-      axios
-        .post("/meetings", rowVals, {
-          headers: {
-            // Overwrite Axios's automatically set Content-Type
-            "Content-Type": "application/json",
-          },
-        })
-        .then(function (response) {
-          fetchTable();
-          resetForm();
-        })
-        .catch(function (error) {
-          console.log("Post Error: ", error);
-        });
-    }
-
-    // Gather info upon form submit and call the api post request to push data to api
-    function onSubmit() {
-      const rowVals = {
-        meetingId: nanoid(),
-        date: Date.now(),
-        employeeNumber: parseInt(employeeNumber.value),
-        time: parseInt(minutes.value),
-        totalCost: parseFloat(costCalc.value.toFixed(2)),
-        meetingGroup: meetingGroup.value,
-        powerpointSlides: parseInt(numSlides.value),
-        comment: comment.value,
-        title: title.value,
-        groupCost: groupCost.value,
-      };
-      sendRow(rowVals);
-    }
-    onMounted(() => {
+    })
+    .then(function (response) {
       fetchTable();
+      resetForm();
+    })
+    .catch(function (error) {
+      console.log("Post Error: ", error);
     });
-    return {
-      meetingGroup,
-      numSlides,
-      fetchTable,
-      rows,
-      onSubmit,
-      sendRow,
-      title,
-      comment,
-      timerEnabled,
-      costCalc,
-      minutes,
-      seconds,
-      pastMeetingModal,
-      employeeNumber,
-      groupCost,
-    };
-  },
-};
+}
+
+// Gather info upon form submit and call the api post request to push data to api
+function onSubmit() {
+  const rowVals = {
+    meetingId: nanoid(),
+    date: Date.now(),
+    employeeNumber: employeeNumber.value,
+    time: minutes.value,
+    totalCost: parseFloat(costCalc.value.toFixed(2)),
+    meetingGroup: meetingGroup.value,
+    powerpointSlides: numSlides.value,
+    comment: comment.value,
+    title: title.value,
+    groupCost: groupCost.value,
+  };
+  sendRow(rowVals);
+}
+
+onMounted(() => {
+  fetchTable();
+});
 </script>
