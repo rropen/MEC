@@ -28,7 +28,7 @@
     "vue-apexcharts": "^1.6.0",
     "vue-axios": "^3.2.4",
     "vue-router": "^4.0.10",
-    "yarn": "^1.22.10",
+    "yarn": "^1.22.11",
     "yup": "^0.32.9"
   },
   "devDependencies": {
