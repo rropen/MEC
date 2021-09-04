@@ -25,7 +25,7 @@
     "primevue": "^3.6.4",
     "vee-validate": "^4.4.9",
     "vue": "^3.2.1",
-    "vue-apexcharts": "^1.6.0",
+    "vue-apexcharts": "^1.6.2",
     "vue-axios": "^3.2.4",
     "vue-router": "^4.0.10",
     "yarn": "^1.22.10",
