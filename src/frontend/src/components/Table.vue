@@ -60,7 +60,11 @@
         :sortable="true"
       ></Column>
       <Column field="comment" header="Comment"></Column>
-      <Column field="groupCost" header="Group Cost" :sortable="true"></Column>
+      <Column field="groupCost" header="Group Cost" :sortable="true">
+        <template #body="slotProps">
+          ${{ slotProps.data.groupCost.toFixed(2) }}
+        </template></Column
+      >
       <Column field="totalCost" header="Individual Cost" :sortable="true">
         <template #body="slotProps">
           ${{ slotProps.data.totalCost.toFixed(2) }}

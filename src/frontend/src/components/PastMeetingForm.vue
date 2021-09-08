@@ -190,7 +190,7 @@ import { Field, Form, ErrorMessage } from "vee-validate";
 import { object, string, number, date } from "yup";
 import { nanoid } from "nanoid";
 import axios from "axios";
-import { meetingItem } from "@/types";
+import { meetingItem } from "../types";
 
 const emits = defineEmits(["close", "updateTable"]);
 const employeeNumber = ref(3);

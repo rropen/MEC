@@ -16,4 +16,4 @@ class Meeting(Base):
     powerpointSlides = Column(Numeric(3, 0))
     comment = Column(String)
     title = Column(String)
-    groupCost = Column(Numeric(7,2))
+    groupCost = Column(Numeric(7, 2))
