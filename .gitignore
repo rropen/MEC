@@ -147,3 +147,4 @@ src/backend/tests/.coverage
 
 screenshots/
 nocodb/data/
+.npmrc
