@@ -80,7 +80,7 @@ def create_meeting(db: Session, meeting_data):
 def delete_meeting(db: Session, item_id):
     """Take a meetingId (not primary key "id") and remove the row from the database."""
     mtg = db.query(Meeting).filter_by(meetingId=item_id).first()
-    print(mtg)
+    # print(mtg)
     groupMeetings = update_group_cost(db, mtg, is_delete=True)
 
     # if type(groupMeetings) is list:

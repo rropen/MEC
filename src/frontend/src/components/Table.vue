@@ -46,6 +46,7 @@
       <Column field="date" header="Date" :sortable="true">
         <template #body="slotProps">
           {{ filters.formatDate(slotProps.data.date) }}
+          <!-- {{slotProps.data.date}} -->
         </template></Column
       >
       <Column
