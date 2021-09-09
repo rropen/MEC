@@ -20,7 +20,7 @@ router = APIRouter()
 
 
 @router.get("/", response_model=List[Meeting])
-def get_meetings(skip: int = 2, limit: int = 100, db: Session = Depends(get_db)):
+def get_meetings(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     """
     ## Get Meetings
 
@@ -41,7 +41,6 @@ def create_meeting(meeting_data: MeetingCreate, db: Session = Depends(get_db)):
     """
     if not meeting_data:
         raise HTTPException(status_code=404, detail="Meeting data not provided")
-    response_object = []
 
     # Creates the database row and stores it in the table
 
@@ -68,7 +67,6 @@ def delete_meeting(
     """
     if not meetingId:
         raise HTTPException(status_code=404, detail="meetingId not provided")
-        response_object = []
 
     response = crud.delete_meeting(db, meetingId)
 
@@ -79,8 +77,3 @@ def delete_meeting(
             "code": "error",
             "message": "Meeting not Deleted or Multiple Meetings with same meetingId existed.",
         }
-@router.get("/test")
-def crud_test(db: Session = Depends(get_db)):
-    response = crud.group_cost(db)
-    # print(response)
-    return json.dumps(response)
