@@ -1,6 +1,6 @@
 # Developer Notes
 
-The following document will explain how to configure your environment locally, run the app, and run the tests.  This should help with meaningful contribution to the project and more reliable pull request approvals.
+The following document will explain how to configure your environment locally, run the app, and run the tests. This should help with meaningful contribution to the project and more reliable pull request approvals.
 
 ## Overview
 
@@ -8,7 +8,7 @@ This project consists of two primary parts: a Vue.js [frontend](#frontend) and a
 
 ### Dependency Installation
 
-There are two different `package.json` files which will need to have dependencies installed.  You should install a modern version of [node](https://nodejs.org/en/download/) (14+) and the latest version of [yarn v1](https://classic.yarnpkg.com/en/docs/install#windows-stable) prior to running the following commands.
+There are two different `package.json` files which will need to have dependencies installed. You should install a modern version of [node](https://nodejs.org/en/download/) (14+) and the latest version of [yarn v1](https://classic.yarnpkg.com/en/docs/install#windows-stable) prior to running the following commands.
 
 ```bash
 # double check node is installed
@@ -26,7 +26,7 @@ cd src/frontend
 yarn install
 ```
 
->Make sure you have the following settings in your VSCode settings.json file to allow auto lint on save.
+> Make sure you have the following settings in your VSCode settings.json file to allow auto lint on save.
 
 ```json
 "editor.codeActionsOnSave": {
@@ -34,11 +34,11 @@ yarn install
     }
 ```
 
-Prior to committing you'll also need to install `pre-commit` in your python environment which will enable the `black` fomatter for python.  On each committhe pre-commit hooks will automatically:
+Prior to committing you'll also need to install `pre-commit` in your python environment which will enable the `black` fomatter for python. On each committhe pre-commit hooks will automatically:
 
-* Format any python files with black
-* Format any javascript or similar files with prettier
-* lint any commit messages and enforce the commit standard outlined below.
+- Format any python files with black
+- Format any javascript or similar files with prettier
+- lint any commit messages and enforce the commit standard outlined below.
 
 ### Commits & Contributions
 
@@ -59,7 +59,7 @@ The following are good examples of commit messages:
 
 ### Changelog Update
 
-We use [standard version](https://github.com/conventional-changelog/standard-version) for our auto-changelog.  It should be run after changes to the `main` branch usually by whoever accepts a pull request.
+We use [standard version](https://github.com/conventional-changelog/standard-version) for our auto-changelog. It should be run after changes to the `main` branch usually by whoever accepts a pull request.
 
 ```bash
 yarn release  # after commiting, from the project root
@@ -144,7 +144,7 @@ yarn cy-open-ct
 
 ## Backend
 
-For local development, the backend should be run in docker. You'll need to do one step before building the container.  Make sure you install a version of [Docker](https://www.docker.com/products/personal) for your machine.
+For local development, the backend should be run in docker. You'll need to do one step before building the container. Make sure you install a version of [Docker](https://www.docker.com/products/personal) for your machine.
 
 ```bash
 # Navigate to the backend service location
@@ -211,6 +211,9 @@ cd src/backend/tests
 
 # Run pytest
 pdm run pytest
+
+# Check Test coverage
+pdm run coverage report -m
 ```
 
 Note: The command line options for pytest are configured in the `pytest.ini` file so you don't need to add them when running the command.
