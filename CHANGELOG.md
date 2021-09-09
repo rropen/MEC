@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.6.0](https://github.com/rropen/MEC/compare/v0.5.6...v0.6.0) (2021-09-09)
+
+
+### ⚠ BREAKING CHANGES
+
+* **typescript:** TypeScript conversion was a major breaking change, but will be better for the
+future
+* **typescript:** TypeScript conversion was a major breaking change, but will be better for the
+future
+
+### Features
+
+* **multiple:** added group cost functionality ([58589ee](https://github.com/rropen/MEC/commit/58589eed02a7704e5ae04a603a6a78f75bccc9be)), closes [#66](https://github.com/rropen/MEC/issues/66)
+* **multiple:** group Cost Functionality Added ([3c4e577](https://github.com/rropen/MEC/commit/3c4e5776c14c67ff0a7d488fe8dc668d9278023d)), closes [#66](https://github.com/rropen/MEC/issues/66)
+
+
+### Bug Fixes
+
+* upgrade @headlessui/vue from 1.3.0 to 1.4.0 ([002ffd0](https://github.com/rropen/MEC/commit/002ffd004d56d18bb5bd599816dd58bb8988fda5))
+* upgrade @heroicons/vue from 1.0.2 to 1.0.3 ([32e8e10](https://github.com/rropen/MEC/commit/32e8e10dd80af0543ce3d26ac1294ce52d47e0d5))
+* upgrade @tailwindcss/aspect-ratio from 0.2.0 to 0.2.1 ([223b1c3](https://github.com/rropen/MEC/commit/223b1c36d0b8dfff1093a36c0266f99e90a332bf))
+* upgrade @tailwindcss/line-clamp from 0.2.0 to 0.2.1 ([88fd4c8](https://github.com/rropen/MEC/commit/88fd4c874e4204f8e6e0d82bbcd650d0f78aae59))
+* upgrade @tailwindcss/typography from 0.4.0 to 0.4.1 ([b66defc](https://github.com/rropen/MEC/commit/b66defc8d053f571c632f1e8ca75990840d89662))
+* upgrade nanoid from 3.1.23 to 3.1.25 ([6db8b69](https://github.com/rropen/MEC/commit/6db8b6934e00bd2b9b2c1d93afa15772c7cd7679))
+* upgrade prettier from 2.3.0 to 2.3.2 ([93bad7e](https://github.com/rropen/MEC/commit/93bad7e8adc4f674843609577964783b8f51586f))
+* upgrade primevue from 3.5.1 to 3.6.4 ([db82b98](https://github.com/rropen/MEC/commit/db82b988a9bde89e5ba692d6a3474374cbbd23ea))
+* upgrade tailwindcss from 2.2.6 to 2.2.7 ([0c99674](https://github.com/rropen/MEC/commit/0c996746f29666b23d25809bef78af13ebb1bdc5))
+* upgrade vee-validate from 4.4.7 to 4.4.9 ([c8c25ca](https://github.com/rropen/MEC/commit/c8c25cacaf9d6d2c4e9bd2f49741bc205230dcef))
+* upgrade vue-router from 4.0.6 to 4.0.10 ([91e9dc7](https://github.com/rropen/MEC/commit/91e9dc7618d25079c0d832c477220036e736feab))
+* upgrade yarn from 1.22.10 to 1.22.11 ([c052e80](https://github.com/rropen/MEC/commit/c052e803d6002d9a04d18e6c6bde9034e3de2eba))
+
+
+* **typescript:** convert application to TypeScript and <script setup> vue format ([54cd36a](https://github.com/rropen/MEC/commit/54cd36a98700acd7ca99deac2f9a00ebd9e8e4cd)), closes [#55](https://github.com/rropen/MEC/issues/55)
+* **typescript:** convert application to TypeScript and <script setup> vue format ([dc7bcd7](https://github.com/rropen/MEC/commit/dc7bcd7a94aa0ae3db82aa1f0ec3654a636485a3)), closes [#55](https://github.com/rropen/MEC/issues/55)
+
 ### [0.5.6](https://github.com/rropen/MEC/compare/v0.5.5...v0.5.6) (2021-09-01)
 
 
