@@ -1,5 +1,8 @@
 name: Integration Test
-on: [push]
+on:
+  push:
+    branches:
+      - 70-Github_Actions
 jobs:
   cypress-run:
     runs-on: ubuntu-20.04
