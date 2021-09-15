@@ -4,25 +4,48 @@ on:
     branches:
       - 70-Github_Actions
 jobs:
+  buildx:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Set up Docker Buildx
+        id: buildx
+        uses: docker/setup-buildx-action@v1
+
+  backend-run:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v2
+
+      - name: Build Docker Image
+        working-directory: ./src
+        run: docker-compose -f docker-compose.yml -f local-docker-compose.yml build
+
+      - name: Run Docker Container
+        run: docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d backend
+
+      - name: Check Running Containers
+        run: docker ps
+
   cypress-run:
     runs-on: ubuntu-20.04
     steps:
-
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Install node
         uses: actions/setup-node@v2
         with:
-            node:version: '14'
+          node:version: "14"
 
       - name: Install Yarn
         run: npm install
-        
+
       - name: Install dependencies
         working-directory: src/frontend
         run: npm install
-        
 
       - name: Cypress run
         uses: cypress-io/github-action@v2
@@ -32,16 +55,4 @@ jobs:
           headless: true
           working-directory: src/frontend
           start: yarn serve
-          wait-on: 'http://localhost:3000'
-  # single:
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - uses: actions/checkout@v2
-  #     - uses: cypress-io/github-action@v2
-  #       with:
-  #         working-directory: src/frontend
-  #         build: yarn run build
-  #         start: yarn start
-  #         
-
-      
+          wait-on: "http://localhost:3000"
