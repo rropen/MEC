@@ -4,7 +4,7 @@ on:
 
 jobs:
   buildx:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -12,9 +12,9 @@ jobs:
         id: buildx
         uses: docker/setup-buildx-action@v1
 
-  backend-run:
-    runs-on: ubuntu-20.04
-    steps:
+#   backend-run:
+#     runs-on: ubuntu-20.04
+#     steps:
       - name: Checkout Actions
         uses: actions/checkout@v2
         
@@ -33,9 +33,9 @@ jobs:
       - name: Check Running Containers
         run: docker ps
 
-  cypress-run:
-    runs-on: ubuntu-20.04
-    steps:
+#   cypress-run:
+#     runs-on: ubuntu-20.04
+#     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
