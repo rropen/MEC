@@ -1,8 +1,7 @@
 name: Integration Test
 on:
-  push:
-    branches:
-      - 70-Github_Actions
+  workflow_dispatch:
+
 jobs:
   buildx:
     runs-on: ubuntu-latest
