@@ -23,7 +23,7 @@ jobs:
         run: cp .env.example .env
       
       - name: Build Docker Image
-        working-directory: ./src
+        working-directory: cd ..
         run: docker-compose -f docker-compose.yml -f local-docker-compose.yml build
 
       - name: Run Docker Container
