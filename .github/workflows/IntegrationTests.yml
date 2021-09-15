@@ -3,17 +3,7 @@ on:
   workflow_dispatch:
 
 jobs:
-#   buildx:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Checkout
-#         uses: actions/checkout@v2
-#       - name: Set up Docker Buildx
-#         id: buildx
-#         uses: docker/setup-buildx-action@v1
-
   cypress-tests:
-#     needs: buildx
     runs-on: ubuntu-20.04
     steps:
       - name: Checkout Actions
@@ -46,7 +36,7 @@ jobs:
         working-directory: src/frontend
         run: npm install
 
-      - name: Cypress run
+      - name: Run Cypress Tests
         uses: cypress-io/github-action@v2
         with:
           install: false
