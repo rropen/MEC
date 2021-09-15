@@ -1,0 +1,23 @@
+name: Python application
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python w/ pdm
+        uses: pdm-project/setup-pdm@v2.1
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          pdm list
+    # - name: Lint with black
+    #   run: |
+    #     black .
+    # - name: Test with pytest
+    #   run: |
+    #     pytest
