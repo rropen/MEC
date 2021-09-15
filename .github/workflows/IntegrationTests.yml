@@ -17,7 +17,11 @@ jobs:
     steps:
       - name: Checkout Actions
         uses: actions/checkout@v2
-
+        
+      - name: Make env file
+        working-directory: ./src/backend
+        run: cp .env.example .env
+      
       - name: Build Docker Image
         working-directory: ./src
         run: docker-compose -f docker-compose.yml -f local-docker-compose.yml build
