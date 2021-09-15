@@ -5,20 +5,12 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
-      - uses: actions/checkout@v2
-      - name: Set up Python w/ pdm
-        uses: pdm-project/setup-pdm@v2.1
+      - name: Python
+        uses: RojerGS/python-black-check@master
         with:
-          python-version: 3.9
-      - name: Install dependencies
-        run: |
-          pdm init
-          pdm list
-    # - name: Lint with black
-    #   run: |
-    #     black .
-    # - name: Test with pytest
-    #   run: |
-    #     pytest
+          line-length: "88"
+          path: "./src/backend"
+          include: "apps"
+          exclude: "(/*.html|/*.mo|/*.po|/*.png|/*.rst)"
