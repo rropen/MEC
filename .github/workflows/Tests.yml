@@ -1,0 +1,73 @@
+name: Testing
+# This workflow runs the unit test for the backend with pytest. 
+# The component testing for the frontend with cypress
+# Then the Integration Testing With Cypress
+
+on: workflow_dispatch
+jobs:
+  # Runs Unit Tests w/ pytest
+  unit-tests:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+          
+      - name: Install dependencies
+        working-directory: src/backend
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+
+      - name: Test with pytest
+        run: |
+          pytest
+      
+  # Runs Integration Tests w/ cypress
+  cypress-tests:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout Actions
+        uses: actions/checkout@v2
+        
+      - name: Make env file
+        working-directory: ./src/backend
+        run: cp .env.example .env
+      
+      - name: Build Docker Image
+        working-directory: ./src
+        run: docker-compose -f docker-compose.yml -f local-docker-compose.yml build
+
+      - name: Run Docker Container
+        working-directory: ./src
+        run: docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d backend
+
+      - name: Check Running Containers
+        run: docker ps
+
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node:version: "14"
+
+      - name: Install Yarn
+        run: npm install
+
+      - name: Install dependencies
+        working-directory: src/frontend
+        run: npm install
+
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          browser: chrome
+          headless: true
+          working-directory: src/frontend
+          start: yarn serve
+          wait-on: "http://localhost:3000"
+  
