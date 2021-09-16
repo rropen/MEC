@@ -7,44 +7,44 @@ from icecream import ic
 from mec.routes.meetings import crud
 
 # Get tests: Queries data from the database and makes sure that the right types are called. Ex int, string, boolean ect
-def test_get_meetings(test_app, monkeypatch):
-    test_data = [
-        {
-            "id": 1,
-            "meetingId": "string",
-            "date": "string",
-            "employeeNumber": 0,
-            "time": 0,
-            "totalCost": 0,
-            "powerpoint": 1,
-            "powerpointSlides": 0,
-            "comment": "string",
-            "title": "string",
-        },
-        {
-            "id": 1,
-            "meetingId": "string",
-            "date": "string",
-            "employeeNumber": 0,
-            "time": 0,
-            "totalCost": 0,
-            "powerpoint": 1,
-            "powerpointSlides": 0,
-            "comment": "string",
-            "title": "string",
-        },
-    ]
+# def test_get_meetings(test_app, monkeypatch):
+#     test_data = [
+#         {
+#             "id": 1,
+#             "meetingId": "string",
+#             "date": "string",
+#             "employeeNumber": 0,
+#             "time": 0,
+#             "totalCost": 0,
+#             "powerpoint": 1,
+#             "powerpointSlides": 0,
+#             "comment": "string",
+#             "title": "string",
+#         },
+#         {
+#             "id": 1,
+#             "meetingId": "string",
+#             "date": "string",
+#             "employeeNumber": 0,
+#             "time": 0,
+#             "totalCost": 0,
+#             "powerpoint": 1,
+#             "powerpointSlides": 0,
+#             "comment": "string",
+#             "title": "string",
+#         },
+#     ]
 
-    def mock_get_meetings(*args, **kwargs):
-        return test_data
+#     def mock_get_meetings(*args, **kwargs):
+#         return test_data
 
-    # monkeypatch.setattr("mec.routes.meetings.crud.bar._defaults_",('test'))
-    monkeypatch.setattr(crud, "get_all", mock_get_meetings)
+#     # monkeypatch.setattr("mec.routes.meetings.crud.bar._defaults_",('test'))
+#     monkeypatch.setattr(crud, "get_all", mock_get_meetings)
 
-    response = test_app.get("/meetings/?skip=0&limit=2")
-    ic(response.json())
-    assert response.status_code == 200
-    assert response.json() == test_data
+#     response = test_app.get("/meetings/?skip=0&limit=2")
+#     ic(response.json())
+#     assert response.status_code == 200
+#     assert response.json() == test_data
 
 
 # Post Tests:
