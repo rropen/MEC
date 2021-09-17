@@ -57,15 +57,15 @@ jobs:
 #       - name: Check Running Containers
 #         run: docker ps
 
-      - name: Install node
+      - name: Install Node
         uses: actions/setup-node@v2
         with:
           node:version: "14"
 
-      - name: Install Yarn
-        run: npm install
+#       - name: Install Node Packages
+#         run: npm install
 
-      - name: Install dependencies
+      - name: Install Dependencies
         working-directory: src/frontend
         run: npm install
 
