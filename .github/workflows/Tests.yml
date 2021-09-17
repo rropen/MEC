@@ -32,16 +32,13 @@ jobs:
     runs-on: ubuntu-20.04
     name: Pulls Image
     container:
-          image: ghcr.io/rropen/mec_frontend:latest
+          image: ghcr.io/rropen/mec_backend:latest
           credentials:
             username: ${{ github.repository_owner }}
             password: ${{ secrets.ITM007_CONTAINER_PAT }}
           ports: 
             - 3000:3000
     steps:
-      - name: Check Running Containers
-        run: docker ps
-
       - name: Checkout Actions
         uses: actions/checkout@v2
         
@@ -60,25 +57,25 @@ jobs:
 #       - name: Check Running Containers
 #         run: docker ps
 
-#       - name: Install node
-#         uses: actions/setup-node@v2
-#         with:
-#           node:version: "14"
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node:version: "14"
 
-#       - name: Install Yarn
-#         run: npm install
+      - name: Install Yarn
+        run: npm install
 
-#       - name: Install dependencies
-#         working-directory: src/frontend
-#         run: npm install
+      - name: Install dependencies
+        working-directory: src/frontend
+        run: npm install
 
-#       - name: Run Cypress Tests
-#         uses: cypress-io/github-action@v2
-#         with:
-#           install: false
-#           browser: chrome
-#           headless: true
-#           working-directory: src/frontend
-#           start: yarn serve
-#           wait-on: "http://localhost:3000"
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
+        with:
+          install: false
+          browser: chrome
+          headless: true
+          working-directory: src/frontend
+          start: yarn serve
+          wait-on: "http://localhost:3000"
   
