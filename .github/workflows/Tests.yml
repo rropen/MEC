@@ -38,7 +38,7 @@ jobs:
             password: ${{ secrets.ITM007_CONTAINER_PAT }}
     steps:
       - name: Check Running Containers
-#       run: docker ps
+        run: docker ps
 
       - name: Checkout Actions
         uses: actions/checkout@v2
