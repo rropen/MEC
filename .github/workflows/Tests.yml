@@ -30,19 +30,16 @@ jobs:
   # Runs Integration Tests w/ cypress
   cypress-tests:
     runs-on: ubuntu-20.04
+    name: Pulls Image
+    container:
+          image: ghcr.io/rropen/mec_frontend:latest
+          credentials:
+            username: ${{ github.repository_owner }}
+            password: ${{ secrets.ITM007_CONTAINER_PAT }}
     steps:
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@v1
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.ITM007_CONTAINER_PAT }}
-          
-      - name: Run frontEnd
-        uses: mec_frontend/mec_frontend-action@v2
-        with:
-          version: latest
-        
+      - name: Check Running Containers
+#       run: docker ps
+
       - name: Checkout Actions
         uses: actions/checkout@v2
         
