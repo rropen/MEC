@@ -36,6 +36,8 @@ jobs:
           credentials:
             username: ${{ github.repository_owner }}
             password: ${{ secrets.ITM007_CONTAINER_PAT }}
+          ports: 
+            - 3000:3000
     steps:
       - name: Check Running Containers
         run: docker ps
