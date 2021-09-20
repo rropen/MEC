@@ -5,6 +5,22 @@ name: Testing
 
 on: workflow_dispatch
 jobs:
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get yarn cache directory path
+        id: yarn-cache-dir-path
+        run: echo "::set-output name=dir::$(yarn config get cacheFolder)"
+
+      - uses: actions/cache@v2
+        id: yarn-cache # use this to check for `cache-hit` (`steps.yarn-cache.outputs.cache-hit != 'true'`)
+        with:
+          path: ${{ steps.yarn-cache-dir-path.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+      
+      
   # Runs Unit Tests w/ pytest
 #   unit-tests:
 #     runs-on: ubuntu-latest
@@ -35,20 +51,20 @@ jobs:
 
   # Run Component Tests
   # Runs Integration Tests w/ cypress
-  cypress-tests:
-    runs-on: ubuntu-latest
-    steps:
-        - name: Checkout Code
-          uses: actions/checkout@v2
+#   cypress-tests:
+#     runs-on: ubuntu-latest
+#     steps:
+#         - name: Checkout Code
+#           uses: actions/checkout@v2
 
-        - name: Setup Node
-          uses: actions/setup-node@v2
-          with:
+#         - name: Setup Node
+#           uses: actions/setup-node@v2
+#           with:
 #             working-directory: src/frontend
-            node:version: "14"
-            cache: 'yarn'
-        - run: yarn install --frozen-lockfile
-        - run: yarn cy
+#             node:version: "14"
+#             cache: 'yarn'
+#         - run: yarn install --frozen-lockfile
+#         - run: yarn cy
 
 #         - name: Install Dependencies
 #           working-directory: src/frontend
