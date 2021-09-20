@@ -30,7 +30,7 @@ jobs:
   # Run Component Tests
   # Runs Integration Tests w/ cypress
   cypress-tests:
-    runs-on: alpine-latest
+    runs-on: ubuntu-latest
     name: Pulls Image
     container:
           image: ghcr.io/rropen/mec_frontend:latest
