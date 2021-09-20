@@ -5,8 +5,16 @@ name: Testing
 
 on: workflow_dispatch
 jobs:
-  cache:
+  Integration-Tests:
     runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/rropen/mec_backend:latest
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.ITM007_CONTAINER_PAT }}
+      ports: 
+        - 8181:8181
+        
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
@@ -14,7 +22,6 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
-#         working-directory: src/frontend
         node-version: "14"
     
     - name: Get yarn cache directory path
@@ -29,22 +36,18 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-yarn-
           
-    - name: Install project dependencies & Run Cypress
+    - name: Install project dependencies
       working-directory: src/frontend
-      run: | 
-        yarn --prefer-offline
-        yarn cy
+      run: yarn --prefer-offline
+
+    - name: Cypress Integration Tests
+      working-directory: src/frontend
+      run: yarn cy
       
   # Runs Unit Tests w/ pytest
 #   unit-tests:
 #     runs-on: ubuntu-latest
-#       container:
-#           image: ghcr.io/rropen/mec_frontend:latest
-#           credentials:
-#             username: ${{ github.repository_owner }}
-#             password: ${{ secrets.ITM007_CONTAINER_PAT }}
-#           ports: 
-#             - 3000:3000
+
 #     steps:
 #       - uses: actions/checkout@v2
 #       - name: Set up Python 3.9
