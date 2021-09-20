@@ -6,14 +6,15 @@ name: Testing
 on: workflow_dispatch
 jobs:
   Integration-Tests:
-    container:
-      image: ghcr.io/rropen/mec_backend:latest
-      credentials:
-        username: ${{ github.repository_owner }}
-        password: ${{ secrets.ITM007_CONTAINER_PAT }}
-      ports: 
-        - 8181:8181
     runs-on: ubuntu-latest
+#     container:
+#       image: ghcr.io/rropen/mec_backend:latest
+#       credentials:
+#         username: ${{ github.repository_owner }}
+#         password: ${{ secrets.ITM007_CONTAINER_PAT }}
+#       ports: 
+#         - 8181:8181
+    
     steps:
     - name: Checkout Code
       uses: actions/checkout@v2
