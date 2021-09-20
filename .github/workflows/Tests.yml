@@ -40,14 +40,14 @@ jobs:
           ports: 
             - 3000:3000
     steps:
-      - name: Checkout Actions
-        uses: actions/checkout@v2
+#       - name: Checkout Actions
+#         uses: actions/checkout@v2
+
+      - name: Check Container
+        run: docker ps
         
-      - name: Start Server
-        run: yarn serve
-        
-      - name: Cypress Test
-        run: yarn cy-ct
+#       - name: Cypress Test
+#         run: docker ps
         
 #       - name: Make env file
 #         working-directory: ./src/backend
