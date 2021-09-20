@@ -25,7 +25,9 @@ jobs:
             
       - name: Install Dependencies
         working-directory: src/frontend
-        run: yarn install
+        run: |
+          yarn install
+          yarn cy
       
       
   # Runs Unit Tests w/ pytest
