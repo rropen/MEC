@@ -43,6 +43,12 @@ jobs:
       - name: Checkout Actions
         uses: actions/checkout@v2
         
+      - name: Start Server
+        run: yarn serve
+        
+      - name: Cypress Test
+        run: yarn cy-ct
+        
 #       - name: Make env file
 #         working-directory: ./src/backend
 #         run: cp .env.example .env
