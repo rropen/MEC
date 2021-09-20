@@ -26,10 +26,11 @@ jobs:
 #       - name: Test with pytest
 #         run: |
 #           pytest
-      
+
+  # Run Component Tests
   # Runs Integration Tests w/ cypress
   cypress-tests:
-    runs-on: ubuntu-20.04
+    runs-on: alpine-latest
     name: Pulls Image
     container:
           image: ghcr.io/rropen/mec_frontend:latest
@@ -57,25 +58,25 @@ jobs:
 #       - name: Check Running Containers
 #         run: docker ps
 
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node:version: "14"
+#       - name: Install Node
+#         uses: actions/setup-node@v2
+#         with:
+#           node:version: "14"
 
 #       - name: Install Node Packages
 #         run: npm install
 
-      - name: Install Dependencies
-        working-directory: src/frontend
-        run: npm install
+#       - name: Install Dependencies
+#         working-directory: src/frontend
+#         run: npm install
 
-      - name: Run Cypress Tests
-        uses: cypress-io/github-action@v2
-        with:
-          install: false
-          browser: chrome
-          headless: true
-          working-directory: src/frontend
-          start: yarn serve
-          wait-on: "http://localhost:3000"
+#       - name: Run Cypress Tests
+#         uses: cypress-io/github-action@v2
+#         with:
+#           install: false
+#           browser: chrome
+#           headless: true
+#           working-directory: src/frontend
+#           start: yarn serve
+#           wait-on: "http://localhost:3000"
   
