@@ -44,6 +44,7 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v2
           with:
+            working-directory: src/frontend
             node:version: "14"
             cache: 'yarn'
 
