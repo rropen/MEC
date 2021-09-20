@@ -8,7 +8,13 @@ jobs:
   # Runs Unit Tests w/ pytest
 #   unit-tests:
 #     runs-on: ubuntu-latest
-
+#       container:
+#           image: ghcr.io/rropen/mec_frontend:latest
+#           credentials:
+#             username: ${{ github.repository_owner }}
+#             password: ${{ secrets.ITM007_CONTAINER_PAT }}
+#           ports: 
+#             - 3000:3000
 #     steps:
 #       - uses: actions/checkout@v2
 #       - name: Set up Python 3.9
@@ -31,58 +37,31 @@ jobs:
   # Runs Integration Tests w/ cypress
   cypress-tests:
     runs-on: ubuntu-latest
-    name: Pulls Image
-    container:
-          image: ghcr.io/rropen/mec_frontend:latest
-          credentials:
-            username: ${{ github.repository_owner }}
-            password: ${{ secrets.ITM007_CONTAINER_PAT }}
-          ports: 
-            - 3000:3000
     steps:
-#       - name: Checkout Actions
-#         uses: actions/checkout@v2
+        - name: Checkout Code
+          uses: actions/checkout@v2
 
-      - name: Check Container
-        run: docker ps
-        
-#       - name: Cypress Test
-#         run: docker ps
-        
-#       - name: Make env file
-#         working-directory: ./src/backend
-#         run: cp .env.example .env
-      
-#       - name: Build Docker Image
-#         working-directory: ./src
-#         run: docker-compose -f docker-compose.yml -f local-docker-compose.yml build
+        - name: Setup Node
+          uses: actions/setup-node@v2
+          with:
+            node:version: "14"
+            cache: 'yarn'
 
-#       - name: Run Docker Container
-#         working-directory: ./src
-#         run: docker-compose -f docker-compose.yml -f local-docker-compose.yml up -d backend
+        - name: Install Node Packages
+          run: yarn install
 
-#       - name: Check Running Containers
-#         run: docker ps
+        - name: Install Dependencies
+          working-directory: src/frontend
+          run: yarn install --frozen-lockfile
 
-#       - name: Install Node
-#         uses: actions/setup-node@v2
-#         with:
-#           node:version: "14"
+        - name: Run Cypress Tests
+          run: yarn cy
+#           uses: cypress-io/github-action@v2
+#           with:
+#             install: false
+#             browser: chrome
+#             headless: true
+#             working-directory: src/frontend
+#             start: yarn serve
+#             wait-on: "http://localhost:3000"
 
-#       - name: Install Node Packages
-#         run: npm install
-
-#       - name: Install Dependencies
-#         working-directory: src/frontend
-#         run: npm install
-
-#       - name: Run Cypress Tests
-#         uses: cypress-io/github-action@v2
-#         with:
-#           install: false
-#           browser: chrome
-#           headless: true
-#           working-directory: src/frontend
-#           start: yarn serve
-#           wait-on: "http://localhost:3000"
-  
