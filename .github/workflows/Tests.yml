@@ -20,7 +20,7 @@ jobs:
            ${{ runner.os }}-yarn-
      - name: Install project dependencies
        working-directory: src/frontend
-       run: yarn
+       run: yarn install
       
   # Runs Unit Tests w/ pytest
 #   unit-tests:
