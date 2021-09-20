@@ -44,17 +44,19 @@ jobs:
         - name: Setup Node
           uses: actions/setup-node@v2
           with:
-            working-directory: src/frontend
+#             working-directory: src/frontend
             node:version: "14"
             cache: 'yarn'
+        - run: yarn install --frozen-lockfile
+        - run: yarn cy
 
-        - name: Install Dependencies
-          working-directory: src/frontend
-          run: yarn install --frozen-lockfile
+#         - name: Install Dependencies
+#           working-directory: src/frontend
+#           run: yarn install --frozen-lockfile
 
-        - name: Run Cypress Tests
-          working-directory: src/frontend
-          run: yarn cy
+#         - name: Run Cypress Tests
+#           working-directory: src/frontend
+#           run: yarn cy
 #           uses: cypress-io/github-action@v2
 #           with:
 #             install: false
