@@ -1,11 +1,6 @@
 version: "3.7"
 
 services:
-  nocodb:
-    volumes:
-      - ./nocodb/data:/usr/app/data/
-    ports:
-      - 8080:8080
 
   backend:
     command: uvicorn mec.main:app --workers 4 --host 0.0.0.0 --port 8181 --reload
@@ -16,7 +11,6 @@ services:
       ENV: "Local"
 
     volumes:
-      # - ./backend:/usr/mec/static
       - ./backend/:/app
 
   # frontend:

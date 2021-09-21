@@ -40,3 +40,12 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 # RUN pdm install --prod
 # COPY . /app
+
+# COPY requirements.txt .
+# COPY pyproject.toml .
+# COPY pdm.lock .
+# RUN pip install pdm
+# # RUN pip install -r requirements.txt
+# RUN pdm install --prod
+# COPY . /mec
+# CMD ["pdm", "run", "uvicorn","mec.main:app", "--workers", "4", "--host", "0.0.0.0", "--port","8181", "--reload"]
