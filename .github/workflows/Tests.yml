@@ -7,14 +7,14 @@ on: workflow_dispatch
 jobs:
   Integration-Tests:
     runs-on: ubuntu-latest
-    services:
-      backend:
-        image: ghcr.io/rropen/mec_backend:latest
-        credentials:
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.ITM007_CONTAINER_PAT }}
-        ports: 
-          - 8181:8181   
+#     services:
+#       backend:
+#         image: ghcr.io/rropen/mec_backend:latest
+#         credentials:
+#           username: ${{ github.repository_owner }}
+#           password: ${{ secrets.ITM007_CONTAINER_PAT }}
+#         ports: 
+#           - 8181:8181   
     steps:
   
     - name: Checkout Code
@@ -23,11 +23,10 @@ jobs:
     - name: Setup Node
       uses: actions/setup-node@v2
       with:
-        working-directory: src/frontend
         node-version: "14"
         cache: 'yarn'
-        cache-dependency-path: yarn.lock
-        
+#         cache-dependency-path: yarn.lock
+
 #     - name: Get yarn cache directory path
 #       id: yarn-cache-dir-path
 #       run: echo "::set-output name=dir::$(yarn cache dir)"
@@ -46,7 +45,9 @@ jobs:
 
     - name: Cypress Integration Tests
       working-directory: src/frontend
-      run: yarn cy
+      run: |
+        yarn install
+        yarn cy
       
   # Runs Unit Tests w/ pytest
 #   unit-tests:
