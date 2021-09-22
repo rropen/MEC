@@ -10,13 +10,13 @@ services:
         volumes:
             - ./backend:/usr/mec/static
     
-    frontend:
-        build:
-            target: 'deploy'
-        depends_on: 
-            - backend
-        environment:
-            ENV: "development"
-            NODE_ENV: development
-        ports:
-            - 81:80
+    # frontend:
+    #     build:
+    #         target: 'deploy'
+    #     depends_on: 
+    #         - backend
+    #     environment:
+    #         ENV: "development"
+    #         NODE_ENV: development
+    #     ports:
+    #         - 81:80
