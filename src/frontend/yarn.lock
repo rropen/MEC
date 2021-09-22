@@ -86,10 +86,10 @@
     tunnel-agent "^0.6.0"
     uuid "^3.3.2"
 
-"@cypress/vite-dev-server@^2.0.7":
-  version "2.0.7"
-  resolved "https://registry.npmjs.org/@cypress/vite-dev-server/-/vite-dev-server-2.0.7.tgz"
-  integrity sha512-0RAYG/WvgB2lAiu+voqMtGy2PdbwVz8EB6q1+u2G8akHepbe8KSrObdO7EHCZXzMQ0VQlmToonO4Qx+OUwPPwg==
+"@cypress/vite-dev-server@^2.0.8":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@cypress/vite-dev-server/-/vite-dev-server-2.1.0.tgz#2dcf8173f1a4c273ac963d9ec15e3cf5ee3034e5"
+  integrity sha512-tItMwUB0BIPl8Uqai+zrqmqaWHPPR/r9mGHDw+q+8y7xLaM08rOWgUYiTwR8IptEIwz4YGnxDkO30i+kB49S6Q==
   dependencies:
     debug "^4.3.2"
     get-port "^5.1.1"
