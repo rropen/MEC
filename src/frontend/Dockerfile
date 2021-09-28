@@ -21,7 +21,7 @@
 # CMD ["yarn", "vite"]
 
 # build stage
-FROM node:15.14.0-alpine3.12 as build
+FROM node:16.9.1-alpine3.12 as build
 ADD ./package*.json /frontend/
 WORKDIR /frontend
 # RUN yarn-ct
