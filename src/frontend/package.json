@@ -49,7 +49,7 @@
     "path-parse": "^1.0.7",
     "postcss": "^8.2.10",
     "prettier": "^2.3.2",
-    "start-server-and-test": "^1.13.1",
+    "start-server-and-test": "^1.14.0",
     "tailwindcss": "^2.2.7",
     "trim-newlines": "^3.0.1",
     "typescript": "~3.9.3",
