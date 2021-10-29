@@ -1,6 +1,12 @@
 {
   "name": "meeting_efficiency_calculator",
   "version": "0.6.0",
+  "description": "Tracks Meeting Cost",
+  "main": "index.js",
+  "repository": "https://github.com/rropen/mec",
+  "author": "Rolls-Royce Open Source",
+  "license": "MIT",
+  "private": true,
   "scripts": {
     "release": "standard-version",
     "commit": "cz",
