@@ -24,3 +24,16 @@ jobs:
     secrets:
       cr_username: ${{ secrets.GH_CR_USERNAME }}
       cr_PAT: ${{ secrets.CONTAINER_PAT }}
+      
+  integration-tests:
+    needs: [docker-build, backend-unit-tests, frontend-unit-tests]
+    uses: rropen/reusable-workflows/.github/workflows/cypress_E2E.yml@main
+    with:
+      backend_directory: src/backend
+      frontend_directory: src/frontend
+      backend_url: http://localhost:8181
+      image: ghcr.io/rropen/mec_backend:latest
+    secrets:
+      vue_cobalt_token: ${{ secrets.VUE_COBALT_PAT }}
+      cr_username: ${{ secrets.GH_CR_USERNAME }}
+      cr_PAT: ${{ secrets.CONTAINER_PAT }}
