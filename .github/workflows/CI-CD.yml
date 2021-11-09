@@ -14,3 +14,13 @@ jobs:
     uses: rropen/reusable-workflows/.github/workflows/cypress_component_tests.yml@main
     with:
       frontend_directory: src/frontend
+      
+  docker-build:
+    uses: rropen/reusable-workflows/.github/workflows/docker_build.yml@main
+    with:
+      dockerfile_directory: src/backend
+      image: ghcr.io/rropen/mec_backend:latest
+      registry: ghcr.io
+    secrets:
+      cr_username: ${{ secrets.GH_CR_USERNAME }}
+      cr_PAT: ${{ secrets.CONTAINER_PAT }}
