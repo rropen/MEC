@@ -3,7 +3,15 @@
 name: CI/CD
 
 # Controls when the workflow will run
-on: workflow_dispatch
+on: 
+  push:
+    branches: 
+      - main
+      - dev
+  pull_request:
+    branches:
+      - main
+      
 jobs:
   backend-unit-tests:
     uses: rropen/reusable-workflows/.github/workflows/pytest.yml@main
