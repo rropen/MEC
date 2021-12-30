@@ -265,21 +265,21 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, computed, watch } from "vue";
-import axios from "axios";
-import PastMeetingForm from "../components/PastMeetingForm.vue";
-import Statistics from "../components/Statistics.vue";
-import Table from "../components/Table.vue";
-import { nanoid } from "nanoid";
-import { useQuery, useMutation } from "villus";
-import { gql } from "graphql-tag";
+import { ref, onMounted, computed, watch } from 'vue';
+import axios from 'axios';
+import PastMeetingForm from '../components/PastMeetingForm.vue';
+import Statistics from '../components/Statistics.vue';
+import Table from '../components/Table.vue';
+import { nanoid } from 'nanoid';
+import { useQuery, useMutation } from 'villus';
+import { gql } from 'graphql-tag';
 
 const HOURLYRATE = 135;
-const meetingGroup = ref("");
+const meetingGroup = ref('');
 const numSlides = ref(0);
 const rows = ref([]);
-const comment = ref("");
-const title = ref("");
+const comment = ref('');
+const title = ref('');
 const timerEnabled = ref(false);
 const costCalc = ref(0);
 const groupCost = ref(0);
@@ -319,8 +319,8 @@ const fetchTable = async () => {
 
 function resetForm() {
   employeeNumber.value = 0;
-  title.value = "";
-  comment.value = "";
+  title.value = '';
+  comment.value = '';
   numSlides.value = 0;
 }
 
@@ -345,40 +345,44 @@ watch(
   { immediate: true }
 );
 
-// Send data for a new row to the api
-function sendRow(rowVals) {
-  // axios
-  //   .post("/meetings", rowVals, {
-  //     headers: {
-  //       // Overwrite Axios's automatically set Content-Type
-  //       "Content-Type": "application/json",
-  //     },
-  //   })
-  //   .then(function (response) {
-  //     fetchTable();
-  //     resetForm();
-  //   })
-  //   .catch(function (error) {
-  //     console.log("Post Error: ", error);
-  //   });
-}
-
 // Gather info upon form submit and call the api post request to push data to api
+const deleteMeeting = `
+  mutation deleteMeeting {
+    delete_meetings_by_pk(id: $id) {
+    comment
+    created_at
+    employeeNumber
+    groupCost
+    id
+    individualCost
+    meetingGroup
+    powerpointSlides
+    time
+    title
+  }
+}
+`;
+const { data, execute } = useMutation(deleteMeeting);
+const variables = {
+  id: 9,
+  created_at: '2020-06-01',
+  employeeNumber: 1,
+  groupCost: 0,
+  individualCost: 0,
+  meetingGroup: '',
+  powerpointSlides: 0,
+  time: 0,
+  title: 'Title',
+};
 
 function onSubmit() {
-  const NewMeeting = `
-  mutation newMeeting ($id: ID!) {
-    likePost (id: $id) {
-      message
+  console.log(variables);
+  execute(variables).then((result) => {
+    if (result.error) {
+      console.log('Error');
+      // Do something
     }
-  }
-`;
-
-  // in setup
-  const { data, execute } = useMutation(NewMeeting);
-  const variables = {
-    id: 123,
-  };
+  });
   // const rowVals = {
   //   meetingId: nanoid(),
   //   date: Date.now(),

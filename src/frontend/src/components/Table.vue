@@ -1,105 +1,112 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div v-if="rows">
-    <div v-for="rows in rows">{{ rows.title }}</div>
-  </div>
-  <div class="flex flex-col">
-    <div
-      class="
-        grid
-        justify-items-center
-        mb-6
-        float-right
-        flex-col
-        text-rrpink-600
-        font-semibold
-      "
-    >
-      <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
-      <p v-show="macbookpros != 0">
-        Opportunity Cost - MacBook Pros: {{ macbookpros }}
-      </p>
-      <p v-show="azuremonth != 0">
-        Opportunity Cost - Months of Paid Azure App Service:
-        {{ azuremonth }}
-      </p>
+  <div>
+    <div v-if="rows">
+      <div v-for="rows in rows" :key="rows">{{ rows.title }}</div>
     </div>
-    <DataTable
-      id="dataTable"
-      :value="rows"
-      stripedRows
-      :paginator="true"
-      :rows="10"
-      autoLayout
-      sortField="time"
-      :sortOrder="-1"
-      paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
-      :rowsPerPageOptions="[10, 20, 50]"
-      responsiveLayout="scroll"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
-    >
-      <Column field="meetingId" header="Meeting ID" :hidden="true"></Column>
-      <Column id="titleField" field="title" header="Title"></Column>
-      <Column
-        field="meetingGroup"
-        header="Meeting Group"
-        :sortable="true"
-      ></Column>
-      <Column field="created_at" header="Date" :sortable="true"></Column>
-      <Column
-        field="employeeNumber"
-        header="Employees"
-        :sortable="true"
-      ></Column>
-      <Column field="time" header="Minutes" :sortable="true"></Column>
-      <Column
-        field="powerpointSlides"
-        header="# Slides"
-        :sortable="true"
-      ></Column>
-      <Column field="comment" header="Comment"></Column>
-      <Column field="groupCost" header="Group Cost" :sortable="true"> </Column>
-      <Column field="individualCost" header="Individual Cost" :sortable="true">
-      </Column>
-      <Column field="meetingId" header="Delete">
-        <template #body="slotProps">
-          <Button
-            id="deleteButton"
-            icon="pi pi-trash"
-            class="p-button-rounded p-button-danger"
-            @click="confirmDeleteRow(slotProps.data)"
-          ></Button>
-        </template>
-      </Column>
-    </DataTable>
-    <teleport to="#modals">
-      <DeleteDialog
-        v-if="deleteRowDialog"
-        @close="deleteRowDialog = false"
-        @confirmed="deleteConfirmed()"
+    <div class="flex flex-col">
+      <div
+        class="
+          grid
+          justify-items-center
+          mb-6
+          float-right
+          flex-col
+          text-rrpink-600
+          font-semibold
+        "
       >
-      </DeleteDialog>
-    </teleport>
+        <!-- <p>Total Stored Meeting Cost: ${{ totalCost.toFixed(2) }}</p> -->
+        <p v-show="macbookpros != 0">
+          Opportunity Cost - MacBook Pros: {{ macbookpros }}
+        </p>
+        <p v-show="azuremonth != 0">
+          Opportunity Cost - Months of Paid Azure App Service:
+          {{ azuremonth }}
+        </p>
+      </div>
+      <DataTable
+        id="dataTable"
+        :value="rows"
+        stripedRows
+        :paginator="true"
+        :rows="10"
+        autoLayout
+        sortField="time"
+        :sortOrder="-1"
+        paginatorTemplate="CurrentPageReport FirstPageLink PrevPageLink PageLinks NextPageLink LastPageLink RowsPerPageDropdown"
+        :rowsPerPageOptions="[10, 20, 50]"
+        responsiveLayout="scroll"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords}"
+      >
+        <Column field="meetingId" header="Meeting ID" :hidden="true"></Column>
+        <Column id="titleField" field="title" header="Title"></Column>
+        <Column
+          field="meetingGroup"
+          header="Meeting Group"
+          :sortable="true"
+        ></Column>
+        <Column field="created_at" header="Date" :sortable="true"></Column>
+        <Column
+          field="employeeNumber"
+          header="Employees"
+          :sortable="true"
+        ></Column>
+        <Column field="time" header="Minutes" :sortable="true"></Column>
+        <Column
+          field="powerpointSlides"
+          header="# Slides"
+          :sortable="true"
+        ></Column>
+        <Column field="comment" header="Comment"></Column>
+        <Column field="groupCost" header="Group Cost" :sortable="true">
+        </Column>
+        <Column
+          field="individualCost"
+          header="Individual Cost"
+          :sortable="true"
+        >
+        </Column>
+        <Column field="meetingId" header="Delete">
+          <template #body="slotProps">
+            <Button
+              id="deleteButton"
+              icon="pi pi-trash"
+              class="p-button-rounded p-button-danger"
+              @click="confirmDeleteRow(slotProps.data)"
+            ></Button>
+          </template>
+        </Column>
+      </DataTable>
+      <teleport to="#modals">
+        <DeleteDialog
+          v-if="deleteRowDialog"
+          @close="deleteRowDialog = false"
+          @confirmed="deleteConfirmed()"
+        >
+        </DeleteDialog>
+      </teleport>
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
-import filters from "../filters";
-import { meetingItem } from "../types";
-import { computed, ref, PropType } from "vue";
-import DeleteDialog from "../components/DeleteDialog.vue";
-import DataTable from "primevue/datatable";
-import Column from "primevue/column";
-import Button from "primevue/button";
-import axios from "axios";
-import { useMutation, useClient } from "villus";
+import filters from '../filters';
+import { meetingItem } from '../types';
+import { computed, ref, PropType } from 'vue';
+import DeleteDialog from '../components/DeleteDialog.vue';
+import DataTable from 'primevue/datatable';
+import Column from 'primevue/column';
+import Button from 'primevue/button';
+import axios from 'axios';
+import { useMutation, useClient } from 'villus';
 
 const props = defineProps({
   rows: {
     type: Array as PropType<meetingItem[]>,
   },
 });
-const emits = defineEmits(["fetchTableAfterDelete"]);
+const emits = defineEmits(['fetchTableAfterDelete']);
 const rowToDelete = ref<meetingItem>();
 const deleteRowDialog = ref(false);
 
@@ -154,22 +161,22 @@ const deleteMeeting = `
 `;
 const { data, execute } = useMutation(deleteMeeting);
 const variables = {
-  id: 9,
+  id: 6,
 };
 const deleteConfirmed = () => {
-  console.log(variables);
-  execute(variables).then((result) => {
+  execute({ id: rowToDelete.value.id }).then((result) => {
     if (result.error) {
-      console.log("Error");
-      // Do something
+      console.log('Error');
     }
   });
+  let deleteRow = rowToDelete.value.id;
+  return deleteRow;
 };
 </script>
 <style>
-@import "primevue/resources/themes/saga-blue/theme.css";
-@import "primevue/resources/primevue.min.css";
-@import "primeicons/primeicons.css";
+@import 'primevue/resources/themes/saga-blue/theme.css';
+@import 'primevue/resources/primevue.min.css';
+@import 'primeicons/primeicons.css';
 
 .pi-refresh,
 .pi-cloud {
