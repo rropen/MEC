@@ -1,5 +1,8 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
+  <div v-if="rows">
+    <div v-for="rows in rows">{{ rows.title }}</div>
+  </div>
   <div class="flex flex-col">
     <div
       class="
@@ -42,13 +45,7 @@
         header="Meeting Group"
         :sortable="true"
       ></Column>
-
-      <Column field="date" header="Date" :sortable="true">
-        <template #body="slotProps">
-          {{ filters.formatDate(slotProps.data.date) }}
-          <!-- {{slotProps.data.date}} -->
-        </template></Column
-      >
+      <Column field="created_at" header="Date" :sortable="true"></Column>
       <Column
         field="employeeNumber"
         header="Employees"
@@ -61,16 +58,9 @@
         :sortable="true"
       ></Column>
       <Column field="comment" header="Comment"></Column>
-      <Column field="groupCost" header="Group Cost" :sortable="true">
-        <template #body="slotProps">
-          ${{ slotProps.data.groupCost.toFixed(2) }}
-        </template></Column
-      >
-      <Column field="totalCost" header="Individual Cost" :sortable="true">
-        <template #body="slotProps">
-          ${{ slotProps.data.totalCost.toFixed(2) }}
-        </template></Column
-      >
+      <Column field="groupCost" header="Group Cost" :sortable="true"> </Column>
+      <Column field="individualCost" header="Individual Cost" :sortable="true">
+      </Column>
       <Column field="meetingId" header="Delete">
         <template #body="slotProps">
           <Button
@@ -102,6 +92,7 @@ import DataTable from "primevue/datatable";
 import Column from "primevue/column";
 import Button from "primevue/button";
 import axios from "axios";
+import { useMutation, useClient } from "villus";
 
 const props = defineProps({
   rows: {
@@ -109,7 +100,6 @@ const props = defineProps({
   },
 });
 const emits = defineEmits(["fetchTableAfterDelete"]);
-
 const rowToDelete = ref<meetingItem>();
 const deleteRowDialog = ref(false);
 
@@ -145,17 +135,36 @@ const confirmDeleteRow = (rowData) => {
 };
 
 // Send an API call to delete the previously marked row from the database
-function deleteConfirmed() {
-  axios
-    .delete("/meetings/" + rowToDelete.value.meetingId)
-    .then(function (response) {
-      emits("fetchTableAfterDelete");
-      deleteRowDialog.value = false;
-    })
-    .catch(function (error) {
-      console.log("Delete Error: ", error);
-    });
+
+const deleteMeeting = `
+  mutation deleteMeeting {
+    delete_meetings_by_pk(id: $id) {
+    comment
+    created_at
+    employeeNumber
+    groupCost
+    id
+    individualCost
+    meetingGroup
+    powerpointSlides
+    time
+    title
+  }
 }
+`;
+const { data, execute } = useMutation(deleteMeeting);
+const variables = {
+  id: 9,
+};
+const deleteConfirmed = () => {
+  console.log(variables);
+  execute(variables).then((result) => {
+    if (result.error) {
+      console.log("Error");
+      // Do something
+    }
+  });
+};
 </script>
 <style>
 @import "primevue/resources/themes/saga-blue/theme.css";

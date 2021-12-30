@@ -14,6 +14,7 @@ import Header from "./components/Header.vue";
 import Footer from "./components/Footer.vue";
 import { defineComponent, computed } from "vue";
 import { useRoute } from "vue-router";
+import { useClient } from "villus";
 
 export default defineComponent({
   name: "App",

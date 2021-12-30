@@ -257,7 +257,9 @@
         Submit Meeting
       </button>
     </div>
-
+    <!-- <div v-if="rows">
+      <div v-for="rows in rows">{{ rows.title }}</div>
+    </div> -->
     <Table class="mt-6" :rows="rows" @fetchTableAfterDelete="fetchTable()" />
   </div>
 </template>
@@ -269,6 +271,8 @@ import PastMeetingForm from "../components/PastMeetingForm.vue";
 import Statistics from "../components/Statistics.vue";
 import Table from "../components/Table.vue";
 import { nanoid } from "nanoid";
+import { useQuery, useMutation } from "villus";
+import { gql } from "graphql-tag";
 
 const HOURLYRATE = 135;
 const meetingGroup = ref("");
@@ -282,9 +286,36 @@ const groupCost = ref(0);
 const seconds = ref(0);
 const pastMeetingModal = ref(false);
 const employeeNumber = ref(0);
+
 let minutes = computed(() => {
   return Math.floor(seconds.value / 60);
 });
+
+// Graphql Query
+const getMeetings = gql`
+  {
+    meetings {
+      id
+      comment
+      created_at
+      groupCost
+      individualCost
+      meetingGroup
+      powerpointSlides
+      time
+      title
+      employeeNumber
+    }
+  }
+`;
+// Fetch table data from the API
+const fetchTable = async () => {
+  const { data } = await useQuery({
+    query: getMeetings,
+  });
+  rows.value = data.value.meetings;
+  return rows.value;
+};
 
 function resetForm() {
   employeeNumber.value = 0;
@@ -314,54 +345,52 @@ watch(
   { immediate: true }
 );
 
-// Fetch table data from the API
-function fetchTable() {
-  axios
-    // .get("/meetings")
-    .get("/meetings", {})
-
-    .then(function (response) {
-      let data = response.data;
-      rows.value = data;
-    })
-    .catch(function (error) {
-      console.log("Get Error: ", error);
-    });
-}
-
 // Send data for a new row to the api
 function sendRow(rowVals) {
-  axios
-    .post("/meetings", rowVals, {
-      headers: {
-        // Overwrite Axios's automatically set Content-Type
-        "Content-Type": "application/json",
-      },
-    })
-    .then(function (response) {
-      fetchTable();
-      resetForm();
-    })
-    .catch(function (error) {
-      console.log("Post Error: ", error);
-    });
+  // axios
+  //   .post("/meetings", rowVals, {
+  //     headers: {
+  //       // Overwrite Axios's automatically set Content-Type
+  //       "Content-Type": "application/json",
+  //     },
+  //   })
+  //   .then(function (response) {
+  //     fetchTable();
+  //     resetForm();
+  //   })
+  //   .catch(function (error) {
+  //     console.log("Post Error: ", error);
+  //   });
 }
 
 // Gather info upon form submit and call the api post request to push data to api
+
 function onSubmit() {
-  const rowVals = {
-    meetingId: nanoid(),
-    date: Date.now(),
-    employeeNumber: employeeNumber.value,
-    time: minutes.value,
-    totalCost: parseFloat(costCalc.value.toFixed(2)),
-    meetingGroup: meetingGroup.value,
-    powerpointSlides: numSlides.value,
-    comment: comment.value,
-    title: title.value,
-    groupCost: groupCost.value,
+  const NewMeeting = `
+  mutation newMeeting ($id: ID!) {
+    likePost (id: $id) {
+      message
+    }
+  }
+`;
+
+  // in setup
+  const { data, execute } = useMutation(NewMeeting);
+  const variables = {
+    id: 123,
   };
-  sendRow(rowVals);
+  // const rowVals = {
+  //   meetingId: nanoid(),
+  //   date: Date.now(),
+  //   employeeNumber: employeeNumber.value,
+  //   time: minutes.value,
+  //   totalCost: parseFloat(costCalc.value.toFixed(2)),
+  //   meetingGroup: meetingGroup.value,
+  //   powerpointSlides: numSlides.value,
+  //   comment: comment.value,
+  //   title: title.value,
+  //   groupCost: groupCost.value,
+  // };
 }
 
 onMounted(() => {
