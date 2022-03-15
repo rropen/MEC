@@ -20,3 +20,5 @@ Ex: If you have a meeting with 20 people for 120 min how much does that cost you
 The valulation of each employee is at $140 per hour.
 
 For details on setting up your local environment to contribute to MEC, see our [Developer Notes](https://github.com/rropen/MEC/blob/main/DEVELOPER.md)]
+
+Update
