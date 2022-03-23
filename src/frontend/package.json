@@ -19,7 +19,7 @@
     "flush-promises": "^1.0.2",
     "moment": "^2.29.1",
     "nanoid": "^3.1.25",
-    "node-sass": "^6.0.1",
+    "node-sass": "^7.0.0",
     "package.json": "^2.0.1",
     "primeicons": "^4.1.0",
     "primevue": "^3.7.1",
