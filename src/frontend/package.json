@@ -18,7 +18,7 @@
     "axios": "^0.21.3",
     "flush-promises": "^1.0.2",
     "moment": "^2.29.1",
-    "nanoid": "^3.1.25",
+    "nanoid": "^3.1.31",
     "node-sass": "^7.0.0",
     "package.json": "^2.0.1",
     "primeicons": "^4.1.0",
