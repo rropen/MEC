@@ -53,7 +53,7 @@
     "tailwindcss": "^2.2.7",
     "trim-newlines": "^3.0.1",
     "typescript": "~3.9.3",
-    "vite": "^2.5.2"
+    "vite": "^2.9.13"
   },
   "eslintConfig": {
     "root": true,
